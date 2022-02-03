@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/03 16:48:56 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/03 17:25:22 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,6 @@
 #include "arrays.h"
 #include "print.h"
 #include <stdio.h>
-
-bool	ft_readmap(char *filename, t_parray *result)
-{
-	int		file;
-	int		length;
-	char	*array;
-
-	file = open(filename, O_RDONLY);
-	if (file == -1)
-		return (false);
-	if (!ft_seek(file, &length))
-		return (false);
-	close(file);
-	file = open(filename, O_RDONLY);
-	if (file == -1)
-		return (false);
-	array = malloc(length);
-	if (!array)
-		return (false);
-	*result = ft_parray(array, length);
-	return (true);
-}
 
 int	ft_error(char *s)
 {
@@ -55,26 +33,36 @@ void	printg(t_global *g)
 		printf("%s\n", g->map[i++]);
 }
 
+void	printp(char **p)
+{
+	while (*p)
+		ft_putout(*p);
+}
+
 int	main(int argc, char **argv)
 {
-	t_global	g;
+	char		*p;
 
 	if (argc != 2)
 		return (ft_error("Invalid arguments count\n"));
 	if (!ft_strends(argv[1], ".cub"))
 		return (ft_error("Invalid filename\n"));
-	if (!ft_readmap(argv[1], &g.xmap.raw))
-		return (ft_error("Couldn't read map\n"));
-	printf("lol\n");
-	g.path = argv[1];
-	g.file = open(argv[1], O_RDONLY);
-	if (g.file == -1)
-		return (1);
-	g.map = create_map(&g);
-	if (!g.map)
-		return (1);
-	if (!check_map(&g))
-		return (1);
-	printg(&g);
+	if (!ft_read(argv[1], &p))
+		return (ft_error("Can't read map\n"));
+	ft_putout(p);
+	// split = ft_split(p.array, '\n');
+	// if (!split)
+	// 	return (ft_error("Can't parse map\n"));
+	// printp(split);
+	// g.path = argv[1];
+	// g.file = open(argv[1], O_RDONLY);
+	// if (g.file == -1)
+	// 	return (1);
+	// g.map = create_map(&g);
+	// if (!g.map)
+	// 	return (1);
+	// if (!check_map(&g))
+	// 	return (1);
+	// printg(&g);
 	return (0);
 }

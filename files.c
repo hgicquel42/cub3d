@@ -6,35 +6,70 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 14:11:50 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/03 16:20:01 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/03 17:30:08 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdbool.h>
+#include <fcntl.h>
+#include <stdlib.h>
 
 /**
  * @brief safely count length of file
  * 
- * @param fd file
- * @param r result
+ * @param file
+ * @param result
  * @return bool false if it failed
  */
-bool	ft_seek(int fd, int *r)
+bool	ft_seek(int file, int *result)
 {
 	char	buffer[1024];
 	int		bytes;
 	int		total;
 
+	total = 0;
 	while (true)
 	{
-		bytes = read(fd, buffer, 1024);
+		bytes = read(file, buffer, 1024);
 		if (bytes == -1)
 			return (false);
 		if (bytes == 0)
 			break ;
 		total += bytes;
 	}
-	*r = total;
+	*result = total;
+	return (true);
+}
+
+/**
+ * @brief safely read file
+ * 
+ * @param filename
+ * @param result
+ * @return bool false if it failed 
+ */
+bool	ft_read(char *filename, char **result)
+{
+	int		file;
+	int		length;
+	char	*array;
+
+	file = open(filename, O_RDONLY);
+	if (file == -1)
+		return (false);
+	if (!ft_seek(file, &length))
+		return (false);
+	close(file);
+	file = open(filename, O_RDONLY);
+	if (file == -1)
+		return (false);
+	array = malloc(length + 1);
+	if (!array)
+		return (false);
+	if (read(file, array, length) != length)
+		return (false);
+	array[length] = 0;
+	*result = array;
 	return (true);
 }

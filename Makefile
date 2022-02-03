@@ -3,7 +3,6 @@ NAME = cub3d
 INPUT = \
 	main.c \
 	check.c \
-	ft_split.c \
 	libft.c \
 	map.c \
 	chars.c \
@@ -12,6 +11,7 @@ INPUT = \
 	files.c \
 	arrays.c \
 	print.c \
+	split.c \
 
 OUTPUT = ${INPUT:.c=.o}
 

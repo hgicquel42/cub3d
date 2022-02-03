@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   files.h                                            :+:      :+:    :+:   */
+/*   memory.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 16:18:58 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/03 17:30:28 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/03 17:22:06 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/03 17:23:03 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILES_H
-# define FILES_H
+#ifndef MEMORY_H
+#define MEMORY_H
 
 /**
- * @brief safely count length of file
- * 
- * @param file
- * @param result
- * @return bool false if it failed
+ * @brief copy src into dst until l
+ * @warning unsafe if overlap
+ * @param src source
+ * @param dst destination
+ * @param l length
  */
-bool	ft_seek(int file, int *result);
-
-/**
- * @brief safely read file
- * 
- * @param filename
- * @param result
- * @return bool false if it failed 
- */
-bool	ft_read(char *filename, char **result);
+void	ft_strlcpy(char *src, char *dst, int l);
 
 #endif

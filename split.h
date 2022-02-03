@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   files.h                                            :+:      :+:    :+:   */
+/*   split.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 16:18:58 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/03 17:30:28 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/03 16:57:01 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/03 16:57:48 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILES_H
-# define FILES_H
+#ifndef SPLIT_H
+# define SPLIT_H
 
-/**
- * @brief safely count length of file
- * 
- * @param file
- * @param result
- * @return bool false if it failed
- */
-bool	ft_seek(int file, int *result);
-
-/**
- * @brief safely read file
- * 
- * @param filename
- * @param result
- * @return bool false if it failed 
- */
-bool	ft_read(char *filename, char **result);
+typedef struct s_tuple
+{
+	int	i;
+	int	o;
+}	t_tuple;
 
 #endif
