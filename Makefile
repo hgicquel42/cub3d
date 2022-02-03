@@ -9,7 +9,6 @@ INPUT = \
 	strings.c \
 	numbers.c \
 	files.c \
-	arrays.c \
 	print.c \
 	split.c \
 
