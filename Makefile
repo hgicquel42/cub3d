@@ -20,12 +20,13 @@ all: ${NAME}
 ${NAME}: ${OUTPUT}
 	gcc -Wall -Wextra -Werror -g ${OUTPUT} -o ${NAME}
 
-clean: ${OUTPUT}
+clean:
 	rm -f ${OUTPUT}
 
 fclean:	clean
 	rm -f ${NAME}
 
-re:		| fclean all
+re: fclean all
 
-x:		| fclean all clean
+x: fclean all
+	rm -f ${OUTPUT}
