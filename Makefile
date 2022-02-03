@@ -6,7 +6,9 @@ INPUT = \
 	ft_split.c \
 	libft.c \
 	map.c \
+	chars.c \
 	strings.c \
+	numbers.c \
 
 OUTPUT = ${INPUT:.c=.o}
 
@@ -18,10 +20,12 @@ all: ${NAME}
 ${NAME}: ${OUTPUT}
 	gcc -Wall -Wextra -Werror -g ${OUTPUT} -o ${NAME}
 
-clean:
+clean: ${OUTPUT}
 	rm -f ${OUTPUT}
 
 fclean:	clean
 	rm -f ${NAME}
 
-re:		fclean all
+re:		| fclean all
+
+x:		| fclean all clean

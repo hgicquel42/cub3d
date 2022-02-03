@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/03 14:01:49 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:11:37 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (1);
-	g.path = argv[1];
-	printf("lol\n");
 	if (!ft_strends(argv[1], ".cub"))
 		return (1);
+	printf("lol\n");
+	g.path = argv[1];
 	g.file = open(argv[1], O_RDONLY);
 	if (g.file == -1)
 		return (1);

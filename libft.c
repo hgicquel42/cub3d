@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:59:44 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/03 13:39:40 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:52:11 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,6 @@ char	*ft_strdup(char *s)
 		return (NULL);
 	str = ft_memcpy(str, s, size);
 	return (str);
-}
-
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
 }
 
 char	*ft_substr(char *s, unsigned int start, unsigned int len)

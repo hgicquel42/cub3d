@@ -6,11 +6,11 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:22:07 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/03 14:05:41 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:25:38 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "stdbool.h"
 
 /**
  * @brief length of a string
@@ -28,9 +28,21 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
+/**
+ * @brief compare two strins
+ * 
+ * @param a string
+ * @param b string
+ * @return int comparison
+ */
 int	ft_strcmp(char *a, char *b)
 {
-	
+	int	i;
+
+	i = 0;
+	while (a[i] && a[i] == b[i])
+		i++;
+	return (a[i] - b[i]);
 }
 
 /**
@@ -43,8 +55,6 @@ int	ft_strcmp(char *a, char *b)
  */
 bool	ft_strends(char	*a, char *b)
 {
-	int	i;
-	int	j;
 	int	la;
 	int	lb;
 
@@ -52,12 +62,5 @@ bool	ft_strends(char	*a, char *b)
 	lb = ft_strlen(b);
 	if (la < lb)
 		return (false);
-	i = la;
-	while (i )
-	{
-		if (a[i] != b[i])
-			return (false);
-		i++;
-	}
-	return (true);
+	return (!ft_strcmp(a + la - lb, b));
 }

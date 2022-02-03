@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 11:11:32 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/03 13:39:41 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:52:06 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include "chars.h"
 # include "strings.h"
+# include "numbers.h"
 
 typedef struct s_global
 {
@@ -45,8 +47,6 @@ int		get_map_info(t_global *g);
 char	*ft_strdup(char *s);
 
 int		ft_strlen(char *s);
-
-int		ft_isdigit(int c);
 
 int		map_size(char **map);
 

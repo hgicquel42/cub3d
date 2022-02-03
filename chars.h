@@ -1,43 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strings.h                                          :+:      :+:    :+:   */
+/*   chars.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 13:27:31 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/03 14:09:55 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/03 14:41:53 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/03 14:44:16 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRINGS_H
-# define STRINGS_H
+#ifndef CHARS_H
+# define CHARS_H
 
 /**
- * @brief length of a string
+ * @brief check if char is a digit
  * 
- * @param s string
- * @return int length
+ * @param c char
+ * @return bool
  */
-int		ft_strlen(char *s);
+bool	ft_isdigit(char c);
 
 /**
- * @brief compare two strins
+ * @brief check if char is space or tab
  * 
- * @param a string
- * @param b string
- * @return int comparison
+ * @param c char
+ * @return bool
  */
-int		ft_strcmp(char *a, char *b);
+bool	ft_isblank(char c);
 
 /**
- * @brief check if a string ends with another
+ * @brief check if char is blank or newline or vtab
  * 
- * @param a "map.cub"
- * @param b ".cub"
- * @return true a ends with b
- * @return false a does not end with b
+ * @param c char
+ * @return bool
  */
-bool	ft_strends(char	*a, char *b);
+bool	ft_isspace(char c);
 
 #endif
