@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 11:11:32 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/03 14:52:06 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:19:37 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "chars.h"
 # include "strings.h"
 # include "numbers.h"
+# include "files.h"
 
 typedef struct s_global
 {

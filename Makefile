@@ -9,6 +9,7 @@ INPUT = \
 	chars.c \
 	strings.c \
 	numbers.c \
+	files.c \
 
 OUTPUT = ${INPUT:.c=.o}
 
