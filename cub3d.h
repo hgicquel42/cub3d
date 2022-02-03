@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 11:11:32 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/03 17:33:56 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:08:51 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@
 # include "strings.h"
 # include "numbers.h"
 # include "files.h"
+# include "header.h"
 
 typedef struct s_map
 {
-	char	**lines;
+	t_header	header;
+	char		**lines;
 }	t_map;
 
 typedef struct s_global

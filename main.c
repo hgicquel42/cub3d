@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/03 17:36:16 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/03 19:09:23 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	printg(t_global *g)
 		printf("%s\n", g->map[i++]);
 }
 
-void	printp(char **p)
+void	printmap(char **p)
 {
 	while (*p)
 	{
@@ -57,6 +57,8 @@ int	main(int argc, char **argv)
 	if (!lines)
 		return (ft_error("Can't parse map\n"));
 	g.xmap.lines = lines;
+	free(array);
+	printmap(lines);
 	(void)g;
 	// if (!check_map(&g))
 	// 	return (1);

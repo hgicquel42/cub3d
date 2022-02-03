@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:22:07 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/03 16:46:21 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/03 18:12:04 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_strlen(char *s)
 }
 
 /**
- * @brief compare two strins
+ * @brief compare two strings
  * 
  * @param a string
  * @param b string
@@ -41,6 +41,24 @@ int	ft_strcmp(char *a, char *b)
 
 	i = 0;
 	while (a[i] && a[i] == b[i])
+		i++;
+	return (a[i] - b[i]);
+}
+
+/**
+ * @brief compare two strings until l
+ * 
+ * @param a string
+ * @param b string
+ * @param l length
+ * @return int comparison
+ */
+int	ft_strlcmp(char *a, char *b, int l)
+{
+	int	i;
+
+	i = 0;
+	while (a[i] && a[i] == b[i] && i < l)
 		i++;
 	return (a[i] - b[i]);
 }
@@ -63,4 +81,24 @@ bool	ft_strends(char	*a, char *b)
 	if (la < lb)
 		return (false);
 	return (!ft_strcmp(a + la - lb, b));
+}
+
+/**
+ * @brief check if a string starts with another
+ * 
+ * @param a "map.cub"
+ * @param b "map"
+ * @return true a starts with b
+ * @return false a does not starts with b
+ */
+bool	ft_strstarts(char *a, char *b)
+{
+	int	la;
+	int	lb;
+
+	la = ft_strlen(a);
+	lb = ft_strlen(b);
+	if (la < lb)
+		return (false);
+	return (!ft_strlcmp(a, b, lb));
 }

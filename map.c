@@ -6,30 +6,11 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:18:31 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/03 13:39:40 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/03 18:02:29 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	map_len(t_global *g)
-{
-	int		len;
-	int		ret;
-	char	buff[1];
-
-	len = 0;
-	ret = 1;
-	while ((ret = read(g->file, buff, 1)) > 0)
-		len++;
-	if (ret < 0)
-		return (-1);
-	if (close (g->file) < 0)
-		return (-1);
-	if ((g->file = open(g->path, O_RDONLY)) < 1)
-		return (-1);
-	return (len);
-}
 
 void	add_wall(t_global *g)
 {
@@ -79,19 +60,4 @@ int	get_map_info(t_global *g)
 		i++;
 	}
 	return (-1);
-}
-
-char	**create_map(t_global *g)
-{
-	char	**map;
-	char	*buff;
-
-	if ((g->len = map_len(g) + 1) < 1)
-		return (NULL);
-	if (!(buff = malloc(sizeof(char) * g->len)))
-		return (NULL);
-	read(g->file, buff, g->len - 1);
-	buff[g->len] = '\0';
-	map = ft_split(buff, '\n');
-	return (map);
 }
