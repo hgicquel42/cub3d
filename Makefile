@@ -10,6 +10,8 @@ INPUT = \
 	strings.c \
 	numbers.c \
 	files.c \
+	arrays.c \
+	print.c \
 
 OUTPUT = ${INPUT:.c=.o}
 

@@ -1,45 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strings.h                                          :+:      :+:    :+:   */
+/*   print.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 13:27:31 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/03 16:46:33 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/03 16:41:13 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/03 16:45:11 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRINGS_H
-# define STRINGS_H
-
-# include <stdbool.h>
+#ifndef PRINT_H
+# define PRINT_H
 
 /**
- * @brief length of a string
+ * @brief write string in fd
+ * 
+ * @param fd file
+ * @param s string
+ * @return int bytes written or -1 if error
+ */
+int	ft_putfd(int fd, char *s);
+
+/**
+ * @brief write string in stdout
  * 
  * @param s string
- * @return int length
+ * @return int bytes written or -1 if error
  */
-int		ft_strlen(char *s);
+int	ft_putout(char *s);
 
 /**
- * @brief compare two strins
+ * @brief write string in stderr
  * 
- * @param a string
- * @param b string
- * @return int comparison
+ * @param s string
+ * @return int bytes written or -1 if error
  */
-int		ft_strcmp(char *a, char *b);
-
-/**
- * @brief check if a string ends with another
- * 
- * @param a "map.cub"
- * @param b ".cub"
- * @return true a ends with b
- * @return false a does not end with b
- */
-bool	ft_strends(char	*a, char *b);
+int	ft_puterr(char *s);
 
 #endif

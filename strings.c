@@ -6,11 +6,11 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:22:07 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/03 15:27:03 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:46:21 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdbool.h"
+#include <stdbool.h>
 
 /**
  * @brief length of a string
