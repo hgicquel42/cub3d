@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 11:11:32 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 14:48:38 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 15:52:53 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 # include <unistd.h>
 # include <stdbool.h>
 
-# include "chars.h"
-# include "numbers.h"
-# include "strings.h"
-# include "pointer.h"
-# include "files.h"
-# include "split.h"
-# include "print.h"
+# include "utils/chars.h"
+# include "utils/numbers.h"
+# include "utils/strings.h"
+# include "utils/pointer.h"
+# include "utils/files.h"
+# include "utils/split.h"
+# include "utils/print.h"
 # include "header.h"
 # include "global.h"
 // # include "check.h"
