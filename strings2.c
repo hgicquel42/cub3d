@@ -3,47 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   strings2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 18:29:53 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/03 18:53:21 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/04 08:44:11 by vpiamias          #+#    #+#             */
+/*   Updated: 2022/02/04 08:44:23 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "strings.h"
-#include <stdlib.h>
 
-/**
- * @brief duplicate string
- * 
- * @param s string
- * @return char* result
- */
 char	*ft_strdup(char *s)
 {
-	int		i;
-	char	*r;
+	int		size;
+	char	*str;
 
-	if (!s)
+	size = ft_strlen(s) + 1;
+	str = malloc(sizeof(char) * size);
+	if (str == NULL)
 		return (NULL);
-	r = malloc(ft_strlen(s));
-	if (!r)
-		return (NULL);
-	while (*s)
-		r[i++] = *s++;
-	r[i] = 0;
-	return (r);
+	str = ft_memcpy(str, s, size);
+	return (str);
 }
 
-/**
- * @brief safely duplicate string
- * 
- * @param s string
- * @param r result
- * @return bool false if failed
- */
-bool	ft_xstrdup(char *s, char **r)
+char	*cut_space(char *str)
 {
-	*r = ft_strdup(s);
-	return (*r != NULL);
+	int	i;
+	int	j;
+	int	k;
+	int	b;
+
+	i = 0;
+	j = 0;
+	b = 0;
+	while (str[i] && str[i] == ' ')
+		i++;
+	j = i;
+	while (b == 0)
+	{
+		k = 0;
+		while (str[j] && str[j] != ' ')
+			j++;
+		while (str[j + k] && str[j + k] == ' ')
+			k++;
+		if (str[j + k] == '\0')
+			b = 1;
+		j++;
+	}
+	return (ft_substr(str, i, j));
 }

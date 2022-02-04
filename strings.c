@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   strings.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:22:07 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/03 18:12:04 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 08:46:02 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
+#include "string.h"
+# include <stdlib.h>
 
 /**
  * @brief length of a string
@@ -46,24 +47,6 @@ int	ft_strcmp(char *a, char *b)
 }
 
 /**
- * @brief compare two strings until l
- * 
- * @param a string
- * @param b string
- * @param l length
- * @return int comparison
- */
-int	ft_strlcmp(char *a, char *b, int l)
-{
-	int	i;
-
-	i = 0;
-	while (a[i] && a[i] == b[i] && i < l)
-		i++;
-	return (a[i] - b[i]);
-}
-
-/**
  * @brief check if a string ends with another
  * 
  * @param a "map.cub"
@@ -71,7 +54,7 @@ int	ft_strlcmp(char *a, char *b, int l)
  * @return true a ends with b
  * @return false a does not end with b
  */
-bool	ft_strends(char	*a, char *b)
+int	ft_strends(char	*a, char *b)
 {
 	int	la;
 	int	lb;
@@ -79,26 +62,50 @@ bool	ft_strends(char	*a, char *b)
 	la = ft_strlen(a);
 	lb = ft_strlen(b);
 	if (la < lb)
-		return (false);
-	return (!ft_strcmp(a + la - lb, b));
+		return (-1);
+	if (ft_strcmp(a + la - lb, b) != 0)
+		return (-1);
+	return (0);
 }
 
-/**
- * @brief check if a string starts with another
- * 
- * @param a "map.cub"
- * @param b "map"
- * @return true a starts with b
- * @return false a does not starts with b
- */
-bool	ft_strstarts(char *a, char *b)
+char	*ft_substr(char *s, unsigned int start, unsigned int len)
 {
-	int	la;
-	int	lb;
+	char			*str;
+	unsigned int	i;
 
-	la = ft_strlen(a);
-	lb = ft_strlen(b);
-	if (la < lb)
-		return (false);
-	return (!ft_strlcmp(a, b, lb));
+	if (s == NULL)
+		return (NULL);
+	i = ft_strlen(s);
+	if (len > i)
+		len = i;
+	if (start > i)
+		len = 0;
+	str = malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		str[i] = s[start + i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+void	*ft_memcpy(void *dst, const void *src, int n)
+{
+	unsigned char	*s1;
+	unsigned char	*s2;
+
+	if (src == NULL || dst == NULL)
+		return (dst);
+	s1 = (unsigned char *)src;
+	s2 = (unsigned char *)dst;
+	while (n > 0)
+	{
+		n--;
+		s2[n] = s1[n];
+	}
+	return (dst);
 }

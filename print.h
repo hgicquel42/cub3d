@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:41:13 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/03 16:45:11 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 08:43:12 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,6 @@
  * @return int bytes written or -1 if error
  */
 int	ft_putfd(int fd, char *s);
-
-/**
- * @brief write string in stdout
- * 
- * @param s string
- * @return int bytes written or -1 if error
- */
-int	ft_putout(char *s);
 
 /**
  * @brief write string in stderr

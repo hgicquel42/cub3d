@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   files.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:18:58 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/03 17:30:28 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 07:50:22 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * @param result
  * @return bool false if it failed
  */
-bool	ft_seek(int file, int *result);
+int		ft_seek(int file, int *result);
 
 /**
  * @brief safely read file
@@ -29,6 +29,6 @@ bool	ft_seek(int file, int *result);
  * @param result
  * @return bool false if it failed 
  */
-bool	ft_read(char *filename, char **result);
+int		ft_read(char *filename, char **result);
 
 #endif

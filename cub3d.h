@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 11:11:32 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/03 19:08:51 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 10:47:10 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,53 +16,68 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include <stdbool.h>
-# include "chars.h"
 # include "strings.h"
-# include "numbers.h"
 # include "files.h"
-# include "header.h"
+# include "split.h"
+# include "print.h"
+# include "number.h"
+# include "check.h"
+# include "game.h"
+# include "minilibx-linux/mlx.h"
+
+typedef struct s_header
+{
+	char	*north;
+	char	*south;
+	char	*east;
+	char	*west;
+	char	*floor;
+	char	*cell;
+}				t_header;
 
 typedef struct s_map
 {
 	t_header	header;
-	char		**lines;
-}	t_map;
+	char		**map;
+}				t_map;
+
+typedef struct s_img
+{
+	void	*img_ptr;
+	char	*img_data;
+	int		bpp;
+	int		line_size;
+	int		endian;
+}				t_img;
+
+typedef struct s_mlx
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_img	img[4];
+}				t_mlx;
 
 typedef struct s_global
 {
 	t_map	xmap;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*floor_color;
-	char	*cell_color;
-	char	**map;
-	char	*path;
-	int		len;
-	int		file;
+	t_mlx	mlx;
 	int		i_start_map;
-}	t_global;
+}				t_global;
 
-char	**ft_split(char const *s, char c);
+int		check_char(char c);
 
-char	**create_map(t_global *g);
+int		check_wall_char(t_global *g);
 
-bool	check_map(t_global *g);
+int		check_color(char *color);
 
-int		get_map_info(t_global *g);
+int		check_player(t_global *g);
 
-char	*ft_strdup(char *s);
+int		check_map_info(t_global *g);
 
-int		ft_strlen(char *s);
+int		check_map(t_global *g);
 
-int		map_size(char **map);
+int		ft_error(char *s);
 
-void	add_wall(t_global *g);
-
-char	*ft_substr(char *s, unsigned int start, unsigned int len);
-
-int		ft_atoi(char *str);
+int	run_game(t_global *g);
 
 #endif

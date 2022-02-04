@@ -1,13 +1,13 @@
-NO         ./path_to_the_north_texture  jetebaise       
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO /mnt/nfs/homes/vpiamias/Desktop/cub3/textures/eagle.xpm
+SO /mnt/nfs/homes/vpiamias/Desktop/cub3/textures/greystone.xpm
+WE /mnt/nfs/homes/vpiamias/Desktop/cub3/textures/purplestone.xpm
+EA /mnt/nfs/homes/vpiamias/Desktop/cub3/textures/red.xpm
 F 225,100,0
 C 225,30,0
-       1111111111111111111111111
+    1  1111111111111111111111111
   1000000000110000000000001
    1011000001110000000000001
-11001000000000000000000001
+1100100000000000000000001
 111111111011000001110000000000001
 100000000011000001110111111111111        
 11110111111        111011100000010001

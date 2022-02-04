@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:57:01 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/03 16:57:48 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 07:07:51 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@ typedef struct s_tuple
 	int	i;
 	int	o;
 }	t_tuple;
+
+char	**ft_split(char *s, char c);
 
 #endif

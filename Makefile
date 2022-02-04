@@ -1,29 +1,38 @@
 NAME = cub3d
 
+CFLAGS = -Wall -Wextra -Werror
+
+CC = gcc
+
+MINILIBX = ./minilibx-linux/*.a
+
 INPUT = \
 	main.c \
 	check.c \
-	libft.c \
 	map.c \
-	chars.c \
 	strings.c \
-	numbers.c \
+	number.c \
 	files.c \
 	print.c \
 	split.c \
+	strings2.c \
+	game.c \
 
-OUTPUT = ${INPUT:.c=.o}
+OBJ = ${INPUT:.c=.o}
 
-all: ${NAME}
+.c.o: $(MINILIBX)
+			gcc $(CFLAGS) -c $< -o ${<:.c=.o}
 
-.c.o:	
-	gcc -Wall -Wextra -Werror -g -c $< -o ${<:.c=.o}
+all: $(NAME)
 
-${NAME}: ${OUTPUT}
-	gcc -Wall -Wextra -Werror -g ${OUTPUT} -o ${NAME}
+$(MINILIBX):
+	cd ./minilibx-linux && ./configure
+
+$(NAME): $(MINILIBX) $(OBJ)
+			$(CC) $(OBJ) $(CFLAGS) -I -g3 -Lmlx_Linux -lmlx_Linux -L ./minilibx-linux -Imlx_Linux -L ./libft -lXext -lX11 -lm -lz -o $(NAME)
 
 clean:
-	rm -f ${OUTPUT}
+	rm -f ${OBJ}
 
 fclean:	clean
 	rm -f ${NAME}
@@ -31,4 +40,4 @@ fclean:	clean
 re: fclean all
 
 x: fclean all
-	rm -f ${OUTPUT}
+	rm -f ${OBJ}

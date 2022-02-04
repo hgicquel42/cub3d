@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   files.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 14:11:50 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/03 17:30:08 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 08:07:55 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,24 @@
  * @param result
  * @return bool false if it failed
  */
-bool	ft_seek(int file, int *result)
+int	ft_seek(int file, int *result)
 {
 	char	buffer[1024];
 	int		bytes;
 	int		total;
 
 	total = 0;
-	while (true)
+	while (1)
 	{
 		bytes = read(file, buffer, 1024);
 		if (bytes == -1)
-			return (false);
+			return (-1);
 		if (bytes == 0)
 			break ;
 		total += bytes;
 	}
 	*result = total;
-	return (true);
+	return (0);
 }
 
 /**
@@ -49,7 +49,7 @@ bool	ft_seek(int file, int *result)
  * @param result
  * @return bool false if it failed 
  */
-bool	ft_read(char *filename, char **result)
+int	ft_read(char *filename, char **result)
 {
 	int		file;
 	int		length;
@@ -57,19 +57,19 @@ bool	ft_read(char *filename, char **result)
 
 	file = open(filename, O_RDONLY);
 	if (file == -1)
-		return (false);
-	if (!ft_seek(file, &length))
-		return (false);
+		return (-1);
+	if (ft_seek(file, &length) < 0)
+		return (-1);
 	close(file);
 	file = open(filename, O_RDONLY);
 	if (file == -1)
-		return (false);
+		return (-1);
 	array = malloc(length + 1);
 	if (!array)
-		return (false);
+		return (-1);
 	if (read(file, array, length) != length)
-		return (false);
+		return (-1);
 	array[length] = 0;
 	*result = array;
-	return (true);
+	return (0);
 }
