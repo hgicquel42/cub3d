@@ -1,12 +1,7 @@
 NAME = cub3d
 
-CFLAGS = -Wall -Wextra -Werror
-
-CC = gcc
-
-MINILIBX = ./minilibx-linux/*.a
-
-INPUT = \
+INPUT = ${addprefix \
+	sources/, \
 	main.c \
 	chars.c \
 	numbers.c \
@@ -18,22 +13,25 @@ INPUT = \
 	header.c \
 	pointer.c \
 	global.c \
+}
 
-OBJ = ${INPUT:.c=.o}
+OUTPUT = ${INPUT:.c=.o}
 
-.c.o: $(MINILIBX)
-			gcc $(CFLAGS) -c $< -o ${<:.c=.o}
+MINILIBX = ./minilibx/*.a
 
-all: $(NAME)
+all: ${NAME}
 
-$(MINILIBX):
-	cd ./minilibx-linux && ./configure
+${MINILIBX}:
+	cd minilibx && ./configure
 
-$(NAME): $(MINILIBX) $(OBJ)
-			$(CC) $(OBJ) $(CFLAGS) -I -g3 -Lmlx_Linux -lmlx_Linux -L ./minilibx-linux -Imlx_Linux -L ./libft -lXext -lX11 -lm -lz -o $(NAME)
+.c.o: ${MINILIBX}
+	gcc -Wall -Wextra -Werror -g -c $< -o ${<:.c=.o} -Lminilibx -lm -lmlx -lXext -lX11
+
+${NAME}: ${OUTPUT}
+	gcc -Wall -Wextra -Werror -g ${OUTPUT} -o ${NAME} -Lminilibx -lm -lmlx -lXext -lX11
 
 clean:
-	rm -f ${OBJ}
+	rm -f ${OUTPUT}
 
 fclean:	clean
 	rm -f ${NAME}
@@ -41,4 +39,4 @@ fclean:	clean
 re: fclean all
 
 x: fclean all
-	rm -f ${OBJ}
+	rm -f ${OUTPUT}
