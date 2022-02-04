@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split.h                                            :+:      :+:    :+:   */
+/*   global.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 16:57:01 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 14:12:01 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/04 14:43:46 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/04 14:45:01 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPLIT_H
-# define SPLIT_H
-
-# include "cub3d.h"
+#include "cub3d.h"
 
 /**
- * @brief splits string according to char
- * @warning produces leaks if error
- * @param s input
- * @param f splitter
- * @return char** result
+ * @brief init global
+ * 
+ * @param g global
  */
-char	**ft_split(char *s, bool (*f)(char));
+void	ft_global_init(t_global *g)
+{
+	g->map.lines = NULL;
+	ft_header_init(&g->map.header);
+}
 
-#endif
+/**
+ * @brief init global
+ * 
+ * @param g global
+ */
+void	ft_global_free(t_global *g)
+{
+	ft_freep((void **) g->map.lines);
+	ft_header_free(&g->map.header);
+}

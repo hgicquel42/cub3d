@@ -6,11 +6,23 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 14:36:54 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/03 14:43:49 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 14:02:58 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
+#include "cub3d.h"
+
+/**
+ * @brief check if char is newline
+ * 
+ * @param c 
+ * @return true 
+ * @return false 
+ */
+bool	ft_isnline(char c)
+{
+	return (c == '\n' || c == '\r');
+}
 
 /**
  * @brief check if char is a digit
@@ -42,9 +54,5 @@ bool	ft_isblank(char c)
  */
 bool	ft_isspace(char c)
 {
-	if (c == '\n' || c == '\r')
-		return (true);
-	if (c == '\v' || ft_isblank(c))
-		return (true);
-	return (false);
+	return (ft_isnline(c) || ft_isblank(c) || c == '\v');
 }

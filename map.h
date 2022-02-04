@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 08:40:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 08:42:42 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/04 14:09:08 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,4 @@ void	add_wall(t_global *g);
 
 int		get_map_info(t_global *g);
 
-# endif
+#endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:18:31 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 08:42:25 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/04 14:28:24 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void	add_wall(t_global *g)
 	int	j;
 
 	i = 0;
-	while (g->xmap.map[i])
+	while (g->map.lines[i])
 	{
 		j = 0;
-		while (g->xmap.map[i][j])
+		while (g->map.lines[i][j])
 		{
-			if (g->xmap.map[i][j] == ' ' || g->xmap.map[i][j] == '\t')
-				g->xmap.map[i][j] = '1';
+			if (g->map.lines[i][j] == ' ' || g->map.lines[i][j] == '\t')
+				g->map.lines[i][j] = '1';
 			j++;
 		}
 		i++;
@@ -49,25 +49,25 @@ int	get_map_info(t_global *g)
 	int	j;
 
 	i = 0;
-	while (g->xmap.map[i] != NULL)
+	while (g->map.lines[i] != NULL)
 	{
 		j = 0;
-		while (g->xmap.map[i][j] == ' ')
+		while (g->map.lines[i][j] == ' ')
 			j++;
-		if (g->xmap.map[i][j] == 'N' && g->xmap.map[i][j + 1] == 'O' && g->xmap.map[i][j + 2] == ' ')
-			g->xmap.header.north = ft_strdup(g->xmap.map[i] + j + 3);
-		if (g->xmap.map[i][j] == 'S' && g->xmap.map[i][j + 1] == 'O' && g->xmap.map[i][j + 2] == ' ')
-			g->xmap.header.south = ft_strdup(g->xmap.map[i] + j + 3);
-		if (g->xmap.map[i][j] == 'W' && g->xmap.map[i][j + 1] == 'E' && g->xmap.map[i][j + 2] == ' ')
-			g->xmap.header.west = ft_strdup(g->xmap.map[i] + j + 3);
-		if (g->xmap.map[i][j] == 'E' && g->xmap.map[i][j + 1] == 'A' && g->xmap.map[i][j + 2] == ' ')
-			g->xmap.header.east = ft_strdup(g->xmap.map[i] + j + 3);
-		if (g->xmap.map[i][j] == 'F' && g->xmap.map[i][j + 1] == ' ')
-			g->xmap.header.floor = ft_strdup(g->xmap.map[i] + j + 2);
-		if (g->xmap.map[i][j] == 'C' && g->xmap.map[i][j + 1] == ' ')
-			g->xmap.header.cell = ft_strdup(g->xmap.map[i] + j + 2);
-		if (g->xmap.header.north && g->xmap.header.south && g->xmap.header.west &&
-			g->xmap.header.east && g->xmap.header.floor && g->xmap.header.cell)
+		if (g->map.lines[i][j] == 'N' && g->map.lines[i][j + 1] == 'O' && g->map.lines[i][j + 2] == ' ')
+			g->map.header.north = ft_strdup(g->map.lines[i] + j + 3);
+		if (g->map.lines[i][j] == 'S' && g->map.lines[i][j + 1] == 'O' && g->map.lines[i][j + 2] == ' ')
+			g->map.header.south = ft_strdup(g->map.lines[i] + j + 3);
+		if (g->map.lines[i][j] == 'W' && g->map.lines[i][j + 1] == 'E' && g->map.lines[i][j + 2] == ' ')
+			g->map.header.west = ft_strdup(g->map.lines[i] + j + 3);
+		if (g->map.lines[i][j] == 'E' && g->map.lines[i][j + 1] == 'A' && g->map.lines[i][j + 2] == ' ')
+			g->map.header.east = ft_strdup(g->map.lines[i] + j + 3);
+		if (g->map.lines[i][j] == 'F' && g->map.lines[i][j + 1] == ' ')
+			g->map.header.floor = ft_strdup(g->map.lines[i] + j + 2);
+		if (g->map.lines[i][j] == 'C' && g->map.lines[i][j + 1] == ' ')
+			g->map.header.cell = ft_strdup(g->map.lines[i] + j + 2);
+		if (g->map.header.north && g->map.header.south && g->map.header.west &&
+			g->map.header.east && g->map.header.floor && g->map.header.cell)
 			return (i);
 		i++;
 	}

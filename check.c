@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:23:03 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 09:04:55 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/04 15:31:35 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "check.h"
 #include "cub3d.h"
-#include "map.h"
 
 int	check_char(char c)
 {
@@ -21,24 +19,24 @@ int	check_char(char c)
 	return (0);
 }
 
-int	check_wall_char(t_global *g)
+int	ft_map_check_border(t_global *g)
 {
 	int	i;
 	int	j;
 
-	i = g->i_start_map;
-	while (g->xmap.map[i])
+	i = g->map.header.length;
+	while (g->map.lines[i])
 	{
 		j = 0;
-		while (g->xmap.map[i][j])
+		while (g->map.lines[i][j])
 		{
-			if (j == 0 || i == g->i_start_map|| j == (ft_strlen(g->xmap.map[i]) - 1) ||
-				i == (map_size(g->xmap.map) - 1))
+			if (j == 0 || i == g->i_start_map|| j == (ft_strlen(g->map.lines[i]) - 1) ||
+				i == (map_size(g->map.lines) - 1))
 			{
-				if (g->xmap.map[i][j] != '1')
+				if (g->map.lines[i][j] != '1')
 					return (ft_error("Invalid map border\n"));
 			}
-			if (check_char(g->xmap.map[i][j]) < 0)
+			if (check_char(g->map.lines[i][j]) < 0)
 				return (ft_error("Invalide char in the map\n"));
 			j++;
 		}
@@ -47,9 +45,7 @@ int	check_wall_char(t_global *g)
 	return (0);
 }
 
-#include <stdio.h>
-
-int	check_color(char *color)
+int	ft_header_check_color(char *color)
 {
 	char	**rgb;
 	int		i;
@@ -68,62 +64,46 @@ int	check_color(char *color)
 	return (0);
 }
 
-int	check_player(t_global *g)
+int	ft_map_check_player(t_global *g)
 {
 	int	i;
 	int	j;
-	int	ret;
+	int	count;
 
-	ret = 0;
-	i = g->i_start_map;
-	while (g->xmap.map[i])
+	count = 0;
+	i = g->map.header.length;
+	while (g->map.lines[i])
 	{
 		j = 0;
-		while (g->xmap.map[i][j])
+		while (g->map.lines[i][j])
 		{
-			if (g->xmap.map[i][j] == 'N' || g->xmap.map[i][j] == 'S' || g->xmap.map[i][j] == 'E' ||
-				g->xmap.map[i][j] == 'W')
-				ret++;
+			if (g->map.lines[i][j] == 'N' || g->map.lines[i][j] == 'S' || g->map.lines[i][j] == 'E' ||
+				g->map.lines[i][j] == 'W')
+				count++;
 			j++;
 		}
 		i++;
 	}
-	if (ret != 1)
-		return (ft_error("Invalide player position\n"));
-	return (0);
+	return (count == 1);
 }
 
-int	check_map_info(t_global *g)
+bool	ft_header_check(t_global *g)
 {
-	if ((g->i_start_map = get_map_info(g) + 1) < 1)
-		return(ft_error("Invalid header\n"));
-	if (!(g->xmap.header.north = cut_space(g->xmap.header.north)))
-		return (-1);
-	if (!(g->xmap.header.south = cut_space(g->xmap.header.south)))
-		return (-1);
-	if (!(g->xmap.header.west = cut_space(g->xmap.header.west)))
-		return (-1);
-	if (!(g->xmap.header.east = cut_space(g->xmap.header.east)))
-		return (-1);
-	if (!(g->xmap.header.floor = cut_space(g->xmap.header.floor)))
-		return (-1);
-	if (!(g->xmap.header.cell = cut_space(g->xmap.header.cell)))
-		return (-1);
-	if (check_color(g->xmap.header.floor) < 0)
-		return (ft_error("Invalide color\n"));
-	if (check_color(g->xmap.header.cell) < 0)
-		return (ft_error("Invalide color\n"));
-	return (0);
+	if (!ft_header_check_color(g->map.header.floor))
+		return (false);
+	if (!ft_header_check_color(g->map.header.cell))
+		return (false);
+	return (true);
 }
 
-int	check_map(t_global *g)
+bool	ft_map_check(t_global *g)
 {
-	if (check_map_info(g) < 0)
-		return (-1);
-	add_wall(g);
-	if (check_wall_char(g) < 0)
-		return (-1);
-	if (check_player(g) < 0)
-		return (-1);
-	return (0);
+	if (!ft_header_check(g))
+		return (false);
+	ft_map_add_wall(g);
+	if (!ft_map_check_border(g))
+		return (false);
+	if (!ft_map_check_player(g))
+		return (false);
+	return (true);
 }

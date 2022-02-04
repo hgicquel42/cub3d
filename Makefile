@@ -8,15 +8,16 @@ MINILIBX = ./minilibx-linux/*.a
 
 INPUT = \
 	main.c \
-	check.c \
-	map.c \
+	chars.c \
+	numbers.c \
 	strings.c \
-	number.c \
+	strings2.c \
 	files.c \
 	print.c \
 	split.c \
-	strings2.c \
-	game.c \
+	header.c \
+	pointer.c \
+	global.c \
 
 OBJ = ${INPUT:.c=.o}
 

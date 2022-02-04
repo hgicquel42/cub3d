@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   number.h                                           :+:      :+:    :+:   */
+/*   numbers.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 08:34:18 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 08:34:56 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/04 14:11:11 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef NUMBER_H
-# define NUMBER_H
+#ifndef NUMBERS_H
+# define NUMBERS_H
 
-int		ft_isdigit(char c);
+# include "cub3d.h"
 
 int		ft_atoi(char *str);
+
+/**
+ * @brief safe version of ft_atoi
+ * 
+ * @param s string
+ * @param r result
+ * @return bool false if it failed
+ */
+bool	ft_xatoi(char *s, int *r);
 
 #endif

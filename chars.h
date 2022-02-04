@@ -1,43 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.h                                            :+:      :+:    :+:   */
+/*   chars.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 16:41:13 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 14:11:45 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/03 14:36:54 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/04 14:08:13 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_H
-# define PRINT_H
+#ifndef CHARS_H
+# define CHARS_H
 
 # include "cub3d.h"
 
 /**
- * @brief write string in fd
+ * @brief check if char is newline
  * 
- * @param fd file
- * @param s string
- * @return int bytes written or -1 if error
+ * @param c 
+ * @return true 
+ * @return false 
  */
-int	ft_putfd(int fd, char *s);
+bool	ft_isnline(char c);
 
 /**
- * @brief write string in stdout
+ * @brief check if char is a digit
  * 
- * @param s string
- * @return int bytes written or -1 if error
+ * @param c char
+ * @return bool
  */
-int	ft_putout(char *s);
+bool	ft_isdigit(char c);
 
 /**
- * @brief write string in stderr
+ * @brief check if char is space or tab
  * 
- * @param s string
- * @return int bytes written or -1 if error
+ * @param c char
+ * @return bool
  */
-int	ft_puterr(char *s);
+bool	ft_isblank(char c);
+
+/**
+ * @brief check if char is blank or newline or vtab
+ * 
+ * @param c char
+ * @return bool
+ */
+bool	ft_isspace(char c);
 
 #endif
