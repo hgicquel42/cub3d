@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 11:11:32 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 18:13:13 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 19:29:19 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdbool.h>
+
+# define NORTH 1
+# define SOUTH -1
+# define EAST 1
+# define WEST -1
 
 # include "global.h"
 # include "utils/chars.h"
@@ -31,6 +36,7 @@
 # include "parsing/header.h"
 # include "parsing/color.h"
 # include "parsing/check.h"
+# include "../minilibx/mlx.h"
 
 // # include "check.h"
 // # include "game.h"
@@ -44,25 +50,6 @@
 // 	int		line_size;
 // 	int		endian;
 // }				t_img;
-
-// typedef struct s_mlx
-// {
-// 	void	*mlx_ptr;
-// 	void	*win_ptr;
-// 	t_img	img[4];
-// }				t_mlx;
-
-// int		check_char(char c);
-
-// int		check_wall_char(t_global *g);
-
-// int		check_color(char *color);
-
-// int		check_player(t_global *g);
-
-// int		check_map_info(t_global *g);
-
-// int		check_map(t_global *g);
 
 // int		run_game(t_global *g);
 

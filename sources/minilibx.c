@@ -1,45 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   global.h                                           :+:      :+:    :+:   */
+/*   minilibx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 14:43:36 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 18:24:15 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/04 18:29:54 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/04 19:29:46 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GLOBAL_H
-# define GLOBAL_H
+#include "cub3d.h"
 
-# include "parsing/header.h"
-# include "cub3d.h"
-
-typedef struct s_map
+bool	ft_minilibx_init(t_global *g)
 {
-	t_header	header;
-	char		**lines;
-	char		**body;
-}				t_map;
-
-typedef struct s_global
-{
-	t_map	map;
-}				t_global;
-
-/**
- * @brief init global
- * 
- * @param g global
- */
-void	ft_global_init(t_global *g);
-
-/**
- * @brief init global
- * 
- * @param g global
- */
-void	ft_global_free(t_global *g);
-
-#endif
+	
+}

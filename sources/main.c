@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 18:21:30 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 18:24:29 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_error(t_global *g, char *s)
 	return (1);
 }
 
-static bool	ft_readmap(t_global *g, char *filename)
+static bool	ft_map_read(t_global *g, char *filename)
 {
 	char		*array;
 
@@ -42,13 +42,11 @@ int	main(int argc, char **argv)
 	ft_global_init(&g);
 	if (argc != 2 || !ft_strends(argv[1], ".cub"))
 		return (ft_error(&g, "Invalid arguments\n"));
-	if (!ft_readmap(&g, argv[1]))
+	if (!ft_map_read(&g, argv[1]))
 		return (ft_error(&g, "Can't read map\n"));
 	if (!ft_map_check(&g))
 		return (ft_error(&g, "Invalid map\n"));
 	printf("It works\n");
-	// if (run_game(&g) < 0)
-	// 	return (1);
 	ft_global_free(&g);
 	return (0);
 }
