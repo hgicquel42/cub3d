@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chars.c                                            :+:      :+:    :+:   */
+/*   pchars.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:39:16 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 16:41:02 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 18:12:40 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,16 @@ bool	ft_isplayer(char c)
 	if (c == 'E' || c == 'W')
 		return (true);
 	return (false);
+}
+
+/**
+ * @brief check if c is map char
+ * 
+ * @param c char
+ * @return true 
+ * @return false 
+ */
+bool	ft_ismap(char c)
+{
+	return (ft_iswall(c) || ft_isfloor(c) || ft_isplayer(c));
 }

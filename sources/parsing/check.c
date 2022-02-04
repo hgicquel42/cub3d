@@ -6,48 +6,13 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:23:03 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 16:38:49 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 18:19:38 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	ft_map_close(char **body)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (body[i])
-	{
-		j = 0;
-		while (body[i][j])
-		{
-			if (ft_isblank(body[i][j]))
-				body[i][j] = '1';
-			j++;
-		}
-		i++;
-	}
-}
-
-static bool	ft_isplayer(char c)
-{
-	if (c == 'N' || c == 'S')
-		return (true);
-	if (c == 'E' || c == 'W')
-		return (true);
-	return (false);
-}
-
-static bool	ft_map_check_char(char c)
-{
-	if (c == '0' || c == '1')
-		return (true);
-	return (ft_isplayer(c));
-}
-
-static bool	ft_map_check_chars(char **body)
+static bool	ft_body_check_chars(char **body)
 {
 	int	i;
 	int	j;
@@ -62,11 +27,11 @@ static bool	ft_map_check_chars(char **body)
 		l = ft_strlen(body[i]) - 1;
 		while (body[i][j])
 		{
-			if (!ft_map_check_char(body[i][j]))
+			if (!ft_ismap(body[i][j]))
 				return (false);
-			if ((i == 0 || i == l) && body[i][j] != '1')
+			if ((i == 0 || i == k) && body[i][j] != '1')
 				return (false);
-			if ((j == 0 || j == k) && body[i][j] != '1')
+			if ((j == 0 || j == l) && body[i][j] != '1')
 				return (false);
 			j++;
 		}
@@ -75,7 +40,7 @@ static bool	ft_map_check_chars(char **body)
 	return (true);
 }
 
-int	ft_map_check_player(char **body)
+static bool	ft_body_check_player(char **body)
 {
 	int	i;
 	int	j;
@@ -97,16 +62,42 @@ int	ft_map_check_player(char **body)
 	return (count == 1);
 }
 
+static void	ft_body_close_border(char **body)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (body[i])
+	{
+		j = 0;
+		while (body[i][j])
+		{
+			if (ft_isblank(body[i][j]))
+				body[i][j] = '1';
+			j++;
+		}
+		i++;
+	}
+}
+
+/**
+ * @brief check map
+ * 
+ * @param g 
+ * @return true 
+ * @return false 
+ */
 bool	ft_map_check(t_global *g)
 {
 	if (!ft_color_check(g->map.header.floor))
 		return (false);
 	if (!ft_color_check(g->map.header.cell))
 		return (false);
-	ft_map_close(g->map.body);
-	if (!ft_map_check_chars(g))
+	ft_body_close_border(g->map.body);
+	if (!ft_body_check_chars(g->map.body))
 		return (false);
-	if (!ft_map_check_player(g))
+	if (!ft_body_check_player(g->map.body))
 		return (false);
 	return (true);
 }

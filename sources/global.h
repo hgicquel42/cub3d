@@ -6,13 +6,14 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:43:36 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 16:25:05 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 18:09:45 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GLOBAL_H
 # define GLOBAL_H
 
+# include "parsing/header.h"
 # include "cub3d.h"
 
 typedef struct s_map

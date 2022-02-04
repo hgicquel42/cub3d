@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 11:11:32 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 16:13:59 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 18:13:13 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 
+# include "global.h"
 # include "utils/chars.h"
 # include "utils/numbers.h"
 # include "utils/strings.h"
@@ -26,9 +27,11 @@
 # include "utils/files.h"
 # include "utils/split.h"
 # include "utils/print.h"
+# include "parsing/pchars.h"
 # include "parsing/header.h"
 # include "parsing/color.h"
-# include "global.h"
+# include "parsing/check.h"
+
 // # include "check.h"
 // # include "game.h"
 // # include "minilibx-linux/mlx.h"

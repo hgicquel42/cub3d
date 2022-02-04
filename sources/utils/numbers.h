@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 08:34:18 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 14:11:11 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 18:18:49 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define NUMBERS_H
 
 # include "cub3d.h"
-
-int		ft_atoi(char *str);
 
 /**
  * @brief safe version of ft_atoi

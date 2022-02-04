@@ -6,23 +6,11 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 16:25:31 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 18:21:30 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// TODO: CLEAN CODE TRUC PAS COMPRIS SUR POINT H AVEC CHECK.. SINON PREMIERE PARTIE PROJET OK GO EXEC
-
-static void	print_header(t_header *header)
-{
-	printf("%s\n", header->north);
-	printf("%s\n", header->south);
-	printf("%s\n", header->east);
-	printf("%s\n", header->west);
-	printf("%s\n", header->cell);
-	printf("%s\n", header->floor);
-}
 
 static int	ft_error(t_global *g, char *s)
 {
@@ -31,7 +19,7 @@ static int	ft_error(t_global *g, char *s)
 	return (1);
 }
 
-bool	ft_readmap(t_global *g, char *filename)
+static bool	ft_readmap(t_global *g, char *filename)
 {
 	char		*array;
 
@@ -56,10 +44,9 @@ int	main(int argc, char **argv)
 		return (ft_error(&g, "Invalid arguments\n"));
 	if (!ft_readmap(&g, argv[1]))
 		return (ft_error(&g, "Can't read map\n"));
-	print_header(&g.map.header);
-	// g.xmap.map = lines;
-	// if (check_map(&g) < 0)
-	// 	return (1);
+	if (!ft_map_check(&g))
+		return (ft_error(&g, "Invalid map\n"));
+	printf("It works\n");
 	// if (run_game(&g) < 0)
 	// 	return (1);
 	ft_global_free(&g);
