@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.h                                            :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 08:46:38 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 09:39:06 by vpiamias         ###   ########.fr       */
+/*   Created: 2022/02/04 16:13:26 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/04 16:13:36 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECK_H
-# define CHECK_H
+#ifndef COLOR_H
+# define COLOR_H
 
 # include "cub3d.h"
 
+/**
+ * @brief check color rgb values
+ * 
+ * @param color 
+ * @return bool false if failed 
+ */
+bool	ft_color_check(char *color);
 
 #endif

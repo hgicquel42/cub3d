@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:43:36 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 14:46:32 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 16:25:05 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_map
 {
 	t_header	header;
 	char		**lines;
+	char		**body;
 }				t_map;
 
 typedef struct s_global

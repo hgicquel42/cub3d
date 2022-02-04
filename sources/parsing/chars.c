@@ -5,54 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 14:36:54 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 16:07:03 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/04 16:39:16 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/04 16:41:02 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 /**
- * @brief check if char is newline
+ * @brief check if c is a floor
  * 
- * @param c 
+ * @param c char
  * @return true 
  * @return false 
  */
-bool	ft_isnline(char c)
+bool	ft_isfloor(char c)
 {
-	return (c == '\n' || c == '\r');
+	return (c == '0');
 }
 
 /**
- * @brief check if char is a digit
+ * @brief check if c is a wall
  * 
  * @param c char
- * @return bool
+ * @return true 
+ * @return false 
  */
-bool	ft_isdigit(char c)
+bool	ft_iswall(char c)
 {
-	return (c >= '0' && c <= '9');
+	return (c == '1');
 }
 
 /**
- * @brief check if char is space or tab
+ * @brief check if c is player char
  * 
  * @param c char
- * @return bool
+ * @return true 
+ * @return false 
  */
-bool	ft_isblank(char c)
+bool	ft_isplayer(char c)
 {
-	return (c == ' ' || c == '\t');
-}
-
-/**
- * @brief check if char is blank or newline or vtab
- * 
- * @param c char
- * @return bool
- */
-bool	ft_isspace(char c)
-{
-	return (ft_isnline(c) || ft_isblank(c) || c == '\v');
+	if (c == 'N' || c == 'S')
+		return (true);
+	if (c == 'E' || c == 'W')
+		return (true);
+	return (false);
 }

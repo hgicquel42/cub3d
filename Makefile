@@ -10,9 +10,9 @@ INPUT = ${addprefix \
 	utils/print.c \
 	utils/split.c \
 	utils/pointer.c \
-	main.c \
-	header.c \
+	parsing/header.c \
 	global.c \
+	main.c \
 }
 
 OUTPUT = ${INPUT:.c=.o}

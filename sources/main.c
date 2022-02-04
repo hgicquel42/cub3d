@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 14:50:13 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/04 16:25:31 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ bool	ft_readmap(t_global *g, char *filename)
 		return (false);
 	if (!ft_header(g->map.lines, &g->map.header))
 		return (false);
+	g->map.body = g->map.lines + g->map.header.length;
 	return (true);
 }
 
