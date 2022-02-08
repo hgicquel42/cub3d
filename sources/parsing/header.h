@@ -6,14 +6,15 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 11:14:15 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 14:55:11 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:37:35 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
 
-# include "cub3d.h"
+# include <stdbool.h>
+# include "global.h"
 
 /**
  * @brief parse map header

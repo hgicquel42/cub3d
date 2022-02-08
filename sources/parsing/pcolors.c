@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   pcolors.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:07:14 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 14:49:35 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:38:10 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "pcolors.h"
+
+#include "utils/numbers.h"
+#include "utils/pointers.h"
+#include "utils/split.h"
 
 static bool	ft_iscomma(char c)
 {
@@ -72,20 +76,4 @@ bool	ft_color_parse(char *color, char result[3])
 		return (false + ft_freep((void **) rgb));
 	ft_freep((void **) rgb);
 	return (true);
-}
-
-/**
- * @brief convert rgb array to hex
- * 
- * @param color 
- * @return hex value
- */
-unsigned long	ft_rgbtohex(char color[3])
-{
-	unsigned long	hex;
-
-	hex = (color[0] & 0xff) << 16;
-	hex += (color[1] & 0xff) << 8;
-	hex += (color[2] & 0xff);
-	return (hex);
 }

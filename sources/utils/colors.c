@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   files.h                                            :+:      :+:    :+:   */
+/*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 16:18:58 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 15:32:56 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/08 15:00:09 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/08 15:06:46 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILES_H
-# define FILES_H
-
-# include <stdbool.h>
+#include "colors.h"
 
 /**
- * @brief safely count length of file
+ * @brief convert rgb array to hex
  * 
- * @param file
- * @param result
- * @return bool false if it failed
+ * @param color 
+ * @return hex value
  */
-bool	ft_seek(int file, int *result);
+unsigned long	ft_rgbtohex(char color[3])
+{
+	unsigned long	hex;
 
-/**
- * @brief safely read file
- * 
- * @param filename
- * @param result
- * @return bool false if it failed 
- */
-bool	ft_read(char *filename, char **result);
-
-#endif
+	hex = (color[0] & 0xff) << 16;
+	hex += (color[1] & 0xff) << 8;
+	hex += (color[2] & 0xff);
+	return (hex);
+}

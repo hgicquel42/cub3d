@@ -6,11 +6,11 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:39:16 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 13:21:53 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:16:01 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "pchars.h"
 
 /**
  * @brief check if c is a floor

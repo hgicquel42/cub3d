@@ -6,11 +6,14 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 08:44:11 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/08 13:06:19 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:35:45 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "strings2.h"
+
+#include <stdlib.h>
+#include "strings.h"
 
 /**
  * @brief duplicate string

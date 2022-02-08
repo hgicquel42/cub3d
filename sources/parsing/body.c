@@ -6,11 +6,15 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:23:03 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/08 14:58:26 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:38:10 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "body.h"
+
+#include "utils/pointers.h"
+#include "utils/strings.h"
+#include "pchars.h"
 
 static bool	ft_body_check_chars(char **body)
 {
@@ -83,12 +87,6 @@ static bool	ft_body_parse_player(char **body, t_player *player)
 	return (count == 1);
 }
 
-void	ft_body_print(char **body)
-{
-	while (*body)
-		printf("%s\n", *body++);
-}
-
 /**
  * @brief parse map body
  * 
@@ -102,6 +100,5 @@ bool	ft_body_parse(t_global *g, char **body)
 		return (false);
 	if (!ft_body_parse_player(body, &g->player))
 		return (false);
-	ft_body_print(body);
 	return (true);
 }

@@ -6,11 +6,21 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/08 13:41:10 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:38:10 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include <stdbool.h>
+#include <stdio.h>
+#include "utils/chars.h"
+#include "utils/pointers.h"
+#include "utils/strings.h"
+#include "utils/print.h"
+#include "utils/files.h"
+#include "utils/split.h"
+#include "parsing/header.h"
+#include "parsing/body.h"
+#include "global.h"
 
 static int	ft_error(t_global *g, char *s)
 {

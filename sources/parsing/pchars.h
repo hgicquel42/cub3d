@@ -6,12 +6,14 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:59:37 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 18:13:59 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:16:08 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PCHARS_H
 # define PCHARS_H
+
+# include <stdbool.h>
 
 /**
  * @brief check if c is a floor

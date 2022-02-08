@@ -6,14 +6,12 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:41:13 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 14:11:45 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:34:26 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINT_H
 # define PRINT_H
-
-# include "cub3d.h"
 
 /**
  * @brief write string in fd

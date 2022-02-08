@@ -6,11 +6,13 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 08:33:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 18:18:45 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:34:48 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "numbers.h"
+
+#include "utils/chars.h"
 
 /**
  * @brief safe version of ft_atoi

@@ -6,12 +6,14 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:28:27 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 13:05:44 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:36:06 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRINGS2_H
 # define STRINGS2_H
+
+# include <stdbool.h>
 
 /**
  * @brief duplicate string

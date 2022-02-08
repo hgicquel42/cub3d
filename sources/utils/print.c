@@ -6,11 +6,14 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:41:15 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 14:11:38 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:34:38 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "print.h"
+
+#include <unistd.h>
+#include "utils/strings.h"
 
 /**
  * @brief write string in fd

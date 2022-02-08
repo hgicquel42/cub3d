@@ -6,11 +6,15 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:43:46 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 16:25:46 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:38:10 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "global.h"
+
+#include <stdlib.h>
+#include "utils/pointers.h"
+#include "parsing/header.h"
 
 /**
  * @brief init global

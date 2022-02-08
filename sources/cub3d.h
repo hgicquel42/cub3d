@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 11:11:32 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/08 14:58:12 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:38:10 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@
 # include "utils/numbers.h"
 # include "utils/strings.h"
 # include "utils/strings2.h"
-# include "utils/pointer.h"
+# include "utils/pointers.h"
 # include "utils/files.h"
 # include "utils/split.h"
 # include "utils/print.h"
-# include "parsing/color.h"
+# include "utils/colors.h"
+# include "parsing/pcolors.h"
 # include "parsing/pchars.h"
 # include "parsing/header.h"
 # include "parsing/body.h"

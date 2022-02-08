@@ -6,14 +6,14 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:27:31 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 14:12:07 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:12:39 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRINGS_H
 # define STRINGS_H
 
-# include "cub3d.h"
+# include <stdbool.h>
 
 /**
  * @brief length of a string

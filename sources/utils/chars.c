@@ -6,11 +6,11 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 14:36:54 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 16:07:03 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:07:44 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "chars.h"
 
 /**
  * @brief check if char is newline

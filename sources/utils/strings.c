@@ -6,11 +6,11 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:22:07 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 14:04:55 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:12:28 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "strings.h"
 
 /**
  * @brief length of a string

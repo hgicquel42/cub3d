@@ -6,11 +6,16 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 14:11:50 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 15:50:35 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:38:10 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "files.h"
+
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include "utils/pointers.h"
 
 /**
  * @brief safely count length of file

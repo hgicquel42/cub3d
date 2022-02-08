@@ -9,11 +9,12 @@ INPUT = ${addprefix \
 	utils/files.c \
 	utils/print.c \
 	utils/split.c \
-	utils/pointer.c \
+	utils/colors.c \
+	utils/pointers.c \
 	parsing/header.c \
 	parsing/body.c \
 	parsing/pchars.c \
-	parsing/color.c \
+	parsing/pcolors.c \
 	global.c \
 	main.c \
 }

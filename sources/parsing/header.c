@@ -6,12 +6,19 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 19:02:48 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 14:41:05 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:38:10 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "global.h"
+#include "header.h"
+
+#include <stdlib.h>
+#include "utils/chars.h"
+#include "utils/pointers.h"
+#include "utils/strings.h"
+#include "utils/strings2.h"
+#include "utils/split.h"
+#include "parsing/pcolors.h"
 
 /**
  * @brief init header

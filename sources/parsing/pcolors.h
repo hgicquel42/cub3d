@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   pcolors.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:13:26 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 14:49:57 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:31:50 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#ifndef PCOLORS_H
+# define PCOLORS_H
 
-# include "cub3d.h"
-
-typedef char	t_rgb[3];
+# include <stdbool.h>
 
 /**
  * @brief init color array
@@ -32,13 +30,5 @@ void			ft_color_init(char color[3]);
  * @return false if failed
  */
 bool			ft_color_parse(char *color, char result[3]);
-
-/**
- * @brief convert rgb array to hex
- * 
- * @param color 
- * @return hex value
- */
-unsigned long	ft_rgbtohex(char color[3]);
 
 #endif

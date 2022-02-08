@@ -6,14 +6,14 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:57:01 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 14:12:01 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:35:54 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SPLIT_H
 # define SPLIT_H
 
-# include "cub3d.h"
+# include <stdbool.h>
 
 /**
  * @brief splits string according to char

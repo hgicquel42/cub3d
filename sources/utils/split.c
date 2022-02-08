@@ -6,11 +6,13 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 16:03:57 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 14:11:55 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:35:21 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "split.h"
+
+#include <stdlib.h>
 
 /**
  * @brief copy s[i] in r[i] only if r != NULL

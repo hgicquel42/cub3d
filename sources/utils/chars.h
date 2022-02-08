@@ -6,14 +6,14 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 14:36:54 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 15:52:14 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:07:49 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARS_H
 # define CHARS_H
 
-# include "cub3d.h"
+# include <stdbool.h>
 
 /**
  * @brief check if char is newline
