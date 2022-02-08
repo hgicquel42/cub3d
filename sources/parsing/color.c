@@ -6,18 +6,37 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:07:14 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 18:18:31 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 12:51:37 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+/**
+ * @brief init color array
+ * 
+ * @param color array
+ */
+void	ft_color_init(char color[3])
+{
+	color[0] = 0;
+	color[1] = 0;
+	color[2] = 0;
+}
 
 static bool	ft_iscomma(char c)
 {
 	return (c == ',');
 }
 
-static bool	ft_color_check_value(char *s)
+/**
+ * @brief parse subcolor into char
+ * 
+ * @param s subcolor "255"
+ * @param r char value 255
+ * @return false if failed
+ */
+static bool	ft_color_parse_sub(char *s, char *r)
 {
 	int	x;
 
@@ -25,16 +44,18 @@ static bool	ft_color_check_value(char *s)
 		return (false);
 	if (x < 0 || x > 255)
 		return (false);
+	*r = x;
 	return (true);
 }
 
 /**
- * @brief check color rgb values
+ * @brief parse string rgg color into rgb color array
  * 
- * @param color 
- * @return bool false if failed 
+ * @param color string "255,128,0"
+ * @param result array [255,128,0]
+ * @return false if failed
  */
-bool	ft_color_check(char *color)
+bool	ft_color_parse(char *color, char result[3])
 {
 	char	**rgb;
 
@@ -43,11 +64,11 @@ bool	ft_color_check(char *color)
 		return (false);
 	if (ft_ptrlen((void **) rgb) != 3)
 		return (false + ft_freep((void **) rgb));
-	if (!ft_color_check_value(rgb[0]))
+	if (!ft_color_parse_sub(rgb[0], &result[0]))
 		return (false + ft_freep((void **) rgb));
-	if (!ft_color_check_value(rgb[1]))
+	if (!ft_color_parse_sub(rgb[1], &result[1]))
 		return (false + ft_freep((void **) rgb));
-	if (!ft_color_check_value(rgb[2]))
+	if (!ft_color_parse_sub(rgb[2], &result[2]))
 		return (false + ft_freep((void **) rgb));
 	ft_freep((void **) rgb);
 	return (true);

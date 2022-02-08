@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:13:26 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 16:13:36 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 12:44:10 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,22 @@
 
 # include "cub3d.h"
 
+typedef char	t_rgb[3];
+
 /**
- * @brief check color rgb values
+ * @brief init color array
  * 
- * @param color 
- * @return bool false if failed 
+ * @param color array
  */
-bool	ft_color_check(char *color);
+void	ft_color_init(char color[3]);
+
+/**
+ * @brief parse rgb color into three chars
+ * 
+ * @param color raw color "255,128,0"
+ * @param result array result [255,128,0]
+ * @return false if failed
+ */
+bool	ft_color_parse(char *color, char result[3]);
 
 #endif

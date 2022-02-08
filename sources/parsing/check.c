@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:23:03 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 18:19:38 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 12:47:00 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,12 @@ static void	ft_body_close_border(char **body)
 	}
 }
 
+void	ft_body_print(char **body)
+{
+	while (*body)
+		printf("%s\n", *body++);
+}
+
 /**
  * @brief check map
  * 
@@ -90,10 +96,7 @@ static void	ft_body_close_border(char **body)
  */
 bool	ft_map_check(t_global *g)
 {
-	if (!ft_color_check(g->map.header.floor))
-		return (false);
-	if (!ft_color_check(g->map.header.cell))
-		return (false);
+	ft_body_print(g->map.body);
 	ft_body_close_border(g->map.body);
 	if (!ft_body_check_chars(g->map.body))
 		return (false);

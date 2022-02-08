@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 11:14:15 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 15:55:41 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 13:07:27 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ typedef struct s_header
 	char	*south;
 	char	*east;
 	char	*west;
-	char	*floor;
-	char	*cell;
+	char	*rfloor;
+	char	*rcell;
+	char	floor[3];
+	char	cell[3];
 	int		length;
 }				t_header;
 

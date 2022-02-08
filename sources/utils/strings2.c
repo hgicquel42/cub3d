@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 08:44:11 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 14:12:15 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 13:06:19 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char	*ft_strdup(char *s)
 	r = malloc(ft_strlen(s) + 1);
 	if (!r)
 		return (NULL);
+	i = 0;
 	while (*s)
 		r[i++] = *s++;
 	r[i] = 0;
@@ -51,6 +52,7 @@ char	*ft_strldup(char *s, int l)
 	r = malloc(l + 1);
 	if (!r)
 		return (NULL);
+	i = 0;
 	while (*s && i < l)
 		r[i++] = *s++;
 	r[i] = 0;

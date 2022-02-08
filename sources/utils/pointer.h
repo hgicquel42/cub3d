@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:17:59 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 14:11:19 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 12:31:15 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ int	ft_ptrlen(void **p);
  * @return int 0 (for better chaining)
  */
 int	ft_free(void *p);
+
+/**
+ * @brief free single pointers until l  
+ * 
+ * @param p array
+ * @param l length
+ * @return int always 0
+ */
+int	ft_freel(void **p, int l);
 
 /**
  * @brief free double pointer until NULL

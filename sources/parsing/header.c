@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 19:02:48 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 16:25:12 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 13:12:54 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ void	ft_header_init(t_header *header)
 	header->south = NULL;
 	header->east = NULL;
 	header->west = NULL;
-	header->cell = NULL;
-	header->floor = NULL;
+	header->rfloor = NULL;
+	header->rcell = NULL;
+	ft_color_init(header->floor);
+	ft_color_init(header->cell);
 	header->length = 0;
 }
 
@@ -40,25 +42,25 @@ int	ft_header_free(t_header *header)
 	ft_free(header->south);
 	ft_free(header->east);
 	ft_free(header->west);
-	ft_free(header->cell);
-	ft_free(header->floor);
+	ft_free(header->rfloor);
+	ft_free(header->rcell);
 	return (0);
 }
 
 static bool	ft_header_fill(char *key, char *value, t_header *header)
 {
 	if (!ft_strcmp(key, "NO"))
-		header->north = value;
+		header->north = ft_strdup(value);
 	else if (!ft_strcmp(key, "SO"))
-		header->south = value;
+		header->south = ft_strdup(value);
 	else if (!ft_strcmp(key, "EA"))
-		header->east = value;
+		header->east = ft_strdup(value);
 	else if (!ft_strcmp(key, "WE"))
-		header->west = value;
+		header->west = ft_strdup(value);
 	else if (!ft_strcmp(key, "F"))
-		header->floor = value;
+		header->rfloor = ft_strdup(value);
 	else if (!ft_strcmp(key, "C"))
-		header->cell = value;
+		header->rcell = ft_strdup(value);
 	else
 		return (false);
 	return (true);
@@ -70,7 +72,7 @@ static bool	ft_header_full(t_header *header)
 		return (false);
 	if (!header->east || !header->west)
 		return (false);
-	if (!header->cell || !header->floor)
+	if (!header->rcell || !header->rfloor)
 		return (false);
 	return (true);
 }
@@ -96,10 +98,14 @@ bool	ft_header(char **lines, t_header *header)
 			return (false + ft_freep((void **) kv));
 		if (!ft_header_fill(kv[0], kv[1], header))
 			return (false + ft_freep((void **) kv));
-		ft_freelp((void **) kv, 1);
+		ft_freep((void **) kv);
 		i++;
 	}
 	if (!lines[i])
+		return (false);
+	if (!ft_color_parse(header->rfloor, header->floor))
+		return (false);
+	if (!ft_color_parse(header->rcell, header->cell))
 		return (false);
 	header->length = i;
 	return (true);

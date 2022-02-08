@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 13:12:42 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 14:11:26 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 12:39:54 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,25 @@ int	ft_free(void *p)
 {
 	if (p)
 		free(p);
+	return (0);
+}
+
+/**
+ * @brief free single pointers until l  
+ * 
+ * @param p array
+ * @param l length
+ * @return int always 0
+ */
+int	ft_freel(void **p, int l)
+{
+	int	i;
+
+	if (!p)
+		return (0);
+	i = 0;
+	while (i < l)
+		ft_free(p[i++]);
 	return (0);
 }
 
