@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:13:26 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 13:31:18 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:49:57 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef char	t_rgb[3];
  * 
  * @param color array
  */
-void	ft_color_init(char color[3]);
+void			ft_color_init(char color[3]);
 
 /**
  * @brief parse string rgg color into rgb color array
@@ -31,6 +31,14 @@ void	ft_color_init(char color[3]);
  * @param result array [255,128,0]
  * @return false if failed
  */
-bool	ft_color_parse(char *color, char result[3]);
+bool			ft_color_parse(char *color, char result[3]);
+
+/**
+ * @brief convert rgb array to hex
+ * 
+ * @param color 
+ * @return hex value
+ */
+unsigned long	ft_rgbtohex(char color[3]);
 
 #endif

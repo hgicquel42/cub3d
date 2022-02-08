@@ -6,15 +6,28 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:43:36 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 13:50:02 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:55:14 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GLOBAL_H
 # define GLOBAL_H
 
-# include "parsing/header.h"
 # include "cub3d.h"
+# include "parsing/color.h"
+
+typedef struct s_header
+{
+	char	*north;
+	char	*south;
+	char	*east;
+	char	*west;
+	char	*rfloor;
+	char	*rcell;
+	t_rgb	floor;
+	t_rgb	cell;
+	int		length;
+}				t_header;
 
 typedef struct s_ipos
 {

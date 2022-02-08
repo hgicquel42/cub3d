@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:23:03 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/08 14:06:18 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:56:21 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ bool	ft_body_parse(t_global *g, char **body)
 {
 	if (!ft_body_check_chars(body))
 		return (false);
-	if (!ft_body_parse_player(g, body))
+	if (!ft_body_parse_player(body, &g->player))
 		return (false);
 	ft_body_print(body);
 	return (true);
