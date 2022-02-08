@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/08 15:38:10 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 16:39:09 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "utils/print.h"
 #include "utils/files.h"
 #include "utils/split.h"
-#include "parsing/header.h"
+#include "parsing/pheader.h"
 #include "parsing/body.h"
 #include "global.h"
 
@@ -29,11 +29,11 @@ static int	ft_error(t_global *g, char *s)
 	return (1);
 }
 
-static bool	ft_map_read(t_global *g, char *filename)
+static bool	ft_map_read(t_global *g, char *path)
 {
 	char		*array;
 
-	if (!ft_read(filename, &array))
+	if (!ft_read(path, &array))
 		return (false);
 	g->map.lines = ft_split(array, ft_isnline);
 	ft_free(array);
@@ -55,6 +55,8 @@ int	main(int argc, char **argv)
 		return (ft_error(&g, "Invalid header\n"));
 	if (!ft_body_parse(&g, g.map.body))
 		return (ft_error(&g, "Invalid body\n"));
+	if (!ft_minilibx_init(&g.mlx))
+		return (ft_error(&g, "Could not create window\n"));
 	printf("It works\n");
 	ft_global_free(&g);
 	return (0);

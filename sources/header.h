@@ -5,24 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 11:14:15 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 15:37:35 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/08 15:47:40 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/08 15:53:51 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
 
-# include <stdbool.h>
-# include "global.h"
-
-/**
- * @brief parse map header
- * 
- * @param lines map lines
- * @return bool	false if failed 
- */
-bool	ft_header_parse(t_global *g, char **lines, t_header *header);
+typedef struct s_header
+{
+	char	*north;
+	char	*south;
+	char	*east;
+	char	*west;
+	char	*rfloor;
+	char	*rcell;
+	char	floor[3];
+	char	cell[3];
+	int		length;
+}	t_header;
 
 /**
  * @brief init header

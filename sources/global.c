@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:43:46 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 15:38:10 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:53:13 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <stdlib.h>
 #include "utils/pointers.h"
-#include "parsing/header.h"
+#include "header.h"
 
 /**
  * @brief init global

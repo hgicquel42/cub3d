@@ -6,13 +6,68 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 18:29:54 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 19:29:46 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 16:43:09 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "minilibx.h"
 
-bool	ft_minilibx_init(t_global *g)
+#include <stdbool.h>
+#include <stdio.h>
+#include "../minilibx/mlx.h"
+#include "global.h"
+
+/**
+ * @brief init image data address
+ * 
+ * @param img img struct
+ * @return false if failed
+ */
+bool	ft_image_init(t_img *img)
 {
-	
+	img->data = mlx_get_data_addr(img->ptr, &img->bpp, &img->line, &img->end);
+	if (!img->data)
+		return (false);
+	return (true);
+}
+
+/**
+ * @brief load xpm into minilibx
+ * 
+ * @param mlx mlx ptr
+ * @param path file
+ * @param img img struct
+ * @return false if failed
+ */
+bool	ft_minilibx_load(void *mlx, char *path, t_img *img)
+{
+	img->ptr = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
+	if (!img->ptr)
+		return (false);
+	if (!ft_image_init(img))
+		return (false);
+	return (true);
+}
+
+/**
+ * @brief init minilibx
+ * 
+ * @param mlx mlx struct
+ * @return false if failed
+ */
+bool	ft_minilibx_init(t_mlx *mlx)
+{
+	mlx->ptr = mlx_init();
+	if (!mlx->ptr)
+		return (false);
+	mlx_get_screen_size(mlx->ptr, &mlx->screen.x, &mlx->screen.y);
+	mlx->img.ptr = mlx_new_image(mlx->ptr, mlx->screen.x, mlx->screen.y);
+	if (!mlx->img.ptr)
+		return (false);
+	if (!ft_image_init(&mlx->img))
+		return (false);
+	mlx->win = mlx_new_window(mlx->ptr, mlx->screen.x, mlx->screen.y, "cub3d");
+	if (!mlx->win)
+		return (false);
+	return (true);
 }

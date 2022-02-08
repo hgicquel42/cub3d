@@ -6,37 +6,16 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:43:36 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 15:37:31 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 16:00:16 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GLOBAL_H
 # define GLOBAL_H
 
-typedef struct s_header
-{
-	char	*north;
-	char	*south;
-	char	*east;
-	char	*west;
-	char	*rfloor;
-	char	*rcell;
-	char	floor[3];
-	char	cell[3];
-	int		length;
-}				t_header;
-
-typedef struct s_ipos
-{
-	int	x;
-	int	y;
-}	t_ipos;
-
-typedef struct s_dpos
-{
-	double	x;
-	double	y;
-}	t_dpos;
+# include "header.h"
+# include "minilibx.h"
+# include "positions.h" 
 
 typedef struct s_player
 {
@@ -54,6 +33,7 @@ typedef struct s_map
 typedef struct s_global
 {
 	t_map		map;
+	t_mlx		mlx;
 	t_player	player;
 }				t_global;
 

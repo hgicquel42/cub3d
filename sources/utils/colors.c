@@ -6,11 +6,23 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:00:09 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 15:06:46 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:50:03 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "colors.h"
+
+/**
+ * @brief init color array
+ * 
+ * @param color array
+ */
+void	ft_color_init(char color[3])
+{
+	color[0] = 0;
+	color[1] = 0;
+	color[2] = 0;
+}
 
 /**
  * @brief convert rgb array to hex

@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:13:26 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 15:31:50 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:50:32 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 # define PCOLORS_H
 
 # include <stdbool.h>
-
-/**
- * @brief init color array
- * 
- * @param color array
- */
-void			ft_color_init(char color[3]);
 
 /**
  * @brief parse string rgg color into rgb color array

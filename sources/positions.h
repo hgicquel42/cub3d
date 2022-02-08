@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   files.h                                            :+:      :+:    :+:   */
+/*   positions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 16:18:58 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 16:29:13 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/08 15:42:43 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/08 15:42:54 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILES_H
-# define FILES_H
+#ifndef POSITIONS_H
+# define POSITIONS_H
 
-# include <stdbool.h>
+typedef struct s_ipos
+{
+	int	x;
+	int	y;
+}	t_ipos;
 
-/**
- * @brief safely count length of file
- * 
- * @param file
- * @param result
- * @return bool false if it failed
- */
-bool	ft_seek(int file, int *result);
-
-/**
- * @brief safely read file
- * 
- * @param filename
- * @param result
- * @return bool false if it failed 
- */
-bool	ft_read(char *path, char **result);
+typedef struct s_dpos
+{
+	double	x;
+	double	y;
+}	t_dpos;
 
 #endif

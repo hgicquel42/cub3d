@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   files.h                                            :+:      :+:    :+:   */
+/*   pheader.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 16:18:58 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 16:29:13 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/04 11:14:15 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/08 15:50:20 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILES_H
-# define FILES_H
+#ifndef PHEADER_H
+# define PHEADER_H
 
 # include <stdbool.h>
+# include "header.h"
+# include "global.h"
 
 /**
- * @brief safely count length of file
+ * @brief parse map header
  * 
- * @param file
- * @param result
- * @return bool false if it failed
+ * @param lines map lines
+ * @return bool	false if failed 
  */
-bool	ft_seek(int file, int *result);
-
-/**
- * @brief safely read file
- * 
- * @param filename
- * @param result
- * @return bool false if it failed 
- */
-bool	ft_read(char *path, char **result);
+bool	ft_header_parse(t_global *g, char **lines, t_header *header);
 
 #endif
