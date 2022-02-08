@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minilibx.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:57:05 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 19:51:56 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 23:10:58 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef struct s_img
 {
 	void	*ptr;
-	char	*data;
+	int		*data;
 	int		w;
 	int		h;
 	int		bpp;

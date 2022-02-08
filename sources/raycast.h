@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:43:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 19:39:01 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 23:21:42 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,43 @@
 # include "global.h"
 # include "minilibx.h"
 # include "positions.h" 
-
-typedef struct s_ray
-{
-	t_ipos	pos;
-	t_dpos	yaw;
-}	t_ray;
+# include <stdlib.h>
 
 /**
- * @brief init raycast
+ * @brief mange ray_casting
  * 
- * @param ray ray struct
+ * @param g 
+ * @return int 
  */
-void	ft_ray_init(t_global *g, t_ray *ray, int i);
+int	ft_ray_cast(t_global *g);
+
+/**
+ * @brief Launch ray until he hit a wall
+ * 
+ * @param ray 
+ * @param x_step 
+ * @param y_step 
+ */
+void	ft_advance_ray(t_global *g, t_ray *ray, int x_step, int y_step);
+
+/**
+ * @brief calcul dist of ray from view to wall
+ * 
+ * @param g 
+ * @param ray 
+ * @param x_step 
+ * @param y_step 
+ */
+void	ft_define_ray_dist(t_global *g, t_ray *ray, int x_step, int y_step);
+
+/**
+ * @brief Create and launch ray for ray casting
+ * 
+ * @param g 
+ * @param ray 
+ */
+void	ft_launch_ray(t_global *g, t_ray *ray);
+
+
 
 #endif

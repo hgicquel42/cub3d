@@ -1,0 +1,6 @@
+{
+	"files.associations": {
+		"global.h": "c",
+		"positions.h": "c"
+	}
+}

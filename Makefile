@@ -21,6 +21,7 @@ INPUT = ${addprefix \
 	hooks.c \
 	textures.c \
 	raycast.c \
+	raycast_init.c \
 	main.c \
 }
 

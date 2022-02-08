@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 17:13:49 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 19:57:04 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 21:12:42 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,5 @@ void	ft_minilibx_hook(t_global *g)
 	mlx_loop_hook(g->mlx.ptr, on_loop, g);
 	mlx_key_hook(g->mlx.win, on_key, g);
 	mlx_hook(g->mlx.win, 17, 0, on_close, g);
+	mlx_loop_hook(g->mlx.ptr, ft_ray_cast, g);
 }

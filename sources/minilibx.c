@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minilibx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 18:29:54 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 19:51:52 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 23:20:38 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
  */
 bool	ft_image_init(t_img *img)
 {
-	img->data = mlx_get_data_addr(img->ptr, &img->bpp, &img->line, &img->end);
+	img->data = (int *)mlx_get_data_addr(img->ptr, &img->bpp, &img->line, &img->end);
 	if (!img->data)
 		return (false);
 	return (true);
@@ -64,6 +64,7 @@ bool	ft_minilibx_init(t_mlx *mlx)
 	mlx->win = mlx_new_window(mlx->ptr, mlx->img.w, mlx->img.h, "cub3d");
 	if (!mlx->win)
 		return (false);
+	mlx_get_screen_size(mlx->ptr, &mlx->screen.x, &mlx->screen.y);
 	return (true);
 }
 
