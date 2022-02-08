@@ -18,6 +18,7 @@ INPUT = ${addprefix \
 	header.c \
 	global.c \
 	minilibx.c \
+	hooks.c \
 	main.c \
 }
 

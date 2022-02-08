@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:57:05 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 16:39:58 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:26:27 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,12 @@ bool	ft_minilibx_load(void *mlx, char *path, t_img *img);
  * @return false if failed
  */
 bool	ft_minilibx_init(t_mlx *mlx);
+
+/**
+ * @brief free minilibx
+ * 
+ * @param mlx mlx struct
+ */
+void	ft_minilibx_free(t_mlx *mlx);
 
 #endif

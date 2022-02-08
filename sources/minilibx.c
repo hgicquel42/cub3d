@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 18:29:54 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 16:43:09 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:26:18 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "../minilibx/mlx.h"
+#include "utils/pointers.h"
 #include "global.h"
 
 /**
@@ -70,4 +71,18 @@ bool	ft_minilibx_init(t_mlx *mlx)
 	if (!mlx->win)
 		return (false);
 	return (true);
+}
+
+/**
+ * @brief free minilibx
+ * 
+ * @param mlx mlx struct
+ */
+void	ft_minilibx_free(t_mlx *mlx)
+{
+	mlx_clear_window(mlx->ptr, mlx->win);
+	mlx_destroy_image(mlx->ptr, mlx->img.ptr);
+	mlx_destroy_window(mlx->ptr, mlx->win);
+	mlx_destroy_display(mlx->ptr);
+	ft_free(mlx->ptr);
 }

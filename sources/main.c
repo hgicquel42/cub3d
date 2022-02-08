@@ -6,12 +6,13 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/08 16:39:09 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:27:23 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <stdio.h>
+#include "../minilibx/mlx.h"
 #include "utils/chars.h"
 #include "utils/pointers.h"
 #include "utils/strings.h"
@@ -21,6 +22,7 @@
 #include "parsing/pheader.h"
 #include "parsing/body.h"
 #include "global.h"
+#include "hooks.h"
 
 static int	ft_error(t_global *g, char *s)
 {
@@ -57,7 +59,11 @@ int	main(int argc, char **argv)
 		return (ft_error(&g, "Invalid body\n"));
 	if (!ft_minilibx_init(&g.mlx))
 		return (ft_error(&g, "Could not create window\n"));
-	printf("It works\n");
+	mlx_loop_hook(g.mlx.ptr, on_loop, &g);
+	mlx_hook(g.mlx.win, 17, 0, on_close, &g);
+	mlx_key_hook(g.mlx.win, on_key, &g);
+	mlx_loop(g.mlx.ptr);
+	ft_minilibx_free(&g.mlx);
 	ft_global_free(&g);
 	return (0);
 }
