@@ -11,7 +11,7 @@ INPUT = ${addprefix \
 	utils/split.c \
 	utils/pointer.c \
 	parsing/header.c \
-	parsing/check.c \
+	parsing/body.c \
 	parsing/pchars.c \
 	parsing/color.c \
 	global.c \

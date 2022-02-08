@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 11:11:32 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/08 13:25:47 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:58:12 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # include "parsing/color.h"
 # include "parsing/pchars.h"
 # include "parsing/header.h"
-# include "parsing/check.h"
+# include "parsing/body.h"
 # include "../minilibx/mlx.h"
 
 // # include "check.h"
