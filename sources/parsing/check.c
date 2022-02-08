@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:23:03 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/08 12:47:00 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:06:18 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static bool	ft_body_check_chars(char **body)
 		{
 			if (!ft_ismap(body[i][j]))
 				return (false);
-			if ((i == 0 || i == k) && body[i][j] != '1')
+			if ((i == 0 || i == k) && !ft_iswall(body[i][j]))
 				return (false);
-			if ((j == 0 || j == l) && body[i][j] != '1')
+			if ((j == 0 || j == l) && !ft_iswall(body[i][j]))
 				return (false);
 			j++;
 		}
@@ -40,7 +40,24 @@ static bool	ft_body_check_chars(char **body)
 	return (true);
 }
 
-static bool	ft_body_check_player(char **body)
+static bool	ft_xyaw(char dir, t_dpos *vec)
+{
+	vec->x = 0;
+	vec->y = 0;
+	if (dir == 'N')
+		vec->x = 1;
+	else if (dir == 'S')
+		vec->x = -1;
+	else if (dir == 'E')
+		vec->y = 1;
+	else if (dir == 'W')
+		vec->y = -1;
+	else
+		return (false);
+	return (true);
+}
+
+static bool	ft_body_parse_player(char **body, t_player *player)
 {
 	int	i;
 	int	j;
@@ -53,32 +70,17 @@ static bool	ft_body_check_player(char **body)
 		j = 0;
 		while (body[i][j])
 		{
-			if (ft_isplayer(body[i][j]))
+			if (ft_xyaw(body[i][j], &player->yaw))
+			{
+				player->pos.x = i;
+				player->pos.y = j;
 				count++;
+			}
 			j++;
 		}
 		i++;
 	}
 	return (count == 1);
-}
-
-static void	ft_body_close_border(char **body)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (body[i])
-	{
-		j = 0;
-		while (body[i][j])
-		{
-			if (ft_isblank(body[i][j]))
-				body[i][j] = '1';
-			j++;
-		}
-		i++;
-	}
 }
 
 void	ft_body_print(char **body)
@@ -88,19 +90,18 @@ void	ft_body_print(char **body)
 }
 
 /**
- * @brief check map
+ * @brief parse map body
  * 
  * @param g 
  * @return true 
  * @return false 
  */
-bool	ft_map_check(t_global *g)
+bool	ft_body_parse(t_global *g, char **body)
 {
-	ft_body_print(g->map.body);
-	ft_body_close_border(g->map.body);
-	if (!ft_body_check_chars(g->map.body))
+	if (!ft_body_check_chars(body))
 		return (false);
-	if (!ft_body_check_player(g->map.body))
+	if (!ft_body_parse_player(g, body))
 		return (false);
+	ft_body_print(body);
 	return (true);
 }

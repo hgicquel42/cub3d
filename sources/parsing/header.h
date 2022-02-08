@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 11:14:15 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 13:07:27 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 13:40:28 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define HEADER_H
 
 # include "cub3d.h"
+# include "parsing/color.h"
 
 typedef struct s_header
 {
@@ -23,8 +24,8 @@ typedef struct s_header
 	char	*west;
 	char	*rfloor;
 	char	*rcell;
-	char	floor[3];
-	char	cell[3];
+	t_rgb	floor;
+	t_rgb	cell;
 	int		length;
 }				t_header;
 
@@ -34,7 +35,7 @@ typedef struct s_header
  * @param lines map lines
  * @return bool	false if failed 
  */
-bool	ft_header(char **lines, t_header *header);
+bool	ft_header_parse(t_global *g, char **lines, t_header *header);
 
 /**
  * @brief init header

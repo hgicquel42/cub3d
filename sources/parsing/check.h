@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 08:46:38 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/04 18:05:35 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 13:41:08 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 # include "cub3d.h"
 
 /**
- * @brief check map
+ * @brief parse map body
  * 
  * @param g 
  * @return true 
  * @return false 
  */
-bool	ft_map_check(t_global *g);
+bool	ft_body_parse(t_global *g, char **body);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:39:16 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/04 18:12:40 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 13:21:53 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool	ft_isfloor(char c)
  */
 bool	ft_iswall(char c)
 {
-	return (c == '1');
+	return (c == '1' || c == ' ');
 }
 
 /**

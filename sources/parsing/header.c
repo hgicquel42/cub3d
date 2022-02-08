@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 19:02:48 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 13:12:54 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 13:40:06 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static bool	ft_header_full(t_header *header)
  * @param lines map lines
  * @return bool	false if failed 
  */
-bool	ft_header(char **lines, t_header *header)
+bool	ft_header_parse(t_global *g, char **lines, t_header *header)
 {
 	char		**kv;
 	int			i;
@@ -107,6 +107,6 @@ bool	ft_header(char **lines, t_header *header)
 		return (false);
 	if (!ft_color_parse(header->rcell, header->cell))
 		return (false);
-	header->length = i;
+	g->map.body = g->map.lines + i;
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/08 13:06:42 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 13:41:10 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ static bool	ft_map_read(t_global *g, char *filename)
 	ft_free(array);
 	if (!g->map.lines)
 		return (false);
-	if (!ft_header(g->map.lines, &g->map.header))
-		return (false);
-	g->map.body = g->map.lines + g->map.header.length;
 	return (true);
 }
 
@@ -44,8 +41,10 @@ int	main(int argc, char **argv)
 		return (ft_error(&g, "Invalid arguments\n"));
 	if (!ft_map_read(&g, argv[1]))
 		return (ft_error(&g, "Can't read map\n"));
-	if (!ft_map_check(&g))
-		return (ft_error(&g, "Invalid map\n"));
+	if (!ft_header_parse(&g, g.map.lines, &g.map.header))
+		return (ft_error(&g, "Invalid header\n"));
+	if (!ft_body_parse(&g, g.map.body))
+		return (ft_error(&g, "Invalid body\n"));
 	printf("It works\n");
 	ft_global_free(&g);
 	return (0);
