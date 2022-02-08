@@ -19,6 +19,8 @@ INPUT = ${addprefix \
 	global.c \
 	minilibx.c \
 	hooks.c \
+	textures.c \
+	raycast.c \
 	main.c \
 }
 

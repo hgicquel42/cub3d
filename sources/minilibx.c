@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 18:29:54 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 17:37:49 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:51:52 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,41 +34,14 @@ bool	ft_image_init(t_img *img)
 }
 
 /**
- * @brief load xpm into minilibx
+ * @brief put image to window
  * 
- * @param mlx mlx ptr
- * @param path file
- * @param img img struct
- * @return false if failed
- */
-bool	ft_minilibx_texture(void *mlx, char *path, t_img *img)
-{
-	img->ptr = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
-	if (!img->ptr)
-		return (false);
-	if (!ft_image_init(img))
-		return (false);
-	return (true);
-}
-
-/**
- * @brief load xpms into minilibx
- * 
- * @param header 
  * @param mlx mlx struct
- * @return false if failed
+ * @param img img struct
  */
-bool	ft_minilibx_textures(t_header *header, t_mlx *mlx)
+void	ft_image_put(t_mlx *mlx, t_img *img)
 {
-	if (!ft_minilibx_texture(mlx->ptr, header->north, &mlx->north))
-		return (false);
-	if (!ft_minilibx_texture(mlx->ptr, header->south, &mlx->south))
-		return (false);
-	if (!ft_minilibx_texture(mlx->ptr, header->east, &mlx->east))
-		return (false);
-	if (!ft_minilibx_texture(mlx->ptr, header->west, &mlx->west))
-		return (false);
-	return (true);
+	mlx_put_image_to_window(mlx->ptr, mlx->win, img->ptr, 0, 0);
 }
 
 /**
@@ -82,13 +55,13 @@ bool	ft_minilibx_init(t_mlx *mlx)
 	mlx->ptr = mlx_init();
 	if (!mlx->ptr)
 		return (false);
-	mlx_get_screen_size(mlx->ptr, &mlx->screen.x, &mlx->screen.y);
-	mlx->img.ptr = mlx_new_image(mlx->ptr, mlx->screen.x, mlx->screen.y);
+	mlx_get_screen_size(mlx->ptr, &mlx->img.w, &mlx->img.h);
+	mlx->img.ptr = mlx_new_image(mlx->ptr, mlx->img.w, mlx->img.h);
 	if (!mlx->img.ptr)
 		return (false);
 	if (!ft_image_init(&mlx->img))
 		return (false);
-	mlx->win = mlx_new_window(mlx->ptr, mlx->screen.x, mlx->screen.y, "cub3d");
+	mlx->win = mlx_new_window(mlx->ptr, mlx->img.w, mlx->img.h, "cub3d");
 	if (!mlx->win)
 		return (false);
 	return (true);

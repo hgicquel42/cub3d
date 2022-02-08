@@ -6,13 +6,15 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 17:13:49 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 17:39:44 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:57:04 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hooks.h"
 
+#include <stdlib.h>
 #include "../minilibx/mlx.h"
+#include "raycast.h"
 #include "global.h"
 
 int	on_close(t_global *g)
@@ -28,9 +30,33 @@ int	on_key(int code, t_global *g)
 	return (0);
 }
 
+unsigned int	*ft_image_addr(t_img *img, int i)
+{
+	return ((unsigned int *) &img->data[i]);
+}
+
+void	ft_image_set(t_mlx *mlx, int x, int y, int color)
+{
+	*ft_image_addr(&mlx->img, (y * mlx->img.line) + (x * 4)) = color;
+}
+
 int	on_loop(t_global *g)
 {
-	(void) g;
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < g->mlx.img.w)
+	{
+		j = 0;
+		while (j < g->mlx.img.h)
+		{
+			ft_image_set(&g->mlx, i, j, rand());
+			j++;
+		}
+		i++;
+	}
+	ft_image_put(&g->mlx, &g->mlx.img);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:57:05 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 17:36:17 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:51:56 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ typedef struct s_img
 {
 	void	*ptr;
 	char	*data;
-	int		width;
-	int		height;
+	int		w;
+	int		h;
 	int		bpp;
 	int		line;
 	int		end;
@@ -49,23 +49,12 @@ typedef struct s_mlx
 bool	ft_image_init(t_img *img);
 
 /**
- * @brief load xpm into minilibx
+ * @brief put image to window
  * 
- * @param mlx mlx ptr
- * @param path file
- * @param img img struct
- * @return false if failed
- */
-bool	ft_minilibx_texture(void *mlx, char *path, t_img *img);
-
-/**
- * @brief load xpms into minilibx
- * 
- * @param header 
  * @param mlx mlx struct
- * @return false if failed
+ * @param img img struct
  */
-bool	ft_minilibx_textures(t_header *header, t_mlx *mlx);
+void	ft_image_put(t_mlx *mlx, t_img *img);
 
 /**
  * @brief init minilibx

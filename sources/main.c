@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/08 17:41:23 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:58:26 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include "parsing/pheader.h"
 #include "parsing/body.h"
 #include "global.h"
+#include "textures.h"
 #include "hooks.h"
 
 static int	ft_error(t_global *g, char *s)
@@ -59,8 +60,9 @@ int	main(int argc, char **argv)
 		return (ft_error(&g, "Invalid body\n"));
 	if (!ft_minilibx_init(&g.mlx))
 		return (ft_error(&g, "Could not create window\n"));
-	if (!ft_minilibx_textures(&g.map.header, &g.mlx))
+	if (!ft_textures_load(&g.map.header, &g.mlx))
 		return (ft_error(&g, "Could not load textures\n"));
+	printf("%d\n", g.mlx.img.h);
 	ft_minilibx_hook(&g);
 	mlx_loop(g.mlx.ptr);
 	ft_minilibx_free(&g.mlx);
