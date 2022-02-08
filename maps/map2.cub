@@ -1,7 +1,7 @@
-NO /mnt/nfs/homes/vpiamias/Desktop/cub3/textures/eagle.xpm
-SO /mnt/nfs/homes/vpiamias/Desktop/cub3/textures/greystone.xpm
-WE /mnt/nfs/homes/vpiamias/Desktop/cub3/textures/purplestone.xpm
-EA /mnt/nfs/homes/vpiamias/Desktop/cub3/textures/red.xpm
+NO ./textures/eagle.xpm
+SO ./textures/greystone.xpm
+WE ./textures/purplestone.xpm
+EA ./textures/red.xpm
 F 225,100,0
 C 225,30,0
     1  1111111111111111111111111

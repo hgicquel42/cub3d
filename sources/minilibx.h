@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:57:05 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 17:26:27 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:36:17 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdbool.h>
 # include "positions.h"
+# include "header.h"
 
 typedef struct s_img
 {
@@ -33,6 +34,10 @@ typedef struct s_mlx
 	void	*win;
 	t_ipos	screen;
 	t_img	img;
+	t_img	north;
+	t_img	south;
+	t_img	east;
+	t_img	west;
 }	t_mlx;
 
 /**
@@ -51,7 +56,16 @@ bool	ft_image_init(t_img *img);
  * @param img img struct
  * @return false if failed
  */
-bool	ft_minilibx_load(void *mlx, char *path, t_img *img);
+bool	ft_minilibx_texture(void *mlx, char *path, t_img *img);
+
+/**
+ * @brief load xpms into minilibx
+ * 
+ * @param header 
+ * @param mlx mlx struct
+ * @return false if failed
+ */
+bool	ft_minilibx_textures(t_header *header, t_mlx *mlx);
 
 /**
  * @brief init minilibx

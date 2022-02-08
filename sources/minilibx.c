@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 18:29:54 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 17:26:18 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:37:49 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include "../minilibx/mlx.h"
 #include "utils/pointers.h"
+#include "header.h"
 #include "global.h"
 
 /**
@@ -40,12 +41,32 @@ bool	ft_image_init(t_img *img)
  * @param img img struct
  * @return false if failed
  */
-bool	ft_minilibx_load(void *mlx, char *path, t_img *img)
+bool	ft_minilibx_texture(void *mlx, char *path, t_img *img)
 {
 	img->ptr = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
 	if (!img->ptr)
 		return (false);
 	if (!ft_image_init(img))
+		return (false);
+	return (true);
+}
+
+/**
+ * @brief load xpms into minilibx
+ * 
+ * @param header 
+ * @param mlx mlx struct
+ * @return false if failed
+ */
+bool	ft_minilibx_textures(t_header *header, t_mlx *mlx)
+{
+	if (!ft_minilibx_texture(mlx->ptr, header->north, &mlx->north))
+		return (false);
+	if (!ft_minilibx_texture(mlx->ptr, header->south, &mlx->south))
+		return (false);
+	if (!ft_minilibx_texture(mlx->ptr, header->east, &mlx->east))
+		return (false);
+	if (!ft_minilibx_texture(mlx->ptr, header->west, &mlx->west))
 		return (false);
 	return (true);
 }
@@ -82,6 +103,10 @@ void	ft_minilibx_free(t_mlx *mlx)
 {
 	mlx_clear_window(mlx->ptr, mlx->win);
 	mlx_destroy_image(mlx->ptr, mlx->img.ptr);
+	mlx_destroy_image(mlx->ptr, mlx->north.ptr);
+	mlx_destroy_image(mlx->ptr, mlx->south.ptr);
+	mlx_destroy_image(mlx->ptr, mlx->east.ptr);
+	mlx_destroy_image(mlx->ptr, mlx->west.ptr);
 	mlx_destroy_window(mlx->ptr, mlx->win);
 	mlx_destroy_display(mlx->ptr);
 	ft_free(mlx->ptr);
