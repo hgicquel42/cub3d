@@ -1,38 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.h                                             :+:      :+:    :+:   */
+/*   vector3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 11:50:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 16:37:40 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/09 15:08:11 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/09 16:58:49 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAW_H
-# define DRAW_H
+#include "vector3.h"
 
-# include "minilibx.h"
-# include "raycast.h"
-
-/**
- * @brief draw single pixel
- * 
- * @param img img struct
- * @param x pixel x
- * @param y pixel y
- * @param color pixel color
- */
-void	ft_draw_pixel(t_img *img, int x, int y, int color);
+#include <math.h>
+#include <stdio.h>
 
 /**
- * @brief draw column
+ * @brief negate vector
  * 
- * @param img 
- * @param ray 
- * @param i 
+ * @param v 
+ * @return t_vec 
  */
-void	ft_draw_column(t_img *img, t_wall *wall, int i);
+t_vec	ft_vecneg(t_vec v)
+{
+	return (ft_vec(-v.x, -v.y));
+}
 
-#endif
+/**
+ * @brief calculate delta of ray vector
+ * 
+ * @param v 
+ * @return t_vec 
+ */
+t_vec	ft_vecdelta(t_vec v)
+{
+	return (ft_vec(fabs(1 / v.x), fabs(1 / v.y)));
+}
+
+/**
+ * @brief print vector
+ * 
+ * @param v 
+ */
+void	ft_vecprint(t_vec v)
+{
+	printf("(%f, %f)\n", v.x, v.y);
+}

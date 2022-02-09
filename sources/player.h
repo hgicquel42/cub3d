@@ -6,26 +6,24 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:28:18 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 11:34:50 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 17:29:22 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
 
-# include "positions.h"
+# include "utils/vector.h"
 
-# define ROTATION_SPEED 0.06
-# define MOVEMENT_SPEED 0.3
+# define ROT_SPEED 0.06
+# define MOV_SPEED 0.3
 
 typedef struct s_player
 {
-	t_dpos	pos;
-	t_dpos	yaw;
-	t_ipos	move;
+	t_vec	pos;
+	t_vec	yaw;
+	t_vec	move;
 	int		rotate;
-	double	speed;
-	double	rot_speed;
 }	t_player;
 
 /**

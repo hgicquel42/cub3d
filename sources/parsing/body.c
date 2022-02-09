@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:23:03 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/09 13:13:54 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 17:02:09 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include "utils/pointers.h"
 #include "utils/strings.h"
+#include "utils/vector3.h"
 #include "pchars.h"
 
 static bool	ft_body_check_chars(char **body)
@@ -44,7 +45,7 @@ static bool	ft_body_check_chars(char **body)
 	return (true);
 }
 
-static bool	ft_xyaw(char dir, t_dpos *vec)
+static void	ft_xyaw(char dir, t_vec *vec)
 {
 	vec->x = 0;
 	vec->y = 0;
@@ -56,9 +57,6 @@ static bool	ft_xyaw(char dir, t_dpos *vec)
 		vec->x = -1;
 	else if (dir == 'W')
 		vec->x = 1;
-	else
-		return (false);
-	return (true);
 }
 
 static bool	ft_body_parse_player(char **body, t_player *player)
@@ -74,8 +72,9 @@ static bool	ft_body_parse_player(char **body, t_player *player)
 		j = 0;
 		while (body[i][j])
 		{
-			if (ft_xyaw(body[i][j], &player->yaw))
+			if (ft_isplayer(body[i][j]))
 			{
+				ft_xyaw(body[i][j], &player->yaw);
 				player->pos.x = i;
 				player->pos.y = j;
 				count++;

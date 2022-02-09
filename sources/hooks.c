@@ -6,13 +6,14 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 17:13:49 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 12:36:00 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 16:49:47 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hooks.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "mlx.h"
 #include "raycast.h"
 #include "global.h"
@@ -41,17 +42,17 @@ static int	on_keydown(int code, t_global *g)
 {
 	if (code == 119)
 		g->player.move.x = 1;
-	if (code == 115)
+	else if (code == 115)
 		g->player.move.x = -1;
-	if (code == 100)
+	else if (code == 100)
 		g->player.move.y = 1;
-	if (code == 97)
+	else if (code == 97)
 		g->player.move.y = -1;
-	if (code == 65361)
+	else if (code == 65361)
 		g->player.rotate = 1;
-	if (code == 65363)
+	else if (code == 65363)
 		g->player.rotate = -1;
-	if (code == 65307)
+	else if (code == 65307)
 		on_close(g);
 	return (0);
 }

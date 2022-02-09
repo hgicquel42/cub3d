@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:29:27 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 11:35:56 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 16:55:24 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 void	ft_player_init(t_player *player)
 {
 	player->yaw.x = 0;
-	player->yaw.y = -1;
+	player->yaw.y = 0;
 	player->move.x = 0;
 	player->move.y = 0;
 	player->rotate = 0;

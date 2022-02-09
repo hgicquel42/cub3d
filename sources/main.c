@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/09 13:16:44 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 17:02:22 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "utils/print.h"
 #include "utils/files.h"
 #include "utils/split.h"
+#include "utils/vector3.h"
 #include "parsing/pheader.h"
 #include "parsing/body.h"
 #include "global.h"
@@ -62,7 +63,6 @@ int	main(int argc, char **argv)
 		return (ft_error(&g, "Could not create window\n"));
 	if (!ft_textures_load(&g.mlx, &g.xpms, &g.map.header))
 		return (ft_error(&g, "Could not load textures\n"));
-	ft_player_init(&g.player); // TODO: remove
 	ft_minilibx_hook(&g);
 	mlx_loop(g.mlx.ptr);
 	ft_textures_free(&g.mlx, &g.xpms);
