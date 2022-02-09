@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.h                                             :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 11:50:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 11:55:57 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/09 11:29:27 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/09 11:35:56 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAW_H
-# define DRAW_H
-
-# include "minilibx.h"
+#include "player.h"
 
 /**
- * @brief draw single pixel
+ * @brief init player
  * 
- * @param img img struct
- * @param x pixel x
- * @param y pixel y
- * @param color pixel color
+ * @param player 
  */
-void	ft_draw_pixel(t_img *img, int x, int y, int color);
-
-/**
- * @brief draw column
- * 
- * @param img 
- * @param i x
- */
-void	ft_draw_column(t_img *img, int i);
-
-#endif
+void	ft_player_init(t_player *player)
+{
+	player->yaw.x = 0;
+	player->yaw.y = -1;
+	player->move.x = 0;
+	player->move.y = 0;
+	player->rotate = 0;
+}

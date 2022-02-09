@@ -20,10 +20,10 @@ INPUT = ${addprefix \
 	minilibx.c \
 	hooks.c \
 	textures.c \
+	image.c \
 	raycast.c \
-	raycast_init.c \
+	loop.c \
 	draw.c \
-	move.c \
 	main.c \
 }
 
@@ -37,10 +37,10 @@ ${MINILIBX}:
 	cd minilibx && ./configure
 
 .c.o: ${MINILIBX}
-	gcc -Wall -Wextra -Werror -g -c $< -o ${<:.c=.o} -I sources -Lminilibx -lm -lmlx -lXext -lX11
+	gcc -Wall -Wextra -Werror -g -c $< -o ${<:.c=.o} -I sources -I minilibx -Lminilibx -lm -lmlx -lXext -lX11
 
 ${NAME}: ${OUTPUT}
-	gcc -Wall -Wextra -Werror -g ${OUTPUT} -o ${NAME} -I sources -Lminilibx -lm -lmlx -lXext -lX11
+	gcc -Wall -Wextra -Werror -g ${OUTPUT} -o ${NAME} -I sources -I minilibx -Lminilibx -lm -lmlx -lXext -lX11
 
 clean:
 	rm -f ${OUTPUT}

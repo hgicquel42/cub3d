@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minilibx.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:57:05 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 23:10:58 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:17:23 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,12 @@
 
 # include <stdbool.h>
 # include "positions.h"
-# include "header.h"
-
-typedef struct s_img
-{
-	void	*ptr;
-	int		*data;
-	int		w;
-	int		h;
-	int		bpp;
-	int		line;
-	int		end;
-}	t_img;
+# include "image.h"
 
 typedef struct s_mlx
 {
 	void	*ptr;
 	void	*win;
-	t_ipos	screen;
-	t_img	img;
-	t_img	north;
-	t_img	south;
-	t_img	east;
-	t_img	west;
 }	t_mlx;
 
 /**
@@ -51,8 +34,8 @@ bool	ft_image_init(t_img *img);
 /**
  * @brief put image to window
  * 
- * @param mlx mlx struct
- * @param img img struct
+ * @param mlx mlx
+ * @param img img
  */
 void	ft_image_put(t_mlx *mlx, t_img *img);
 
@@ -62,13 +45,13 @@ void	ft_image_put(t_mlx *mlx, t_img *img);
  * @param mlx mlx struct
  * @return false if failed
  */
-bool	ft_minilibx_init(t_mlx *mlx);
+bool	ft_minilibx_init(t_mlx *mlx, t_img *img);
 
 /**
  * @brief free minilibx
  * 
  * @param mlx mlx struct
  */
-void	ft_minilibx_free(t_mlx *mlx);
+void	ft_minilibx_free(t_mlx *mlx, t_img *img);
 
 #endif

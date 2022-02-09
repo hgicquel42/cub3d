@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   global.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:43:36 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 07:02:03 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:18:11 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,36 +16,9 @@
 # include "header.h"
 # include "minilibx.h"
 # include "positions.h" 
-
-typedef struct s_wall
-{
-	double	dist;
-	int		height;
-	int		start;
-	int		end;
-}	t_wall;
-
-typedef struct s_ray
-{
-	t_ipos	map;
-	t_dpos	pos;
-	t_dpos	ray_dist;
-	t_dpos	yaw;
-	t_dpos	plan;
-	t_dpos	delta;
-	t_wall	wall;
-	int		side;
-}	t_ray;
-
-typedef struct s_player
-{
-	t_dpos	pos;
-	t_dpos	yaw;
-	t_ipos	move;
-	int		rotate;
-	double	speed;
-	double	rot_speed;
-}	t_player;
+# include "raycast.h"
+# include "player.h"
+# include "textures.h"
 
 typedef struct s_map
 {
@@ -69,6 +42,8 @@ typedef struct s_global
 	t_player	player;
 	t_ray		ray;
 	t_sprite	s;
+	t_img		img;
+	t_xpms		xpms;
 }				t_global;
 
 /**

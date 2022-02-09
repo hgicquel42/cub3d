@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.h                                             :+:      :+:    :+:   */
+/*   image.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 11:50:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 11:55:57 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/09 12:10:14 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/09 12:20:39 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAW_H
-# define DRAW_H
+#ifndef IMAGE_H
+# define IMAGE_H
 
-# include "minilibx.h"
+# include <stdbool.h>
+
+typedef struct s_img
+{
+	void	*ptr;
+	char	*data;
+	int		w;
+	int		h;
+	int		bpp;
+	int		line;
+	int		end;
+}	t_img;
 
 /**
- * @brief draw single pixel
+ * @brief init image data address
  * 
  * @param img img struct
- * @param x pixel x
- * @param y pixel y
- * @param color pixel color
+ * @return false if failed
  */
-void	ft_draw_pixel(t_img *img, int x, int y, int color);
-
-/**
- * @brief draw column
- * 
- * @param img 
- * @param i x
- */
-void	ft_draw_column(t_img *img, int i);
+bool	ft_image_init(t_img *i);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:07:14 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 15:50:26 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 10:53:31 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,9 @@ static bool	ft_iscomma(char c)
  */
 static bool	ft_color_parse_sub(char *s, char *r)
 {
-	int	x;
+	char	x;
 
-	if (!ft_xatoi(s, &x))
-		return (false);
-	if (x < 0 || x > 255)
+	if (!ft_xatoc(s, &x))
 		return (false);
 	*r = x;
 	return (true);

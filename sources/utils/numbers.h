@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 08:34:18 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/08 15:33:18 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 10:52:49 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 # include <stdbool.h>
 
 /**
- * @brief safe version of ft_atoi
+ * @brief safely transform string to char number
  * 
  * @param s string
  * @param r result
- * @return bool false if it failed
+ * @return false if failed (overflow is fail)
  */
-bool	ft_xatoi(char *s, int *r);
+bool	ft_xatoc(char *s, char *r);
 
 #endif

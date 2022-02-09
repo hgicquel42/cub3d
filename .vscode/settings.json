@@ -1,6 +1,10 @@
 {
 	"files.associations": {
 		"global.h": "c",
-		"positions.h": "c"
+		"positions.h": "c",
+		"mlx.h": "c",
+		"raycast2.h": "c",
+		"raycast.h": "c",
+		"minilibx.h": "c"
 	}
 }

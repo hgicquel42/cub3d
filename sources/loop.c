@@ -1,25 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.h                                            :+:      :+:    :+:   */
+/*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 17:20:41 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 10:58:01 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/09 11:44:09 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/09 12:29:19 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOOKS_H
-# define HOOKS_H
+#include "global.h"
+#include "draw.h"
 
-# include "global.h"
+bool	ft_loop_draw(t_global *g)
+{
+	int		i;
+	t_ray	ray;
+
+	ft_ray_init(&ray, &g->player);
+	i = 0;
+	while (i < g->img.w)
+	{
+		ft_ray_reinit(&ray, &g->player, i, g->img.w);
+		ft_draw_column(&g->img, i);
+		i++;
+	}
+	return (true);
+}
 
 /**
- * @brief create hooks
+ * @brief frame loop (60Hz)
  * 
  * @param g global
+ * @return false if failed
  */
-void	ft_minilibx_hook(t_global *g);
-
-#endif
+bool	ft_loop(t_global *g)
+{
+	if (!ft_loop_draw(g))
+		return (false);
+	ft_image_put(&g->mlx, &g->img);
+	return (true);
+}

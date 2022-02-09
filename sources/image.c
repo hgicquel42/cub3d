@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.h                                             :+:      :+:    :+:   */
+/*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 11:50:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 11:55:57 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/09 12:10:33 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/09 12:20:07 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAW_H
-# define DRAW_H
+#include "image.h"
 
-# include "minilibx.h"
+#include <stdbool.h>
+#include "mlx.h"
 
 /**
- * @brief draw single pixel
+ * @brief init image data address
  * 
  * @param img img struct
- * @param x pixel x
- * @param y pixel y
- * @param color pixel color
+ * @return false if failed
  */
-void	ft_draw_pixel(t_img *img, int x, int y, int color);
-
-/**
- * @brief draw column
- * 
- * @param img 
- * @param i x
- */
-void	ft_draw_column(t_img *img, int i);
-
-#endif
+bool	ft_image_init(t_img *i)
+{
+	i->data = mlx_get_data_addr(i->ptr, &i->bpp, &i->line, &i->end);
+	if (!i->data)
+		return (false);
+	return (true);
+}

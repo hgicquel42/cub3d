@@ -3,55 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:43:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 07:12:23 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:00:47 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCAST_H
 # define RAYCAST_H
 
-# include "global.h"
 # include "minilibx.h"
 # include "positions.h" 
-# include "move.h"
+# include "player.h"
 # include <stdlib.h>
 
-/**
- * @brief mange ray_casting
- * 
- * @param g 
- * @return int 
- */
-int		ft_ray_cast(t_global *g);
+typedef struct s_wall
+{
+	double	dist;
+	int		height;
+	int		start;
+	int		end;
+}	t_wall;
+
+typedef struct s_ray
+{
+	t_ipos	map;
+	t_dpos	pos;
+	t_dpos	ray_dist;
+	t_dpos	yaw;
+	t_dpos	plan;
+	t_dpos	delta;
+	t_wall	wall;
+	int		side;
+}	t_ray;
 
 /**
- * @brief Launch ray until he hit a wall
+ * @brief init ray from player position
  * 
  * @param ray 
- * @param x_step 
- * @param y_step 
+ * @param player 
  */
-void	ft_advance_ray(t_global *g, t_ray *ray, int x_step, int y_step);
+void	ft_ray_init(t_ray *ray, t_player *player);
 
 /**
- * @brief calcul dist of ray from view to wall
+ * @brief reinit ray for i
  * 
- * @param g 
  * @param ray 
- * @param x_step 
- * @param y_step 
+ * @param player 
+ * @param i 
+ * @param w 
  */
-void	ft_define_ray_dist(t_global *g, t_ray *ray, int x_step, int y_step);
-
-/**
- * @brief Create and launch ray for ray casting
- * 
- * @param g 
- * @param ray 
- */
-void	ft_launch_ray(t_global *g, t_ray *ray);
+void	ft_ray_reinit(t_ray *ray, t_player *player, int i, double w);
 
 #endif

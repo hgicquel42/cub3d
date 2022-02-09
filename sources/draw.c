@@ -3,86 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 02:04:54 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/09 07:11:42 by vpiamias         ###   ########.fr       */
+/*   Created: 2022/02/09 11:50:59 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/09 12:21:40 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
 
-#include "raycast.h"
-#include "global.h"
-#include "math.h"
-#include "./utils/colors.h"
-#include "../minilibx/mlx.h"
+#include <stdlib.h>
+#include "minilibx.h"
 
-void	ft_draw_wall(t_global *g, t_img *img, int y, int x)
+static unsigned int	*ft_image_addr(t_img *img, int i)
 {
-	y = g->ray.wall.start - 1;
-	g->s.step = 1.0 * img->h / g->ray.wall.height;
-	g->s.cord.x = (int)(g->s.x_wall * (double)img->w);
-	if (g->ray.side == 0 && g->ray.yaw.x > 0)
-		g->s.cord.x = img->w - g->s.cord.x -1;
-	if (g->ray.side == 0 && g->ray.yaw.y < 0)
-		g->s.cord.x = img->w - g->s.cord.x -1;
-	g->s.pos = (g->ray.wall.start - g->mlx.screen.y / 2
-			+ g->ray.wall.height / 2) * g->s.step;
-	while (y < g->ray.wall.end)
-	{
-		g->s.cord.y = floor(g->s.pos);
-		g->s.pos += g->s.step;
-		if (y < g->mlx.screen.y && x < g->mlx.screen.x)
-		{
-			g->mlx.img.data[y * g->mlx.img.line / 4 + x]
-				= img->data[g->s.cord.y * img->line / 4 + g->s.cord.x];
-		}
-		y++;
-	}
-}
-
-void	ft_init_sprite(t_global *g, int y, int x)
-{
-	if (g->ray.side == 0)
-		g->s.x_wall = g->ray.pos.y + g->ray.wall.dist * g->ray.yaw.y;
-	else
-		g->s.x_wall = g->ray.pos.x + g->ray.wall.dist * g->ray.yaw.x;
-	g->s.x_wall -= floor(g->s.x_wall);
-	if (g->ray.side == 0 && g->ray.yaw.x < 0)
-		ft_draw_wall(g, &g->mlx.north, y, x);
-	else if (g->ray.side == 0 && g->ray.yaw.x >= 0)
-		ft_draw_wall(g, &g->mlx.south, y, x);
-	else if (g->ray.side == 1 && g->ray.yaw.y < 0)
-		ft_draw_wall(g, &g->mlx.west, y, x);
-	else if (g->ray.side == 1 && g->ray.yaw.y >= 0)
-		ft_draw_wall(g, &g->mlx.east, y, x);
+	return ((unsigned int *) &img->data[i]);
 }
 
 /**
- * @brief 
+ * @brief draw single pixel
  * 
- * @param g 
- * @param i 
+ * @param img img struct
+ * @param x pixel x
+ * @param y pixel y
+ * @param color pixel color
  */
-void	ft_draw_line(t_global *g, int i)
+void	ft_draw_pixel(t_img *img, int x, int y, int color)
+{
+	*ft_image_addr(img, (y * img->line) + (x * 4)) = color;
+}
+
+/**
+ * @brief draw column
+ * 
+ * @param img 
+ * @param i x
+ */
+void	ft_draw_column(t_img *img, int i)
 {
 	int	j;
 
 	j = 0;
-	while (j < g->ray.wall.start)
+	while (j < img->h)
 	{
-		g->mlx.img.data[j * g->mlx.img.line / 4 + i]
-			= ft_rgbtohex(g->map.header.floor);
-		j++;
-	}
-	if (j <= g->ray.wall.end)
-		ft_init_sprite(g, j, i);
-	j = g->ray.wall.end;
-	while (j < g->mlx.screen.y)
-	{
-		g->mlx.img.data[j * g->mlx.img.line / 4 + i]
-			= ft_rgbtohex(g->map.header.cell);
+		ft_draw_pixel(img, i, j, rand());
 		j++;
 	}
 }

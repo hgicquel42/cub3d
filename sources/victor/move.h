@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   move.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 04:27:29 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/09 07:03:24 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/09 11:50:28 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef MOVE_H
+#define MOVE_H
 
 #ifndef MOVE_H
 # define MOVE_H
@@ -35,5 +38,8 @@ void	ft_move_y(t_global *g);
  * @param g 
  */
 void	ft_rotate(t_global *g);
+
+#endif
+
 
 #endif

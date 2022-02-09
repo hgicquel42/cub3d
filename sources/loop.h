@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.h                                             :+:      :+:    :+:   */
+/*   loop.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 11:50:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 11:55:57 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/09 11:57:38 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/09 11:57:44 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAW_H
-# define DRAW_H
-
-# include "minilibx.h"
+#ifndef LOOP_H
+# define LOOP_H
 
 /**
- * @brief draw single pixel
+ * @brief frame loop (60Hz)
  * 
- * @param img img struct
- * @param x pixel x
- * @param y pixel y
- * @param color pixel color
+ * @param g global
+ * @return false if failed
  */
-void	ft_draw_pixel(t_img *img, int x, int y, int color);
-
-/**
- * @brief draw column
- * 
- * @param img 
- * @param i x
- */
-void	ft_draw_column(t_img *img, int i);
+bool	ft_loop(t_global *g);
 
 #endif

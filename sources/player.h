@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.h                                             :+:      :+:    :+:   */
+/*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 11:50:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 11:55:57 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/09 11:28:18 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/09 11:34:50 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAW_H
-# define DRAW_H
+#ifndef PLAYER_H
+# define PLAYER_H
 
-# include "minilibx.h"
+# include "positions.h"
+
+# define ROTATION_SPEED 0.06
+# define MOVEMENT_SPEED 0.3
+
+typedef struct s_player
+{
+	t_dpos	pos;
+	t_dpos	yaw;
+	t_ipos	move;
+	int		rotate;
+	double	speed;
+	double	rot_speed;
+}	t_player;
 
 /**
- * @brief draw single pixel
+ * @brief init player
  * 
- * @param img img struct
- * @param x pixel x
- * @param y pixel y
- * @param color pixel color
+ * @param player 
  */
-void	ft_draw_pixel(t_img *img, int x, int y, int color);
-
-/**
- * @brief draw column
- * 
- * @param img 
- * @param i x
- */
-void	ft_draw_column(t_img *img, int i);
+void	ft_player_init(t_player *player);
 
 #endif

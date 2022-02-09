@@ -5,32 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 11:50:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 11:55:57 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/09 02:04:56 by vpiamias          #+#    #+#             */
+/*   Updated: 2022/02/09 11:50:29 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DRAW_H
+#define DRAW_H
+
+#ifndef DRAW_H
 # define DRAW_H
 
-# include "minilibx.h"
+# include "raycast.h"
 
 /**
- * @brief draw single pixel
+ * @brief 
  * 
- * @param img img struct
- * @param x pixel x
- * @param y pixel y
- * @param color pixel color
+ * @param g 
+ * @param i 
  */
-void	ft_draw_pixel(t_img *img, int x, int y, int color);
+void	ft_draw_line(t_global *g, int i);
 
-/**
- * @brief draw column
- * 
- * @param img 
- * @param i x
- */
-void	ft_draw_column(t_img *img, int i);
+#endif
+
 
 #endif

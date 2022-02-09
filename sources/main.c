@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/09 06:33:50 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:19:14 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 #include "global.h"
 #include "textures.h"
 #include "hooks.h"
-#include "raycast_init.h"
 
 static int	ft_error(t_global *g, char *s)
 {
@@ -59,14 +58,14 @@ int	main(int argc, char **argv)
 		return (ft_error(&g, "Invalid header\n"));
 	if (!ft_body_parse(&g, g.map.body))
 		return (ft_error(&g, "Invalid body\n"));
-	if (!ft_minilibx_init(&g.mlx))
+	if (!ft_minilibx_init(&g.mlx, &g.img))
 		return (ft_error(&g, "Could not create window\n"));
-	if (!ft_textures_load(&g.map.header, &g.mlx))
+	if (!ft_textures_load(&g.mlx, &g.xpms, &g.map.header))
 		return (ft_error(&g, "Could not load textures\n"));
-	ft_first_ray_init(&g);
 	ft_minilibx_hook(&g);
 	mlx_loop(g.mlx.ptr);
-	ft_minilibx_free(&g.mlx);
+	ft_textures_free(&g.mlx, &g.xpms);
+	ft_minilibx_free(&g.mlx, &g.img);
 	ft_global_free(&g);
 	return (0);
 }
