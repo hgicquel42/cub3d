@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:55:15 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 17:42:46 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 19:33:17 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,3 @@ t_vec	ft_vecperpn(t_vec v)
 {
 	return (ft_vec(v.y, -v.x));
 }
-

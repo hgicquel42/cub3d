@@ -35,3 +35,13 @@ Une fois gerer ces lignes ne servent plus
 
 ---------------------------
 
+- J'ai fait les rotations et simplifié les calculs
+- Mouvements smooth et sprint avec shift
+
+TODO:
+- Meilleur systeme de collisions qui utilise des vecteurs
+- Faire des tests avec des maps bizarres
+- Remettre les textures en utilisant des vecteurs
+- Mettre tout ce qui est rendering dans le dossier rendering et 
+  mettre un 'r' devant chaque fichier (sinon la norminette est reloue)
+  comme dans le dossier parsing

@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:23:12 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 19:12:44 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 19:36:13 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_ray_wall(t_ray *ray, t_wall *wall, t_img *img)
 		wall->dist = (ray->sdist.x - ray->delta.x);
 	else
 		wall->dist = (ray->sdist.y - ray->delta.y);
-	wall->height = floor(img->h / wall->dist);
+	wall->height = img->h / wall->dist;
 	wall->start = (img->h / 2) - (wall->height / 2);
 	wall->end = (img->h / 2) + (wall->height / 2);
 }
