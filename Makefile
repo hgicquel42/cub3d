@@ -22,6 +22,8 @@ INPUT = ${addprefix \
 	textures.c \
 	raycast.c \
 	raycast_init.c \
+	draw.c \
+	move.c \
 	main.c \
 }
 

@@ -6,7 +6,7 @@
 /*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:43:36 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 23:55:23 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/09 04:18:23 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ typedef struct s_wall
 
 typedef struct s_ray
 {
-	t_ipos	pos;
 	t_ipos	map;
+	t_dpos	pos;
 	t_dpos	ray_dist;
 	t_dpos	yaw;
 	t_dpos	plan; //il faut un plan variable car en fonction de la postion de debur la direction des rayons est change
@@ -41,6 +41,10 @@ typedef struct s_player
 {
 	t_dpos	pos;
 	t_dpos	yaw;
+	t_ipos	move;
+	int		rotate;
+	double	speed;
+	double	rot_speed;
 }	t_player;
 
 typedef struct s_map
@@ -50,12 +54,21 @@ typedef struct s_map
 	char		**body;
 }				t_map;
 
+typedef struct s_sprite
+{
+	double	x_wall;
+	double	step;
+	double	pos;
+	t_ipos	cord;
+}	t_sprite;
+
 typedef struct s_global
 {
 	t_map		map;
 	t_mlx		mlx;
 	t_player	player;
 	t_ray		ray;
+	t_sprite	s;
 }				t_global;
 
 /**

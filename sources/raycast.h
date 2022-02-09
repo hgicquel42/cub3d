@@ -6,7 +6,7 @@
 /*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:43:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 23:21:42 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/09 04:29:28 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "global.h"
 # include "minilibx.h"
 # include "positions.h" 
+# include "move.h"
 # include <stdlib.h>
 
 /**
