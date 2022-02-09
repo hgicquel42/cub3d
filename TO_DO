@@ -1,0 +1,33 @@
+
+La structure semble fonctionnel parsing/affichage/mouvement... mais encore pas mal de petit detail a gerer
+des petits bugs sur l'affiche pardois meme des segfaults sur des maps sinueuses
+
+ex :
+111111111111111111
+101000000000000001
+101111111111111101
+101111111111111101
+1011111111111111S1
+111111111111111111
+
+Beaucoup d'erreurs dans ces cas la cela provients surement de l'affichage les valeurs des variables semblent coherentes
+Si besoin de tester avec un code autre pour comparer hesite pas a demander a abdou et Bryce abdou a fais du bon taff son truc marche vraiment pas mal
+
+DO = 
+	- remise au propre du ray_casting(semble au point)
+	- remise au propre de l'affichage (a encore besoin d'amelioration)
+	- mouvement (semble au point);
+	- norme (sauf pour move.c c'etait trop chiant);
+
+To DO =
+	- Gerer l'orientation de depart du joueurs , pour tester je l'ai implemter a la main dans
+t_first_ray_init : ligne 27 a 30 :
+									g->player.yaw.x = 0;
+									g->player.yaw.y = -1;
+									g->ray.plan.x = -0.66;
+									g->ray.plan.y = 0;
+Une fois gerer ces lignes ne servent plus
+	- Revoir la partie affichage j'ai toujours pas tout completement saisi
+	- Recheck les autres parties si tu vois des choses a ameliorer ou inutile hesite pas
+	- Valgrind
+	- Remettre en forme global.h j'ai mis toutes les structures dedans j'avais des soucis pour les metres individuellemtn dans leurs .h

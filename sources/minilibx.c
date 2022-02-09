@@ -6,7 +6,7 @@
 /*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 18:29:54 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 23:20:38 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/09 07:15:08 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
  * @param img img struct
  * @return false if failed
  */
-bool	ft_image_init(t_img *img)
+bool	ft_image_init(t_img *i)
 {
-	img->data = (int *)mlx_get_data_addr(img->ptr, &img->bpp, &img->line, &img->end);
-	if (!img->data)
+	i->data = (int *)mlx_get_data_addr(i->ptr, &i->bpp, &i->line, &i->end);
+	if (!i->data)
 		return (false);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:43:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 04:29:28 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/09 07:12:23 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
  * @param g 
  * @return int 
  */
-int	ft_ray_cast(t_global *g);
+int		ft_ray_cast(t_global *g);
 
 /**
  * @brief Launch ray until he hit a wall
@@ -53,7 +53,5 @@ void	ft_define_ray_dist(t_global *g, t_ray *ray, int x_step, int y_step);
  * @param ray 
  */
 void	ft_launch_ray(t_global *g, t_ray *ray);
-
-
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:00:16 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 15:50:11 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 07:01:08 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * 
  * @param color array
  */
-void	ft_color_init(char color[3]);
+void			ft_color_init(char color[3]);
 
 /**
  * @brief convert rgb array to hex

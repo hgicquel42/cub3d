@@ -6,7 +6,7 @@
 /*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:43:36 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 04:18:23 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/09 07:02:03 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_ray
 	t_dpos	pos;
 	t_dpos	ray_dist;
 	t_dpos	yaw;
-	t_dpos	plan; //il faut un plan variable car en fonction de la postion de debur la direction des rayons est change
+	t_dpos	plan;
 	t_dpos	delta;
 	t_wall	wall;
 	int		side;

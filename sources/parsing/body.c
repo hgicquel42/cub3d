@@ -6,7 +6,7 @@
 /*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:23:03 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/09 01:24:20 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/09 07:01:31 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,23 @@ static bool	ft_xyaw(char dir, t_dpos *vec, t_dpos *plan)
 	vec->y = 0;
 	if (dir == 'N')
 	{
-		vec->x = 1;
-		plan->x = 0.90;
+		vec->y = -1;
+		plan->x = 0.66;
 	}
 	else if (dir == 'S')
 	{
-		vec->x = -1;
-		plan->x = -0.90;
+		vec->y = 1;
+		plan->x = -0.66;
 	}
 	else if (dir == 'E')
 	{
-		vec->y = 1;
-		plan->y = 0.90;
+		vec->x = -1;
+		plan->y = 0.66;
 	}
 	else if (dir == 'W')
 	{
-		vec->y = -1;
-		plan->y = -0.90;
+		vec->x = 1;
+		plan->y = -0.66;
 	}
 	else
 		return (false);
@@ -108,8 +108,10 @@ static bool	ft_body_parse_player(char **body, t_player *player, t_ray *ray)
  */
 bool	ft_body_parse(t_global *g, char **body)
 {
-	g->ray.plan.x = 0;
-	g->ray.plan.y = 0;
+	g->ray.plan.x = 0.0;
+	g->ray.plan.y = 0.0;
+	g->player.yaw.x = 0.0;
+	g->player.yaw.y = 0.0;
 	if (!ft_body_check_chars(body))
 		return (false);
 	if (!ft_body_parse_player(body, &g->player, &g->ray))
