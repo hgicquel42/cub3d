@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:23:03 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/09 17:45:09 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 17:50:06 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ static bool	ft_body_parse_player(char **body, t_player *player)
 			if (ft_isplayer(body[i][j]))
 			{
 				ft_xyaw(body[i][j], &player->yaw);
-				player->pos.x = i;
-				player->pos.y = j;
+				player->pos.x = i + 0.5;
+				player->pos.y = j + 0.5;
 				count++;
 			}
 			j++;

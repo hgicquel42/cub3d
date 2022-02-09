@@ -25,6 +25,7 @@ INPUT = ${addprefix \
 	textures.c \
 	image.c \
 	player.c \
+	keyboard.c \
 	raycast.c \
 	raycast2.c \
 	loop.c \

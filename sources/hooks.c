@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 17:13:49 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 17:35:10 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 18:43:16 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,19 @@ static int	on_keydown(int code, t_global *g)
 {
 	printf("%d\n", code);
 	if (code == 119)
-		g->player.move.x = 1;
+		g->keys.w = true;
 	else if (code == 115)
-		g->player.move.x = -1;
-	else if (code == 100)
-		g->player.move.y = 1;
+		g->keys.s = true;
 	else if (code == 97)
-		g->player.move.y = -1;
+		g->keys.a = true;
+	else if (code == 100)
+		g->keys.d = true;
 	else if (code == 65361)
-		g->player.rotate = 1;
+		g->keys.al = true;
 	else if (code == 65363)
-		g->player.rotate = -1;
+		g->keys.ar = true;
+	else if (code == 65505)
+		g->keys.shift = true;
 	else if (code == 65307)
 		on_close(g);
 	return (0);
@@ -68,17 +70,19 @@ static int	on_keydown(int code, t_global *g)
 static int	on_keyup(int code, t_global *g)
 {
 	if (code == 119)
-		g->player.move.x = 0;
-	if (code == 115)
-		g->player.move.x = 0;
-	if (code == 97)
-		g->player.move.y = 0;
-	if (code == 100)
-		g->player.move.y = 0;
-	if (code == 65361)
-		g->player.rotate = 0;
-	if (code == 65363)
-		g->player.rotate = 0;
+		g->keys.w = false;
+	else if (code == 115)
+		g->keys.s = false;
+	else if (code == 97)
+		g->keys.a = false;
+	else if (code == 100)
+		g->keys.d = false;
+	else if (code == 65361)
+		g->keys.al = false;
+	else if (code == 65363)
+		g->keys.ar = false;
+	else if (code == 65505)
+		g->keys.shift = false;
 	return (0);
 }
 
@@ -102,6 +106,7 @@ static int	on_loop(t_global *g)
  */
 void	ft_minilibx_hook(t_global *g)
 {
+	mlx_do_key_autorepeatoff(g->mlx.ptr);
 	mlx_hook(g->mlx.win, 2, 1L << 0, on_keydown, g);
 	mlx_hook(g->mlx.win, 3, 1L << 1, on_keyup, g);
 	mlx_hook(g->mlx.win, 17, 0, on_close, g);

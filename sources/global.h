@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:43:36 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 13:12:10 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 18:21:16 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "raycast.h"
 # include "player.h"
 # include "textures.h"
+# include "keyboard.h"
 
 typedef struct s_map
 {
@@ -43,6 +44,7 @@ typedef struct s_global
 	t_sprite	s;
 	t_img		img;
 	t_xpms		xpms;
+	t_keys		keys;
 }				t_global;
 
 /**

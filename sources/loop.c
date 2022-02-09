@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:44:09 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 17:40:59 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 18:51:06 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "draw.h"
 #include "raycast2.h"
 #include "utils/vector3.h"
+#include "utils/numbers.h"
 
 t_vec	ft_cam(t_player *player)
 {
@@ -34,14 +35,8 @@ void	ft_loop_draw(t_global *g)
 	t_vec	cam;
 	t_ray	ray;
 	t_wall	wall;
-	static bool lol = false;
 
 	cam = ft_cam(&g->player);
-	if (!lol)
-	{
-		ft_vecprint(g->player.yaw);
-		ft_vecprint(cam);
-	}
 	i = 0;
 	while (i < g->img.w)
 	{
@@ -54,7 +49,6 @@ void	ft_loop_draw(t_global *g)
 		ft_draw_column(&g->img, &wall, i);
 		i++;
 	}
-	lol = true;
 }
 
 void	ft_loop_move(t_global *g)
@@ -65,25 +59,56 @@ void	ft_loop_move(t_global *g)
 
 	if (g->player.move.x)
 	{
-		val = g->player.move.x * MOV_SPEED;
-		g->player.pos.x += g->player.yaw.x * val;
-		g->player.pos.x += g->player.yaw.x * val;
+		val = g->player.move.x * 0.1;
+		if (g->keys.shift)
+			val *= 2;
+		res = ft_vecmul(g->player.yaw, val);
+		g->player.pos = ft_vecadd(g->player.pos, res);
+		if (g->player.move.x > 0)
+			g->player.move.x = ft_minf(0, g->player.move.x - 0.001);
+		if (g->player.move.x < 0)
+			g->player.move.x = ft_maxf(0, g->player.move.x + 0.001);
 	}
 	if (g->player.move.y)
 	{
-		val = g->player.move.y * MOV_SPEED;
-		g->player.pos.y += g->player.yaw.y * val;
-		g->player.pos.y += g->player.yaw.y * val;
+		val = g->player.move.y * 0.1;
+		res = ft_vecmul(g->player.yaw, val);
+		res = ft_vecperpp(res);
+		g->player.pos = ft_vecadd(g->player.pos, res);
+		if (g->player.move.y > 0)
+			g->player.move.y = ft_minf(0, g->player.move.y - 0.001);
+		if (g->player.move.y < 0)
+			g->player.move.y = ft_maxf(0, g->player.move.y + 0.001);
 	}
 	if (g->player.rotate)
 	{
 		old = g->player.yaw;
-		val = g->player.rotate * ROT_SPEED;
+		val = g->player.rotate * 0.1;
 		res.x = old.x * cos(val) - old.y * sin(val);
 		res.y = old.x * sin(val) + old.y * cos(val);
 		g->player.yaw.x = res.x;
 		g->player.yaw.y = res.y;
+		if (g->player.rotate > 0)
+			g->player.rotate = ft_minf(0, g->player.rotate - 0.001);
+		if (g->player.rotate < 0)
+			g->player.rotate = ft_maxf(0, g->player.rotate + 0.001);
 	}
+}
+
+void	ft_loop_keys(t_global *g)
+{
+	if (g->keys.w)
+		g->player.move.x = 1;
+	if (g->keys.s)
+		g->player.move.x = -1;
+	if (g->keys.a)
+		g->player.move.y = 1;
+	if (g->keys.d)
+		g->player.move.y = -1;
+	if (g->keys.al)
+		g->player.rotate = 1;
+	if (g->keys.ar)
+		g->player.rotate = -1;
 }
 
 /**
@@ -94,6 +119,7 @@ void	ft_loop_move(t_global *g)
  */
 bool	ft_loop(t_global *g)
 {
+	ft_loop_keys(g);
 	ft_loop_move(g);
 	ft_loop_draw(g);
 	ft_image_put(&g->mlx, &g->img);

@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 08:33:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/09 10:52:42 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 18:12:08 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,32 @@ bool	ft_xatoc(char *s, char *r)
 		return (false);
 	*r = x;
 	return (true);
+}
+
+/**
+ * @brief min of doubles
+ * 
+ * @param a 
+ * @param b 
+ * @return double 
+ */
+double	ft_minf(double a, double b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+/**
+ * @brief max of doubles
+ * 
+ * @param a 
+ * @param b 
+ * @return double 
+ */
+double	ft_maxf(double a, double b)
+{
+	if (a > b)
+		return (a);
+	return (b);
 }
