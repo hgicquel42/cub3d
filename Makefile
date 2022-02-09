@@ -15,7 +15,7 @@ INPUT = ${addprefix \
 	utils/vector2.c \
 	utils/vector3.c \
 	parsing/pheader.c \
-	parsing/body.c \
+	parsing/pbody.c \
 	parsing/pchars.c \
 	parsing/pcolors.c \
 	header.c \

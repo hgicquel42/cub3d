@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:50:59 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 18:45:26 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 19:10:48 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void	ft_draw_column(t_img *img, t_wall *wall, int i)
 	int	j;
 
 	j = 0;
-	while (j < wall->start)
+	while (j < wall->start && j < img->h)
 		ft_draw_pixel(img, i, j++, 0xffffff);
-	while (j < wall->end)
+	while (j < wall->end && j < img->h)
 		ft_draw_pixel(img, i, j++, 0xababab);
 	while (j < img->h)
 		ft_draw_pixel(img, i, j++, 0x000000);

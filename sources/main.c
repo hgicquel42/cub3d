@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/09 17:02:22 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 19:05:14 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include "utils/split.h"
 #include "utils/vector3.h"
 #include "parsing/pheader.h"
-#include "parsing/body.h"
+#include "parsing/pbody.h"
 #include "global.h"
 #include "textures.h"
 #include "hooks.h"

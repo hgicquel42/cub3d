@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:43:36 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 18:21:16 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 19:19:14 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_sprite
 	double	x_wall;
 	double	step;
 	double	pos;
-	t_ipos	cord;
+	t_pos	cord;
 }	t_sprite;
 
 typedef struct s_global

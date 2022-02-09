@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:43:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 16:25:08 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 19:19:14 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct s_ray
 {
 	t_vec		pos;
 	t_vec		yaw;
-	t_ipos		tile;
-	t_ipos		step;
+	t_pos		tile;
+	t_pos		step;
 	t_vec		delta;
 	t_vec		sdist;
 	bool		side;

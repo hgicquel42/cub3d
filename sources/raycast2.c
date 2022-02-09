@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:23:12 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 16:35:50 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 19:12:44 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,12 @@
 void	ft_ray_wall(t_ray *ray, t_wall *wall, t_img *img)
 {
 	if (!ray->side)
-		wall->dist = fabs(((double)ray->tile.x - ray->pos.x + (1.0 - (double)ray->step.x) / 2.0) / ray->yaw.x);
+		wall->dist = (ray->sdist.x - ray->delta.x);
 	else
-		wall->dist = fabs(((double)ray->tile.y - ray->pos.y + (1.0 - (double)ray->step.y) / 2.0) / ray->yaw.y);
-	wall->height = (int)(img->h / wall->dist);
-	wall->start = img->h / 2 - wall->height / 2;
-	if (wall->start < 0)
-		wall->start = 0;
-	wall->end = wall->height / 2 + img->h / 2;
-	if (wall->end >= img->h || wall->end < 0)
-		wall->end = img->h - 1;
+		wall->dist = (ray->sdist.y - ray->delta.y);
+	wall->height = floor(img->h / wall->dist);
+	wall->start = (img->h / 2) - (wall->height / 2);
+	wall->end = (img->h / 2) + (wall->height / 2);
 }
 
 /**
@@ -47,10 +43,8 @@ void	ft_ray_wall(t_ray *ray, t_wall *wall, t_img *img)
  */
 void	ft_ray_loop(t_ray *ray, char **body)
 {
-	while (1)
+	while (!ft_iswall(body[ray->tile.x][ray->tile.y]))
 	{
-		if (ft_iswall(body[ray->tile.x][ray->tile.y]))
-			break ;
 		if (ray->sdist.x < ray->sdist.y)
 		{
 			ray->sdist.x += ray->delta.x;
@@ -73,8 +67,8 @@ void	ft_ray_loop(t_ray *ray, char **body)
  */
 void	ft_ray_init(t_ray *ray)
 {
-	ray->tile.x = (int)ray->pos.x;
-	ray->tile.y = (int)ray->pos.y;
+	ray->tile.x = ray->pos.x;
+	ray->tile.y = ray->pos.y;
 	ray->delta = ft_vecdelta(ray->yaw);
 	if (ray->yaw.x < 0)
 	{

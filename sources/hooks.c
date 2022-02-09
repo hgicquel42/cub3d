@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 17:13:49 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 18:43:16 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 19:18:18 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ static int	on_loop(t_global *g)
  */
 void	ft_minilibx_hook(t_global *g)
 {
-	mlx_do_key_autorepeatoff(g->mlx.ptr);
 	mlx_hook(g->mlx.win, 2, 1L << 0, on_keydown, g);
 	mlx_hook(g->mlx.win, 3, 1L << 1, on_keyup, g);
 	mlx_hook(g->mlx.win, 17, 0, on_close, g);
