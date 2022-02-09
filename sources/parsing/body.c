@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:23:03 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/09 17:02:09 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 17:45:09 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ static void	ft_xyaw(char dir, t_vec *vec)
 	vec->x = 0;
 	vec->y = 0;
 	if (dir == 'N')
-		vec->y = -1;
-	else if (dir == 'S')
-		vec->y = 1;
-	else if (dir == 'E')
 		vec->x = -1;
-	else if (dir == 'W')
+	else if (dir == 'S')
 		vec->x = 1;
+	else if (dir == 'E')
+		vec->y = -1;
+	else if (dir == 'W')
+		vec->y = 1;
 }
 
 static bool	ft_body_parse_player(char **body, t_player *player)

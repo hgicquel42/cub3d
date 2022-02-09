@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:44:09 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 17:31:09 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 17:40:59 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 t_vec	ft_cam(t_player *player)
 {
-	return (ft_vecmul(ft_vecperpp(player->yaw), 0.60));
+	return (ft_vecmul(ft_vecperpn(player->yaw), 0.60));
 }
 
 t_vec	ft_ray(t_vec cam, t_player *player, double o)
@@ -34,8 +34,14 @@ void	ft_loop_draw(t_global *g)
 	t_vec	cam;
 	t_ray	ray;
 	t_wall	wall;
+	static bool lol = false;
 
 	cam = ft_cam(&g->player);
+	if (!lol)
+	{
+		ft_vecprint(g->player.yaw);
+		ft_vecprint(cam);
+	}
 	i = 0;
 	while (i < g->img.w)
 	{
@@ -48,20 +54,33 @@ void	ft_loop_draw(t_global *g)
 		ft_draw_column(&g->img, &wall, i);
 		i++;
 	}
+	lol = true;
 }
 
 void	ft_loop_move(t_global *g)
 {
 	t_vec	old;
 	t_vec	res;
-	int		val;
+	double	val;
 
+	if (g->player.move.x)
+	{
+		val = g->player.move.x * MOV_SPEED;
+		g->player.pos.x += g->player.yaw.x * val;
+		g->player.pos.x += g->player.yaw.x * val;
+	}
+	if (g->player.move.y)
+	{
+		val = g->player.move.y * MOV_SPEED;
+		g->player.pos.y += g->player.yaw.y * val;
+		g->player.pos.y += g->player.yaw.y * val;
+	}
 	if (g->player.rotate)
 	{
 		old = g->player.yaw;
-		val = g->player.rotate;
-		res.x = old.x * cos(val * ROT_SPEED) - old.y * sin(val * ROT_SPEED);
-		res.y = old.x * sin(val * ROT_SPEED) + old.y * cos(val * ROT_SPEED);
+		val = g->player.rotate * ROT_SPEED;
+		res.x = old.x * cos(val) - old.y * sin(val);
+		res.y = old.x * sin(val) + old.y * cos(val);
 		g->player.yaw.x = res.x;
 		g->player.yaw.y = res.y;
 	}

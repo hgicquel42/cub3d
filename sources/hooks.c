@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 17:13:49 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 16:49:47 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 17:35:10 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static int	on_close(t_global *g)
  */
 static int	on_keydown(int code, t_global *g)
 {
+	printf("%d\n", code);
 	if (code == 119)
 		g->player.move.x = 1;
 	else if (code == 115)
