@@ -6,24 +6,28 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:44:09 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 12:29:19 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 13:00:08 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "global.h"
 #include "draw.h"
+#include "raycast2.h"
 
 bool	ft_loop_draw(t_global *g)
 {
 	int		i;
+	double	o;
 	t_ray	ray;
 
 	ft_ray_init(&ray, &g->player);
 	i = 0;
 	while (i < g->img.w)
 	{
-		ft_ray_reinit(&ray, &g->player, i, g->img.w);
-		ft_draw_column(&g->img, i);
+		o = 2 * i / (double) g->img.w - 1;
+		ft_ray_reinit(&ray, &g->player, o);
+		ft_ray_launch(g, &ray);
+		ft_draw_column(&g->img, &ray, i);
 		i++;
 	}
 	return (true);

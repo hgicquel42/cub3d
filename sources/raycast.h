@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:43:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 12:00:47 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:58:54 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ typedef struct s_ray
  */
 void	ft_ray_init(t_ray *ray, t_player *player);
 
+
 /**
  * @brief reinit ray for i
  * 
  * @param ray 
  * @param player 
- * @param i 
- * @param w 
+ * @param offset
  */
-void	ft_ray_reinit(t_ray *ray, t_player *player, int i, double w);
+void	ft_ray_reinit(t_ray *ray, t_player *player, double offset);
 
 #endif

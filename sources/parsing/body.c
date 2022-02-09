@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   body.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:23:03 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/09 07:01:31 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/09 13:13:54 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,36 +44,24 @@ static bool	ft_body_check_chars(char **body)
 	return (true);
 }
 
-static bool	ft_xyaw(char dir, t_dpos *vec, t_dpos *plan)
+static bool	ft_xyaw(char dir, t_dpos *vec)
 {
 	vec->x = 0;
 	vec->y = 0;
 	if (dir == 'N')
-	{
 		vec->y = -1;
-		plan->x = 0.66;
-	}
 	else if (dir == 'S')
-	{
 		vec->y = 1;
-		plan->x = -0.66;
-	}
 	else if (dir == 'E')
-	{
 		vec->x = -1;
-		plan->y = 0.66;
-	}
 	else if (dir == 'W')
-	{
 		vec->x = 1;
-		plan->y = -0.66;
-	}
 	else
 		return (false);
 	return (true);
 }
 
-static bool	ft_body_parse_player(char **body, t_player *player, t_ray *ray)
+static bool	ft_body_parse_player(char **body, t_player *player)
 {
 	int	i;
 	int	j;
@@ -86,7 +74,7 @@ static bool	ft_body_parse_player(char **body, t_player *player, t_ray *ray)
 		j = 0;
 		while (body[i][j])
 		{
-			if (ft_xyaw(body[i][j], &player->yaw, &ray->plan))
+			if (ft_xyaw(body[i][j], &player->yaw))
 			{
 				player->pos.x = i;
 				player->pos.y = j;
@@ -108,13 +96,9 @@ static bool	ft_body_parse_player(char **body, t_player *player, t_ray *ray)
  */
 bool	ft_body_parse(t_global *g, char **body)
 {
-	g->ray.plan.x = 0.0;
-	g->ray.plan.y = 0.0;
-	g->player.yaw.x = 0.0;
-	g->player.yaw.y = 0.0;
 	if (!ft_body_check_chars(body))
 		return (false);
-	if (!ft_body_parse_player(body, &g->player, &g->ray))
+	if (!ft_body_parse_player(body, &g->player))
 		return (false);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 18:29:54 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 12:18:23 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:36:13 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <stdbool.h>
 #include <stdio.h>
-#include "../minilibx/mlx.h"
+#include "mlx.h"
 #include "utils/pointers.h"
 #include "header.h"
 #include "global.h"

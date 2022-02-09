@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:43:08 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 12:32:09 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 13:08:31 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,14 @@ static void	ft_ray_reinit_delta(t_ray *ray)
  * 
  * @param ray 
  * @param player 
- * @param i 
- * @param w 
+ * @param offset
  */
-void	ft_ray_reinit(t_ray *ray, t_player *player, int i, double w)
+void	ft_ray_reinit(t_ray *ray, t_player *player, double offset)
 {
-	double	offset;
-
-	offset = 2 * i / w - 1;
+	ray->wall.dist = 0;
 	ray->yaw.x = player->yaw.x + ray->plan.x * offset;
 	ray->yaw.y = player->yaw.y + ray->plan.y * offset;
+	ray->map.x = (int)player->pos.x;
+	ray->map.y = (int)player->pos.y;
 	ft_ray_reinit_delta(ray);
 }

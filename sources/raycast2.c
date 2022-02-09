@@ -6,14 +6,16 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:23:12 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 12:28:29 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 13:03:22 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycast2.h"
 
+#include <math.h>
 #include "raycast.h"
 #include "global.h"
+#include "parsing/pchars.h"
 
 /**
  * @brief calcul dist of ray from view to wall
@@ -23,25 +25,19 @@
  * @param x_step 
  * @param y_step 
  */
-void	ft_define_ray_dist(t_global *g, t_ray *ray, int x_step, int y_step)
+void	ft_ray_dist(t_global *g, t_ray *ray, int x_step, int y_step)
 {
 	if (ray->side == 0)
-	{
-		ray->wall.dist = ((double)ray->map.x - ray->pos.x
-				+ (1 - (double)x_step) / 2) / ray->yaw.x;
-	}
+		ray->wall.dist = fabs(((double)ray->map.x - ray->pos.x + (1.0 - (double)x_step) / 2.0) / ray->yaw.x);
 	else
-	{
-		ray->wall.dist = ((double)ray->map.y - ray->pos.y
-				+ (1 - (double)y_step) / 2) / ray->yaw.y;
-	}
-	ray->wall.height = (int)(g->mlx.screen.y / ray->wall.dist);
-	ray->wall.start = -ray->wall.height / 2 + g->mlx.screen.y / 2;
+		ray->wall.dist = fabs(((double)ray->map.y - ray->pos.y + (1.0 - (double)y_step) / 2.0) / ray->yaw.y);
+	ray->wall.height = (int)(g->img.h / ray->wall.dist);
+	ray->wall.start = -ray->wall.height / 2 + g->img.h / 2;
 	if (ray->wall.start < 0)
 		ray->wall.start = 0;
-	ray->wall.end = ray->wall.height / 2 + g->mlx.screen.y / 2;
-	if (ray->wall.end >= g->mlx.screen.y || ray->wall.end < 0)
-		ray->wall.end = g->mlx.screen.y - 1;
+	ray->wall.end = ray->wall.height / 2 + g->img.h / 2;
+	if (ray->wall.end >= g->img.h || ray->wall.end < 0)
+		ray->wall.end = g->img.h - 1;
 }
 
 /**
@@ -51,10 +47,12 @@ void	ft_define_ray_dist(t_global *g, t_ray *ray, int x_step, int y_step)
  * @param x_step 
  * @param y_step 
  */
-void	ft_advance_ray(t_global *g, t_ray *ray, int x_step, int y_step)
+void	ft_ray_loop(t_global *g, t_ray *ray, int x_step, int y_step)
 {
 	while (1)
 	{
+		if (ft_iswall(g->map.body[ray->map.x][ray->map.y]))
+			break ;
 		if (ray->ray_dist.x < ray->ray_dist.y)
 		{
 			ray->ray_dist.x += ray->delta.x;
@@ -67,10 +65,8 @@ void	ft_advance_ray(t_global *g, t_ray *ray, int x_step, int y_step)
 			ray->map.y += y_step;
 			ray->side = 1;
 		}
-		if (ft_iswall(g->map.body[ray->map.x][ray->map.y]))
-			break ;
 	}
-	ft_define_ray_dist(g, ray, x_step, y_step);
+	ft_ray_dist(g, ray, x_step, y_step);
 }
 
 /**
@@ -79,7 +75,7 @@ void	ft_advance_ray(t_global *g, t_ray *ray, int x_step, int y_step)
  * @param g 
  * @param ray 
  */
-void	ft_launch_ray(t_global *g, t_ray *ray)
+void	ft_ray_launch(t_global *g, t_ray *ray)
 {
 	int	x_step;
 	int	y_step;
@@ -104,5 +100,5 @@ void	ft_launch_ray(t_global *g, t_ray *ray)
 		y_step = 1;
 		ray->ray_dist.y = (ray->map.y + 1.0 - ray->pos.y) * ray->delta.y;
 	}
-	ft_advance_ray(g, ray, x_step, y_step);
+	ft_ray_loop(g, ray, x_step, y_step);
 }

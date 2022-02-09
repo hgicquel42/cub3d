@@ -6,17 +6,17 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 02:04:54 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/09 11:21:32 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:36:29 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
 
+#include "mlx.h"
 #include "raycast.h"
 #include "global.h"
 #include "math.h"
 #include "./utils/colors.h"
-#include "../minilibx/mlx.h"
 
 void	ft_draw_wall(t_global *g, t_img *img, int y, int x)
 {
@@ -85,20 +85,4 @@ void	ft_draw_line(t_global *g, int i)
 			= ft_rgbtohex(g->map.header.cell);
 		j++;
 	}
-}
-
-bool	ft_draw(t_global *g)
-{
-	int	i;
-
-	i = 0;
-	while (i < g->mlx.img.w)
-	{
-		ft_ray_init(g, &g->ray, i);
-		ft_launch_ray(g, &g->ray);
-		ft_draw_line(g, i);
-		i++;
-	}
-	ft_image_put(&g->mlx);
-	return (true);
 }

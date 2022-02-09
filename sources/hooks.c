@@ -6,14 +6,14 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 17:13:49 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 11:58:10 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:36:00 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hooks.h"
 
 #include <stdlib.h>
-#include "../minilibx/mlx.h"
+#include "mlx.h"
 #include "raycast.h"
 #include "global.h"
 #include "loop.h"

@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:50:59 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 12:21:40 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:39:01 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <stdlib.h>
 #include "minilibx.h"
+#include "raycast.h"
 
 static unsigned int	*ft_image_addr(t_img *img, int i)
 {
@@ -37,16 +38,18 @@ void	ft_draw_pixel(t_img *img, int x, int y, int color)
  * @brief draw column
  * 
  * @param img 
- * @param i x
+ * @param ray 
+ * @param i 
  */
-void	ft_draw_column(t_img *img, int i)
+void	ft_draw_column(t_img *img, t_ray *ray, int i)
 {
 	int	j;
 
 	j = 0;
+	while (j < ray->wall.start)
+		ft_draw_pixel(img, i, j++, rand());
+	while (j < ray->wall.end)
+		ft_draw_pixel(img, i, j++, 0x000000);
 	while (j < img->h)
-	{
-		ft_draw_pixel(img, i, j, rand());
-		j++;
-	}
+		ft_draw_pixel(img, i, j++, rand());
 }

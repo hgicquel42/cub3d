@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:50:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 11:55:57 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:39:50 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define DRAW_H
 
 # include "minilibx.h"
+# include "raycast.h"
 
 /**
  * @brief draw single pixel
@@ -29,8 +30,9 @@ void	ft_draw_pixel(t_img *img, int x, int y, int color);
  * @brief draw column
  * 
  * @param img 
- * @param i x
+ * @param ray 
+ * @param i 
  */
-void	ft_draw_column(t_img *img, int i);
+void	ft_draw_column(t_img *img, t_ray *ray, int i);
 
 #endif

@@ -21,7 +21,9 @@ INPUT = ${addprefix \
 	hooks.c \
 	textures.c \
 	image.c \
+	player.c \
 	raycast.c \
+	raycast2.c \
 	loop.c \
 	draw.c \
 	main.c \

@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:43:46 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 15:53:13 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/09 13:15:35 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_global_init(t_global *g)
 	g->map.lines = NULL;
 	g->map.body = NULL;
 	ft_header_init(&g->map.header);
+	ft_player_init(&g->player);
 }
 
 /**
