@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:50:59 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 11:41:37 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/10 12:14:34 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	ft_draw_column(t_global *g, t_ray *ray, t_wall *wall, int i)
 	while (j < wall->start && j < g->img.h)
 		ft_draw_pixel(&g->img, i, j++, ft_rgbtohex(g->map.header.floor));
 	while (j < wall->end && j < g->img.h)
-		ft_draw_pixel(&g->img, i , j++, ft_get_wall_pixel(g, ray, wall, i));
+		ft_draw_pixel(&g->img, i, j++, ft_get_wall_pixel(g, ray, wall, i));
 	while (j < g->img.h)
 		ft_draw_pixel(&g->img, i, j++, ft_rgbtohex(g->map.header.cell));
 }
