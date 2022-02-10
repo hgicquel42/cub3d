@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:19:19 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 18:47:27 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 19:52:47 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,22 @@ static double	ft_smooth(double x)
  */
 void	ft_loop_move(t_global *g, t_player *p)
 {
-	t_vec		axis;
 	t_vec		move;
 	t_ray		ray;
 
-	axis = ft_vecmove(p->yaw, p->move);
-	ray = ft_ray(p->pos, axis);
-	ft_ray_launch(&ray, g->map.body);
+	move = ft_vecmove(p->yaw, p->move);
 	if (g->keys.shift)
-		move = ft_vecmul(axis, 0.2);
+		move = ft_vecmul(move, 0.2);
 	else
-		move = ft_vecmul(axis, 0.1);
-	if (ft_veclen(move) > ray.dist)
-		return ;
+		move = ft_vecmul(move, 0.1);
+	ray = ft_ray(p->pos, ft_vecnorm(move));
+	ft_ray_launch(&ray, g->map.body);
+	while (ft_veclen(move) > ray.dist)
+	{
+		move = ft_vecsub(move, ft_vecmul(ray.wall, ft_vecdot(move, ray.wall)));
+		ray = ft_ray(p->pos, ft_vecnorm(move));
+		ft_ray_launch(&ray, g->map.body);
+	}
 	p->move.x = ft_smooth(p->move.x);
 	p->move.y = ft_smooth(p->move.y);
 	p->pos = ft_vecadd(p->pos, move);

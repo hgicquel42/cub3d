@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:23:12 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 17:29:55 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 18:52:29 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,20 +86,31 @@ static void	ft_ray_end(t_ray *ray, bool xgty)
 	if (xgty)
 	{
 		if (ray->yaw.y < 0)
+		{
 			ray->side = RSIDE_WEST;
+			ray->wall = ft_vec(0, -1);
+		}
 		else
+		{
 			ray->side = RSIDE_EAST;
+			ray->wall = ft_vec(0, 1);
+		}
 		ray->dist = (ray->curr.y - ray->delta.y);
 	}
 	else
 	{
 		if (ray->yaw.x < 0)
+		{
 			ray->side = RSIDE_NORTH;
+			ray->wall = ft_vec(-1, 0);
+		}
 		else
+		{
 			ray->side = RSIDE_SOUTH;
+			ray->wall = ft_vec(1, 0);
+		}
 		ray->dist = (ray->curr.x - ray->delta.x);
 	}
-	// TODO: calculate wall normal vector
 }
 
 /**
