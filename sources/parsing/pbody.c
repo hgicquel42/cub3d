@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pbody.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:23:03 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/09 19:04:57 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 10:40:58 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ static bool	ft_body_parse_player(char **body, t_player *player)
 				ft_xyaw(body[i][j], &player->yaw);
 				player->pos.x = i + 0.5;
 				player->pos.y = j + 0.5;
+				body[i][j] = '0';
 				count++;
 			}
 			j++;

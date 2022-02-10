@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 17:13:49 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 19:18:18 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 10:00:56 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static int	on_close(t_global *g)
  */
 static int	on_keydown(int code, t_global *g)
 {
-	printf("%d\n", code);
 	if (code == 119)
 		g->keys.w = true;
 	else if (code == 115)
