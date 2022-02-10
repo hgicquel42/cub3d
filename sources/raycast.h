@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:43:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 15:05:54 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:16:55 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,20 @@
 # include "player.h"
 # include <stdlib.h>
 
+# define RSIDE_NORTH 0
+# define RSIDE_SOUTH 1
+# define RSIDE_EAST 2 
+# define RSIDE_WEST 3
+
 typedef struct s_ray
 {
 	t_vec		pos;
 	t_vec		yaw;
-	t_pos		tile;
-	t_pos		step;
 	t_vec		delta;
-	t_vec		sdist;
+	t_vec		curr;
 	double		dist;
-	bool		side;
+	char		side;
+	t_vec		wall;
 }	t_ray;
 
 /**

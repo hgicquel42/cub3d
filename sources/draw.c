@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:50:59 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 15:19:25 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:24:55 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,22 +80,15 @@ void	ft_draw_column(t_img *img, t_wall *wall, int i)
 int	ft_get_wall_pixel(t_global *g, t_ray *ray, int i)
 {
 	(void)i;
-	if (ray->side == 0)
-		g->s.x_wall = ray->pos.y + ray->dist * ray->yaw.y;
-	else
-		g->s.x_wall = ray->pos.x + ray->dist * ray->yaw.x;
-	if (ray->side == 0 && ray->yaw.x < 0)
+	(void)g;
+	if (ray->side == RSIDE_NORTH)
 		return (0xFFFFFF);
-		// return (ft_get_wall_texture(g, ray, wall, &g->xpms.north));
-	else if (ray->side == 0 && ray->yaw.x >= 0)
+	else if (ray->side == RSIDE_SOUTH)
 		return (0x00FFFF);
-		// return (ft_get_wall_texture(g, ray, wall, &g->xpms.south));
-	else if (ray->side == 1 && ray->yaw.y < 0)
+	else if (ray->side == RSIDE_EAST)
 		return (0xFF00FF);
-		// return (ft_get_wall_texture(g, ray, wall, &g->xpms.west));
-	else if (ray->side == 1 && ray->yaw.y >= 0)
+	else if (ray->side == RSIDE_WEST)
 		return (0xFFFF00);
-		// return (ft_get_wall_texture(g, ray, wall, &g->xpms.east));
 	return (0);
 }
 

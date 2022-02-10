@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 08:33:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/09 18:12:08 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:45:51 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,17 @@ double	ft_maxf(double a, double b)
 	if (a > b)
 		return (a);
 	return (b);
+}
+
+/**
+ * @brief return sign of x
+ * 
+ * @param x 
+ * @return int 
+ */
+int	ft_sign(double x)
+{
+	if (x < 0)
+		return (-1);
+	return (1);
 }

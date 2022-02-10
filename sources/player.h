@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:28:18 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 17:29:22 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:33:33 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define PLAYER_H
 
 # include "utils/vector.h"
-
-# define ROT_SPEED 0.06
-# define MOV_SPEED 0.3
 
 typedef struct s_player
 {

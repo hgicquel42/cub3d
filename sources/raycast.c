@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:43:08 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 15:18:52 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:20:45 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ t_ray	ft_ray(t_vec pos, t_vec yaw)
 	ray.pos = pos;
 	ray.yaw = yaw;
 	ray.dist = 0;
-	ray.tile.x = pos.x;
-	ray.tile.y = pos.y;
 	ray.delta = ft_vecdelta(yaw);
 	return (ray);
 }
