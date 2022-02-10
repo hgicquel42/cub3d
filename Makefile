@@ -24,6 +24,7 @@ INPUT = ${addprefix \
 	hooks.c \
 	textures.c \
 	image.c \
+	move.c \
 	player.c \
 	keyboard.c \
 	raycast.c \

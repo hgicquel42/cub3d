@@ -6,13 +6,15 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:19:19 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 12:39:19 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 13:30:32 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "move.h"
 
+#include <math.h>
 #include "global.h"
+#include "utils/numbers.h"
 #include "utils/vector3.h"
 #include "parsing/pchars.h"
 
@@ -22,7 +24,7 @@
  * @param x 
  * @return double 
  */
-double	ft_smooth(double x)
+static double	ft_smooth(double x)
 {
 	if (x > 0)
 		return (ft_minf(0, x - 0.001));
@@ -31,9 +33,14 @@ double	ft_smooth(double x)
 	return (x);
 }
 
-void	ft_move_x(t_global *g, t_player *player)
+/**
+ * @brief move x
+ * 
+ * @param g 
+ * @param player 
+ */
+static void	ft_move_x(t_global *g, t_player *player)
 {
-	double		value;
 	t_vec		yaw;
 	t_vec		pos;
 
@@ -50,9 +57,14 @@ void	ft_move_x(t_global *g, t_player *player)
 	player->pos = pos;
 }
 
-void	ft_move_y(t_global *g, t_player *player)
+/**
+ * @brief move y
+ * 
+ * @param g 
+ * @param player 
+ */
+static void	ft_move_y(t_global *g, t_player *player)
 {
-	double		value;
 	t_vec		yaw;
 	t_vec		pos;
 
@@ -70,7 +82,13 @@ void	ft_move_y(t_global *g, t_player *player)
 	player->pos = pos;
 }
 
-void	ft_rotate(t_global *g, t_player *player)
+/**
+ * @brief rotate
+ * 
+ * @param g 
+ * @param player 
+ */
+static void	ft_rotate(t_global *g, t_player *player)
 {
 	t_vec	old;
 	double	val;
@@ -84,7 +102,12 @@ void	ft_rotate(t_global *g, t_player *player)
 	g->player.rotate = ft_smooth(g->player.rotate);
 }
 
-void	ft_move(t_global *g)
+/**
+ * @brief move player at each frame (60Hz)
+ * 
+ * @param g 
+ */
+void	ft_loop_move(t_global *g)
 {
 	t_player	*player;
 
