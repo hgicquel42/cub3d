@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:07:51 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 16:58:14 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 14:24:09 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@ t_vec	ft_vecneg(t_vec v);
  * @return t_vec 
  */
 t_vec	ft_vecdelta(t_vec v);
+
+/**
+ * @brief translate vector by movement
+ * 
+ * @param v vector
+ * @param m movement
+ * @return t_vec 
+ */
+t_vec	ft_vecmove(t_vec v, t_vec m);
 
 /**
  * @brief print vector

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:50:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 09:52:37 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:22:48 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@
 void	ft_draw_pixel(t_img *img, int x, int y, int color);
 
 /**
- * @brief draw column
+ * @brief draw screen column
  * 
- * @param img 
+ * @param g 
  * @param ray 
  * @param i 
  */
-void	ft_draw_column(t_global *g, t_ray *ray, t_wall *wall, int i);
+void	ft_draw_column(t_global *g, t_ray *ray, int i);
 
 #endif

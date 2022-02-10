@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:50:59 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 12:14:34 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:19:25 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,55 +59,68 @@ void	ft_draw_column(t_img *img, t_wall *wall, int i)
 
 //PROTOTYPE p
 // Mettre ray / wall ou j dans g || metre j dans ray ou wall pour norme
-int		ft_get_wall_texture(t_global *g, t_ray *ray, t_wall *wall, t_img *img) // Mettre ray / wall ou i dans g pour norme
-{
-	g->s.step = 1.0 * img->h / wall->height;
-	g->s.cord.x = (int)(g->s.x_wall * (double)img->w);
-	if (ray->side == 0 && ray->yaw.x > 0)
-		g->s.cord.x = img->w - g->s.cord.x - 1;
-	if (ray->side == 0 && ray->yaw.y < 0)
-		g->s.cord.x = img->w - g->s.cord.x -1;
-	g->s.pos = (wall->start - g->img.h / 2 + wall->height / 2) * g->s.step;
-	g->s.cord.y = floor(g->s.pos);
-	g->s.pos += g->s.step;
-	return ((int)img->data[g->s.cord.y * img->line / 4 + g->s.cord.x]);
-}
+// int		ft_get_wall_texture(t_global *g, t_ray *ray, int i, int h) // Mettre ray / wall ou i dans g pour norme
+// {
+// 	g->s.step = 1.0 * g->img.h / h;
+// 	g->s.cord.x = (int)(g->s.x_wall * (double)g->img.w);
+// 	if (ray->side == 0 && ray->yaw.x > 0)
+// 		g->s.cord.x = g->img.w - g->s.cord.x - 1;
+// 	if (ray->side == 0 && ray->yaw.y < 0)
+// 		g->s.cord.x = g->img.w - g->s.cord.x -1;
+// 	g->s.pos = (wall->start - g->img.h / 2 + wall->height / 2) * g->s.step;
+// 	g->s.cord.y = floor(g->s.pos);
+// 	g->s.pos += g->s.step;
+// 	return ((int)img->data[g->s.cord.y * img->line / 4 + g->s.cord.x]);
+// }
 
 
 // Doit renvoyer le pixel de la texture correspondant a j i
 // lamcer une fontion avec l'image corespondante a l'orientation
 
-int		ft_get_wall_pixel(t_global *g, t_ray *ray, t_wall *wall, int i)
+int	ft_get_wall_pixel(t_global *g, t_ray *ray, int i)
 {
 	(void)i;
 	if (ray->side == 0)
-		g->s.x_wall = ray->pos.y + wall->dist * ray->yaw.y;
+		g->s.x_wall = ray->pos.y + ray->dist * ray->yaw.y;
 	else
-		g->s.x_wall = ray->pos.x + wall->dist * ray->yaw.x;
+		g->s.x_wall = ray->pos.x + ray->dist * ray->yaw.x;
 	if (ray->side == 0 && ray->yaw.x < 0)
-		//return (0xFFFFFF);
-		return (ft_get_wall_texture(g, ray, wall, &g->xpms.north));
+		return (0xFFFFFF);
+		// return (ft_get_wall_texture(g, ray, wall, &g->xpms.north));
 	else if (ray->side == 0 && ray->yaw.x >= 0)
-		//return (0x00FFFF);
-		return (ft_get_wall_texture(g, ray, wall, &g->xpms.south));
+		return (0x00FFFF);
+		// return (ft_get_wall_texture(g, ray, wall, &g->xpms.south));
 	else if (ray->side == 1 && ray->yaw.y < 0)
-		//return (0xFF00FF);
-		return (ft_get_wall_texture(g, ray, wall, &g->xpms.west));
+		return (0xFF00FF);
+		// return (ft_get_wall_texture(g, ray, wall, &g->xpms.west));
 	else if (ray->side == 1 && ray->yaw.y >= 0)
-		//return (0xFFFF00);
-		return (ft_get_wall_texture(g, ray, wall, &g->xpms.east));
+		return (0xFFFF00);
+		// return (ft_get_wall_texture(g, ray, wall, &g->xpms.east));
 	return (0);
 }
 
-void	ft_draw_column(t_global *g, t_ray *ray, t_wall *wall, int i)
+/**
+ * @brief draw screen column
+ * 
+ * @param g 
+ * @param ray 
+ * @param i 
+ */
+void	ft_draw_column(t_global *g, t_ray *ray, int i)
 {
-	int	j;
+	int		j;
+	int		height;
+	int		start;
+	int		end;
 
 	j = 0;
-	while (j < wall->start && j < g->img.h)
+	height = g->img.h / ray->dist;
+	start = (g->img.h / 2) - (height / 2);
+	end = (g->img.h / 2) + (height / 2);
+	while (j < start && j < g->img.h)
 		ft_draw_pixel(&g->img, i, j++, ft_rgbtohex(g->map.header.floor));
-	while (j < wall->end && j < g->img.h)
-		ft_draw_pixel(&g->img, i, j++, ft_get_wall_pixel(g, ray, wall, i));
+	while (j < end && j < g->img.h)
+		ft_draw_pixel(&g->img, i, j++, ft_get_wall_pixel(g, ray, i));
 	while (j < g->img.h)
 		ft_draw_pixel(&g->img, i, j++, ft_rgbtohex(g->map.header.cell));
 }

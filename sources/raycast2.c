@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:23:12 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 19:36:13 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:10:07 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,16 @@
 #include "parsing/pchars.h"
 
 /**
- * @brief calculate wall
+ * @brief calculate ray dist
  * 
- * @param g 
  * @param ray 
  */
-void	ft_ray_wall(t_ray *ray, t_wall *wall, t_img *img)
+static void	ft_ray_end(t_ray *ray)
 {
 	if (!ray->side)
-		wall->dist = (ray->sdist.x - ray->delta.x);
+		ray->dist = (ray->sdist.x - ray->delta.x);
 	else
-		wall->dist = (ray->sdist.y - ray->delta.y);
-	wall->height = img->h / wall->dist;
-	wall->start = (img->h / 2) - (wall->height / 2);
-	wall->end = (img->h / 2) + (wall->height / 2);
+		ray->dist = (ray->sdist.y - ray->delta.y);
 }
 
 /**
@@ -41,7 +37,7 @@ void	ft_ray_wall(t_ray *ray, t_wall *wall, t_img *img)
  * @param ray 
  * @param body 
  */
-void	ft_ray_loop(t_ray *ray, char **body)
+static void	ft_ray_loop(t_ray *ray, char **body)
 {
 	while (!ft_iswall(body[ray->tile.x][ray->tile.y]))
 	{
@@ -65,11 +61,8 @@ void	ft_ray_loop(t_ray *ray, char **body)
  * 
  * @param ray 
  */
-void	ft_ray_init(t_ray *ray)
+static void	ft_ray_start(t_ray *ray)
 {
-	ray->tile.x = ray->pos.x;
-	ray->tile.y = ray->pos.y;
-	ray->delta = ft_vecdelta(ray->yaw);
 	if (ray->yaw.x < 0)
 	{
 		ray->step.x = -1;
@@ -90,4 +83,17 @@ void	ft_ray_init(t_ray *ray)
 		ray->step.y = 1;
 		ray->sdist.y = (ray->tile.y + 1.0 - ray->pos.y) * ray->delta.y;
 	}
+}
+
+/**
+ * @brief launch ray in body
+ * 
+ * @param ray 
+ * @param body 
+ */
+void	ft_ray_launch(t_ray *ray, char **body)
+{
+	ft_ray_start(ray);
+	ft_ray_loop(ray, body);
+	ft_ray_end(ray);
 }

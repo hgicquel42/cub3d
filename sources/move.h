@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:19:14 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 13:30:56 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:24:18 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,19 @@
 # include "global.h"
 
 /**
- * @brief move player at each frame (60Hz)
+ * @brief move
  * 
  * @param g 
+ * @param player 
  */
-void	ft_loop_move(t_global *g);
+void	ft_loop_move(t_global *g, t_player *p);
+
+/**
+ * @brief rotate
+ * 
+ * @param g 
+ * @param player 
+ */
+void	ft_loop_rotate(t_global *g, t_player *player);
 
 #endif

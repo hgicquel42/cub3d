@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:22:40 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 16:34:50 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:10:36 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,11 @@
 # include "global.h"
 
 /**
- * @brief calculate wall
- * 
- * @param g 
- * @param ray 
- */
-void	ft_ray_wall(t_ray *ray, t_wall *wall, t_img *img);
-
-/**
- * @brief loop ray until it hits a wall
+ * @brief launch ray in body
  * 
  * @param ray 
  * @param body 
  */
-void	ft_ray_loop(t_ray *ray, char **body);
-
-/**
- * @brief init ray tile, delta and side distance
- * 
- * @param ray 
- */
-void	ft_ray_init(t_ray *ray);
+void	ft_ray_launch(t_ray *ray, char **body);
 
 #endif

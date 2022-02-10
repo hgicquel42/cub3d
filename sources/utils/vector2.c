@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:55:15 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 19:33:17 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 14:38:15 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@
  */
 t_vec	ft_vecnorm(t_vec v)
 {
-	return (ft_vecdiv(v, ft_veclen(v)));
+	double	l;
+
+	l = ft_veclen(v);
+	if (!l)
+		return (ft_veczero());
+	return (ft_vecdiv(v, l));
 }
 
 /**

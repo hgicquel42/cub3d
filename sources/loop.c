@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:44:09 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 13:29:11 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:24:32 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,28 @@ t_vec	ft_cam(t_player *player)
 	return (ft_vecmul(ft_vecperpn(player->yaw), 0.60));
 }
 
-t_vec	ft_ray(t_vec cam, t_player *player, double o)
+t_vec	ft_yaw(t_vec cam, t_player *player, double o)
 {
 	return (ft_vecadd(player->yaw, ft_vecmul(cam, o)));
 }
 
-void	ft_loop_draw(t_global *g)
+void	ft_loop_draw(t_global *g, t_player *p)
 {
 	int		i;
 	double	o;
 	t_vec	cam;
+	t_vec	yaw;
 	t_ray	ray;
-	t_wall	wall;
 
-	cam = ft_cam(&g->player);
+	cam = ft_cam(p);
 	i = 0;
 	while (i < g->img.w)
 	{
 		o = 2 * i / (double) g->img.w - 1;
-		ray.pos = g->player.pos;
-		ray.yaw = ft_ray(cam, &g->player, o);
-		ft_ray_init(&ray);
-		ft_ray_loop(&ray, g->map.body);
-		ft_ray_wall(&ray, &wall, &g->img);
-		ft_draw_column(g, &ray, &wall, i);
+		yaw = ft_yaw(cam, p, o);
+		ray = ft_ray(p->pos, yaw);
+		ft_ray_launch(&ray, g->map.body);
+		ft_draw_column(g, &ray, i);
 		i++;
 	}
 }
@@ -77,9 +75,13 @@ void	ft_loop_keys(t_global *g)
  */
 bool	ft_loop(t_global *g)
 {
+	t_player	*p;
+
+	p = &g->player;
 	ft_loop_keys(g);
-	ft_loop_move(g);
-	ft_loop_draw(g);
+	ft_loop_move(g, p);
+	ft_loop_rotate(g, p);
+	ft_loop_draw(g, p);
 	ft_image_put(&g->mlx, &g->img);
 	return (true);
 }

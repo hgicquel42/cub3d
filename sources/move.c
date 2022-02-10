@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:19:19 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 13:30:32 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:26:28 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <math.h>
 #include "global.h"
+#include "raycast2.h"
 #include "utils/numbers.h"
 #include "utils/vector3.h"
 #include "parsing/pchars.h"
@@ -34,52 +35,29 @@ static double	ft_smooth(double x)
 }
 
 /**
- * @brief move x
+ * @brief move
  * 
  * @param g 
  * @param player 
  */
-static void	ft_move_x(t_global *g, t_player *player)
+void	ft_loop_move(t_global *g, t_player *p)
 {
-	t_vec		yaw;
-	t_vec		pos;
+	t_vec		axis;
+	t_vec		move;
+	t_ray		ray;
 
-	if (!player->move.x)
-		return ;
+	axis = ft_vecmove(p->yaw, p->move);
+	ray = ft_ray(p->pos, axis);
+	ft_ray_launch(&ray, g->map.body);
 	if (g->keys.shift)
-		yaw = ft_vecmul(player->yaw, player->move.x * 0.2);
+		move = ft_vecmul(axis, 0.2);
 	else
-		yaw = ft_vecmul(player->yaw, player->move.x * 0.1);
-	pos = ft_vecadd(player->pos, yaw);
-	if (ft_iswall(g->map.body[(int)pos.x][(int)pos.y]))
+		move = ft_vecmul(axis, 0.1);
+	if (ft_veclen(move) > ray.dist)
 		return ;
-	player->move.x = ft_smooth(player->move.x);
-	player->pos = pos;
-}
-
-/**
- * @brief move y
- * 
- * @param g 
- * @param player 
- */
-static void	ft_move_y(t_global *g, t_player *player)
-{
-	t_vec		yaw;
-	t_vec		pos;
-
-	if (!player->move.y)
-		return ;
-	if (g->keys.shift)
-		yaw = ft_vecmul(player->yaw, player->move.y * 0.2);
-	else
-		yaw = ft_vecmul(player->yaw, player->move.y * 0.1);
-	yaw = ft_vecperpp(yaw);
-	pos = ft_vecadd(player->pos, yaw);
-	if (ft_iswall(g->map.body[(int)pos.x][(int)pos.y]))
-		return ;
-	player->move.y = ft_smooth(player->move.y);
-	player->pos = pos;
+	p->move.x = ft_smooth(p->move.y);
+	p->move.y = ft_smooth(p->move.y);
+	p->pos = ft_vecadd(p->pos, move);
 }
 
 /**
@@ -88,7 +66,7 @@ static void	ft_move_y(t_global *g, t_player *player)
  * @param g 
  * @param player 
  */
-static void	ft_rotate(t_global *g, t_player *player)
+void	ft_loop_rotate(t_global *g, t_player *player)
 {
 	t_vec	old;
 	double	val;
@@ -100,19 +78,4 @@ static void	ft_rotate(t_global *g, t_player *player)
 	g->player.yaw.x = old.x * cos(val) - old.y * sin(val);
 	g->player.yaw.y = old.x * sin(val) + old.y * cos(val);
 	g->player.rotate = ft_smooth(g->player.rotate);
-}
-
-/**
- * @brief move player at each frame (60Hz)
- * 
- * @param g 
- */
-void	ft_loop_move(t_global *g)
-{
-	t_player	*player;
-
-	player = &g->player;
-	ft_move_x(g, player);
-	ft_move_y(g, player);
-	ft_rotate(g, player);
 }
