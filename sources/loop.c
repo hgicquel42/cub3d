@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:44:09 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 15:24:32 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 18:33:18 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 t_vec	ft_cam(t_player *player)
 {
-	return (ft_vecmul(ft_vecperpn(player->yaw), 0.60));
+	return (ft_vecmul(ft_vecperpn(player->yaw), 0.9));
 }
 
 t_vec	ft_yaw(t_vec cam, t_player *player, double o)

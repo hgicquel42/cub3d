@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:08:11 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 14:38:51 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/10 18:46:02 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ t_vec	ft_vecmove(t_vec v, t_vec m)
 	t_vec	x;
 	t_vec	y;
 
-	m = ft_vecnorm(m);
+	if (ft_veclen(m) > 1)
+		m = ft_vecnorm(m);
 	x = ft_vecmul(v, m.x);
 	y = ft_vecmul(ft_vecperpp(v), m.y);
 	return (ft_vecadd(x, y));
