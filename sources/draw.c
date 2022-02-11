@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:50:59 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/11 14:18:34 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/11 14:58:42 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@
 #include "wall.h"
 #include <stdio.h>
 
-static unsigned int	*ft_data(t_img *img, int i)
-{
-	return ((unsigned int *) &img->data[i]);
-}
-
 /**
  * @brief get pixel at (x y)
  * 
@@ -35,32 +30,10 @@ static unsigned int	*ft_data(t_img *img, int i)
  */
 unsigned int	*ft_pixel(t_img *img, int x, int y)
 {
-	return (ft_data(img, (y * img->line) + (x * 4)));
-}
+	int				pos;
 
-void	ft_get_wall_texture(t_global *g, t_ray *r, t_wall *w, int j)
-{
-	unsigned int	color;
-	double			step;
-	double			curr;
-	t_pos			cords;
-
-	cords.x = (int)(w->x * (double)w->t->w);
-	if (r->side == RSIDE_SOUTH || r->side == RSIDE_WEST)
-		cords.x = w->t->w - cords.x -1;
-	step = 1.0 * w->t->h / w->h;
-	curr = (w->b - g->img.h / 2 + w->h / 2) * step;
-	while (j < w->e && j < g->img.h)
-	{
-		cords.y = floor(curr);
-		curr += step;
-		if (j < g->img.h && w->i < g->img.w)
-		{
-			color = *ft_pixel(w->t, cords.x, cords.y);
-			*ft_pixel(&g->img, w->i, j) = color;
-		}
-		j++;
-	}
+	pos = ((img->h - y - 1) * img->line) + (x * 4);
+	return ((unsigned int *) &img->data[pos]);
 }
 
 static t_img	*ft_get_xpm(t_ray *ray, t_xpms *xpms)
@@ -73,6 +46,30 @@ static t_img	*ft_get_xpm(t_ray *ray, t_xpms *xpms)
 		return (&xpms->east);
 	else
 		return (&xpms->west);
+}
+
+static int	ft_draw_wall(t_global *g, t_ray *r, t_wall *w, int j)
+{
+	unsigned int	color;
+	double			step;
+	double			curr;
+	t_pos			cords;
+
+	cords.x = (int)(w->x * (double)w->t->w);
+	cords.y = 0;
+	if (r->side == RSIDE_SOUTH || r->side == RSIDE_WEST)
+		cords.x = w->t->w - cords.x - 1;
+	step = 1.0 * w->t->h / w->h;
+	curr = (w->b - (g->img.h / 2) + (w->h / 2)) * step;
+	while (j < w->e && j < g->img.h)
+	{
+		cords.y = (int) curr & (w->t->h - 1);
+		color = *ft_pixel(w->t, cords.x, cords.y);
+		*ft_pixel(&g->img, w->i, j) = color;
+		curr += step;
+		j++;
+	}
+	return (j);
 }
 
 /**
@@ -91,10 +88,9 @@ void	ft_draw_column(t_global *g, t_ray *ray, int i)
 	j = 0;
 	t = ft_get_xpm(ray, &g->xpms);
 	w = ft_wall(ray, &g->img, t, i);
-	while (j < w.b)
+	while (j < w.b && j < g->img.h)
 		*ft_pixel(&g->img, i, j++) = ft_rgbtohex(g->map.header.floor);
-	ft_get_wall_texture(g, ray, &w, j);
-	j = w.e;
+	j = ft_draw_wall(g, ray, &w, j);
 	while (j < g->img.h)
 		*ft_pixel(&g->img, i, j++) = ft_rgbtohex(g->map.header.cell);
 }
