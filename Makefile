@@ -30,6 +30,7 @@ INPUT = ${addprefix \
 	raycast.c \
 	raycast2.c \
 	path.c \
+	wall.c \
 	loop.c \
 	draw.c \
 	minimap.c \

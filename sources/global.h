@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:43:36 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 12:26:41 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/11 13:51:21 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,11 @@ typedef struct s_map
 	char		**body;
 }				t_map;
 
-typedef struct s_sprite
-{
-	double	x_wall;
-	double	step;
-	double	pos;
-	t_pos	cord;
-}	t_sprite;
-
 typedef struct s_global
 {
 	t_map		map;
 	t_mlx		mlx;
 	t_player	player;
-	t_sprite	s;
 	t_img		img;
 	t_xpms		xpms;
 	t_keys		keys;

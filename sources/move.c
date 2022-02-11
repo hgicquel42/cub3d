@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:19:19 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 19:52:47 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/11 14:28:21 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
  * @param x 
  * @return double 
  */
-static double	ft_smooth(double x)
+static double	ft_smooth(double x, double s)
 {
 	if (x > 0)
-		return (ft_maxf(0, x - 0.5));
+		return (ft_maxf(0, x - s));
 	if (x < 0)
-		return (ft_minf(0, x + 0.5));
+		return (ft_minf(0, x + s));
 	return (x);
 }
 
@@ -58,8 +58,8 @@ void	ft_loop_move(t_global *g, t_player *p)
 		ray = ft_ray(p->pos, ft_vecnorm(move));
 		ft_ray_launch(&ray, g->map.body);
 	}
-	p->move.x = ft_smooth(p->move.x);
-	p->move.y = ft_smooth(p->move.y);
+	p->move.x = ft_smooth(p->move.x, 0.5);
+	p->move.y = ft_smooth(p->move.y, 0.5);
 	p->pos = ft_vecadd(p->pos, move);
 }
 
@@ -76,8 +76,8 @@ void	ft_loop_rotate(t_global *g, t_player *p)
 
 	(void)g;
 	old = p->yaw;
-	val = p->rotate * 0.1;
+	val = p->rotate * 0.15;
 	p->yaw.x = old.x * cos(val) - old.y * sin(val);
 	p->yaw.y = old.x * sin(val) + old.y * cos(val);
-	p->rotate = ft_smooth(p->rotate);
+	p->rotate = ft_smooth(p->rotate, 0.5);
 }

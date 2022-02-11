@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 11:01:37 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/11 11:36:55 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/11 13:44:58 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_print_player(t_img map, t_pos pos)
 		pos.x = 105;
 		while (pos.x < 115)
 		{
-			ft_draw_pixel(&map, pos.y, pos.x, 0xffffff);
+			*ft_pixel(&map, pos.y, pos.x) = 0xffffff;
 			pos.x++;
 		}
 		pos.y++;
@@ -45,7 +45,7 @@ void	ft_print_map(t_img map, t_pos *pos, int i, int color)
 		pos->x = k - 20;
 		while (pos->x < k)
 		{
-			ft_draw_pixel(&map, pos->y, pos->x, color);
+			*ft_pixel(&map, pos->y, pos->x) = color;
 			pos->x++;
 		}
 		pos->y++;

@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:23:12 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/11 12:15:40 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/11 14:07:11 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	ft_ray_move(t_ray *ray, t_path *path, bool xgty)
 }
 
 /**
- * @brief calculate wall hit on x
+ * @brief calculate wall hit on x (side == 1)
  * 
  * @param ray 
  * @param path 
@@ -81,7 +81,7 @@ static void	ft_ray_end_xgty(t_ray *ray, t_path *path)
 }
 
 /**
- * @brief calculate wall hit on y
+ * @brief calculate wall hit on y (side == 0)
  * 
  * @param ray 
  * @param path 

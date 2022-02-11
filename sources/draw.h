@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:50:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 15:22:48 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/11 13:44:08 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 # include "global.h"
 
 /**
- * @brief draw single pixel
+ * @brief get pixel at (x y)
  * 
- * @param img img struct
- * @param x pixel x
- * @param y pixel y
- * @param color pixel color
+ * @param img 
+ * @param x 
+ * @param y 
+ * @return unsigned int* 
  */
-void	ft_draw_pixel(t_img *img, int x, int y, int color);
+unsigned int	*ft_pixel(t_img *img, int x, int y);
 
 /**
  * @brief draw screen column
