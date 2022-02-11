@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pbody.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:23:03 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/11 09:05:02 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/11 12:05:36 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,36 +17,43 @@
 #include "utils/vector3.h"
 #include "pchars.h"
 
-static bool	ft_body_check_chars(char **body)
+static bool	ft_body_check_line(char **body, int i, int k)
+{
+	int	j;
+	int	l;
+
+	j = 0;
+	l = ft_strlen(body[i]) - 1;
+	(void)l;
+	(void)k;
+	while (body[i][j])
+	{
+		if (!ft_ismap(body[i][j]))
+			return (false);
+		if (!ft_iswall(body[i][j]))
+		{
+			if (i == 0 || i == k || j == 0 || j == l)
+				return (false);
+			if (j > ft_strlen(body[i - 1]) - 1)
+				return (false);
+			if (j > ft_strlen(body[i + 1]) - 1)
+				return (false);
+		}
+		j++;
+	}
+	return (true);
+}
+
+static bool	ft_body_check_lines(char **body)
 {
 	int	i;
-	int	j;
 	int	k;
-	int	l;
 
 	i = 0;
 	k = ft_ptrlen((void **) body) - 1;
 	while (body[i])
-	{
-		j = 0;
-		l = ft_strlen(body[i]) - 1;
-		while (body[i][j])
-		{
-			if (!ft_ismap(body[i][j]))
-				return (false);
-			if ((i == 0 || i == k) && !ft_iswall(body[i][j]))
-				return (false);
-			if ((j == 0 || j == l) && !ft_iswall(body[i][j]))
-				return (false);
-			if (ft_isfloor(body[i][j]))
-			{
-				if (!body[i + 1][j] || !body[i - 1][j])
-					return (false);
-			}
-			j++;
-		}
-		i++;
-	}
+		if (!ft_body_check_line(body, i++, k))
+			return (false);
 	return (true);
 }
 
@@ -101,7 +108,7 @@ static bool	ft_body_parse_player(char **body, t_player *player)
  */
 bool	ft_body_parse(t_global *g, char **body)
 {
-	if (!ft_body_check_chars(body))
+	if (!ft_body_check_lines(body))
 		return (false);
 	if (!ft_body_parse_player(body, &g->player))
 		return (false);
