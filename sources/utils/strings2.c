@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strings2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 08:44:11 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/08 15:35:45 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/11 14:41:27 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,20 @@ char	*ft_strtrim(char *s, bool (*f)(char c))
 	while (b > a && f(s[b - 1]))
 		b--;
 	return (ft_substr(s, a, b));
+}
+
+/**
+ * @brief return double tab len
+ * 
+ * @param tab 
+ * @return int 
+ */
+int	ft_maplen(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
 }

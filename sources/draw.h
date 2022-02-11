@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:50:55 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/11 13:44:08 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/11 14:37:51 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ unsigned int	*ft_pixel(t_img *img, int x, int y);
  * @param ray 
  * @param i 
  */
-void	ft_draw_column(t_global *g, t_ray *ray, int i);
+void			ft_draw_column(t_global *g, t_ray *ray, int i);
 
 #endif
