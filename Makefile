@@ -29,6 +29,7 @@ INPUT = ${addprefix \
 	keyboard.c \
 	raycast.c \
 	raycast2.c \
+	path.c \
 	loop.c \
 	draw.c \
 	minimap.c \

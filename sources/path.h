@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast.c                                          :+:      :+:    :+:   */
+/*   path.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 18:43:08 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/11 12:09:24 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/11 12:11:55 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/11 12:13:19 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycast.h"
+#ifndef PATH_H
+# define PATH_H
 
-#include "utils/vector3.h"
+# include "raycast.h"
+
+typedef struct s_path
+{
+	t_pos	tile;
+	t_pos	step;
+	t_vec	delta;
+}	t_path;
 
 /**
- * @brief create ray from pos to yaw
+ * @brief path for raycast calculus
  * 
- * @param pos 
- * @param yaw 
- * @return t_ray 
+ * @param ray 
+ * @return t_path 
  */
-t_ray	ft_ray(t_vec pos, t_vec yaw)
-{
-	t_ray	ray;
+t_path	ft_path(t_ray *ray);
 
-	ray.pos = pos;
-	ray.yaw = yaw;
-	ray.dist = 0;
-	return (ray);
-}
+#endif

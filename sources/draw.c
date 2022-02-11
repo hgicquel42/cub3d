@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:50:59 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/11 11:01:06 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/11 12:25:54 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,35 +60,35 @@ void	ft_draw_column(t_img *img, t_wall *wall, int i)
 */
 
 //PROTOTYPE p
-int		ft_get_wall_texture(t_global *g, t_ray *ray, t_img *img, int i, int j, t_wall *wall) // Mettre ray / wall ou i dans g pour norme
+int		ft_get_wall_texture(t_global *g, t_ray *ray, t_img *xpm, int i, int j, t_wall *wall) // Mettre ray / wall ou i dans g pour norme
 {
 	unsigned int	*t;
 	unsigned int	*d;
 	
 	// printf("start = %d\n", wall->start);
-	t = ft_image_addr(img, 0);
+	t = ft_image_addr(xpm, 0);
 	d = ft_image_addr(&g->img, 0);
 	// printf("x_wall = %f\n", g->s.x_wall);
 	// printf("img->w = %d\n", img->w);
-	g->s.cord.x = (int)(g->s.x_wall * (double)img->w);
+	g->s.cord.x = (int)(g->s.x_wall * (double)xpm->w);
 	if (ray->side == 0 && ray->yaw.x > 0)
-		g->s.cord.x = img->w - g->s.cord.x -1;
+		g->s.cord.x = xpm->w - g->s.cord.x -1;
 	if (ray->side == 0 && ray->yaw.y < 0)
-		g->s.cord.x = img->w - g->s.cord.x -1;
+		g->s.cord.x = xpm->w - g->s.cord.x -1;
 	// printf("X = %d\n", g->s.cord.x);
 	// printf("img->h = %d wall->h = %d\n", img->h, wall->h);
-	g->s.step = 1.0 * img->h / wall->h;
+	g->s.step = 1.0 * xpm->h / wall->h;
 	g->s.pos = (wall->start - g->img.h / 2 + wall->h / 2) * g->s.step;
 	// printf("step = %f, pos = %f\n", g->s.step, g->s.pos);
 	// exit (0);
 	// printf("j = %d wall->start = %d\n", j, wall->start);
-	while (j < wall->end)
+	while (j < wall->end && j < g->img.h)
 	{
 		g->s.cord.y = floor(g->s.pos);
 		g->s.pos += g->s.step;
 		if (j < g->img.h && i < g->img.w)
 		{
-			d[j * g->img.line / 4 + i] = t[g->s.cord.y * img->line / 4 + g->s.cord.x];
+			d[j * g->img.line / 4 + i] = t[g->s.cord.y * xpm->line / 4 + g->s.cord.x];
 		}
 		j++;
 	}
@@ -139,8 +139,8 @@ void	ft_draw_column(t_global *g, t_ray *ray, int i)
 	wall.end = (g->img.h / 2) + (wall.h / 2);
 	while (j < wall.start)
 		ft_draw_pixel(&g->img, i, j++, ft_rgbtohex(g->map.header.floor));
-	// while (j < end && j < g->img.h)
-		// ft_draw_pixel(&g->img, i, j++, ft_get_wall_pixel(g, ray, i, j));
+	// while (j < wall.end && j < g->img.h)
+	// 	ft_draw_pixel(&g->img, i, j++, 0x00000);
 	ft_get_wall_pixel(g, ray, i, j, &wall);
 	j = wall.end;
 	while (j < g->img.h)

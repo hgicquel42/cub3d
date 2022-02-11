@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast.c                                          :+:      :+:    :+:   */
+/*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 18:43:08 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/11 12:09:24 by hgicquel         ###   ########.fr       */
+/*   Created: 2022/02/11 12:12:14 by hgicquel          #+#    #+#             */
+/*   Updated: 2022/02/11 12:16:12 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycast.h"
+#include "path.h"
 
+#include "utils/numbers.h"
 #include "utils/vector3.h"
 
 /**
- * @brief create ray from pos to yaw
+ * @brief path for raycast calculus
  * 
- * @param pos 
- * @param yaw 
- * @return t_ray 
+ * @param ray 
+ * @return t_path 
  */
-t_ray	ft_ray(t_vec pos, t_vec yaw)
+t_path	ft_path(t_ray *ray)
 {
-	t_ray	ray;
+	t_path	path;
 
-	ray.pos = pos;
-	ray.yaw = yaw;
-	ray.dist = 0;
-	return (ray);
+	path.tile.x = ray->pos.x;
+	path.tile.y = ray->pos.y;
+	path.step.x = ft_sign(ray->yaw.x);
+	path.step.y = ft_sign(ray->yaw.y);
+	path.delta = ft_vecdelta(ray->yaw);
+	return (path);
 }
