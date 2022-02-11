@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:44:09 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/10 18:33:18 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/11 11:07:05 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "raycast2.h"
 #include "math.h"
 #include "move.h"
+#include "minimap.h"
 
 t_vec	ft_cam(t_player *player)
 {
@@ -83,5 +84,6 @@ bool	ft_loop(t_global *g)
 	ft_loop_rotate(g, p);
 	ft_loop_draw(g, p);
 	ft_image_put(&g->mlx, &g->img);
+	ft_minimap(g);
 	return (true);
 }

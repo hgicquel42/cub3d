@@ -31,6 +31,7 @@ INPUT = ${addprefix \
 	raycast2.c \
 	loop.c \
 	draw.c \
+	minimap.c \
 	main.c \
 }
 

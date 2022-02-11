@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wall.h                                             :+:      :+:    :+:   */
+/*   minimap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 14:59:00 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/11 09:22:25 by vpiamias         ###   ########.fr       */
+/*   Created: 2022/02/11 11:01:50 by vpiamias          #+#    #+#             */
+/*   Updated: 2022/02/11 11:05:04 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WALL_H
-# define WALL_H
+#ifndef MINIMAP_H
+# define MINIMAP_H
 
-typedef struct s_wall
-{
-	int	h;
-	int	start;
-	int	end;
-}	t_wall;
+# include "global.h"
+
+void	ft_minimap(t_global *g);
+
 
 #endif

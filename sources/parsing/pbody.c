@@ -6,7 +6,7 @@
 /*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:23:03 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/10 10:40:58 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/11 09:05:02 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ static bool	ft_body_check_chars(char **body)
 				return (false);
 			if ((j == 0 || j == l) && !ft_iswall(body[i][j]))
 				return (false);
+			if (ft_isfloor(body[i][j]))
+			{
+				if (!body[i + 1][j] || !body[i - 1][j])
+					return (false);
+			}
 			j++;
 		}
 		i++;
