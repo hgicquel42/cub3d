@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:43:36 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/11 13:51:21 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/11 15:10:20 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_global
 	t_mlx		mlx;
 	t_player	player;
 	t_img		img;
+	t_img		mmap;
 	t_xpms		xpms;
 	t_keys		keys;
 }				t_global;

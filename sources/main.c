@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/09 19:05:14 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/11 15:21:33 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ int	main(int argc, char **argv)
 		return (ft_error(&g, "Invalid header\n"));
 	if (!ft_body_parse(&g, g.map.body))
 		return (ft_error(&g, "Invalid body\n"));
-	if (!ft_minilibx_init(&g.mlx, &g.img))
+	if (!ft_minilibx_init(&g.mlx, &g.img, &g.mmap))
 		return (ft_error(&g, "Could not create window\n"));
 	if (!ft_textures_load(&g.mlx, &g.xpms, &g.map.header))
 		return (ft_error(&g, "Could not load textures\n"));
 	ft_minilibx_hook(&g);
 	mlx_loop(g.mlx.ptr);
 	ft_textures_free(&g.mlx, &g.xpms);
-	ft_minilibx_free(&g.mlx, &g.img);
+	ft_minilibx_free(&g.mlx, &g.img, &g.mmap);
 	ft_global_free(&g);
 	return (0);
 }

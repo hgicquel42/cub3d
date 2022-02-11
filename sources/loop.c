@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 11:44:09 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/11 12:24:26 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/11 15:21:09 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ bool	ft_loop(t_global *g)
 	ft_loop_move(g, p);
 	ft_loop_rotate(g, p);
 	ft_loop_draw(g, p);
-	ft_image_put(&g->mlx, &g->img);
-	ft_minimap(g);
+	ft_loop_minimap(g);
+	ft_image_put(&g->mlx, &g->img, 0, 0);
+	ft_image_put(&g->mlx, &g->mmap, 20, 20);
 	return (true);
 }

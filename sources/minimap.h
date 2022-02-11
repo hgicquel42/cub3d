@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 11:01:50 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/11 14:40:17 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/11 15:22:13 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 # include "global.h"
 
 /**
- * @brief manage minimap
+ * @brief create minimap at each frame
  * 
  * @param g 
  */
-void	ft_minimap(t_global *g);
+void	ft_loop_minimap(t_global *g);
 
 /**
  * @brief print mini_map on screen
@@ -30,7 +30,7 @@ void	ft_minimap(t_global *g);
  * @param pos 
  * @param play 
  */
-void	ft_print_map(t_global *g, t_img map, t_pos pos, t_pos play);
+void	ft_print_map(t_global *g, t_img *map, t_pos pos, t_pos play);
 
 /**
  * @brief Check if map can be display
@@ -50,7 +50,7 @@ bool	ft_check_map(t_global *g, int i, int j);
  * @param pos 
  * @param color 
  */
-void	ft_print_case(t_img map, t_pos pos, int color);
+void	ft_print_case(t_img *map, t_pos pos, int color);
 
 /**
  * @brief Print player on minimap
@@ -58,6 +58,6 @@ void	ft_print_case(t_img map, t_pos pos, int color);
  * @param map 
  * @param pos 
  */
-void	ft_print_player(t_img map, t_pos pos);
+void	ft_print_player(t_img *map, t_pos pos);
 
 #endif

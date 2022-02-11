@@ -6,7 +6,7 @@
 /*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:57:05 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/09 19:21:33 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/11 15:20:40 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ bool	ft_image_init(t_img *img);
  * @param mlx mlx
  * @param img img
  */
-void	ft_image_put(t_mlx *mlx, t_img *img);
+void	ft_image_put(t_mlx *mlx, t_img *img, int x, int y);
 
 /**
  * @brief init minilibx
@@ -45,13 +45,13 @@ void	ft_image_put(t_mlx *mlx, t_img *img);
  * @param mlx mlx struct
  * @return false if failed
  */
-bool	ft_minilibx_init(t_mlx *mlx, t_img *img);
+bool	ft_minilibx_init(t_mlx *mlx, t_img *img, t_img *mmap);
 
 /**
  * @brief free minilibx
  * 
  * @param mlx mlx struct
  */
-void	ft_minilibx_free(t_mlx *mlx, t_img *img);
+void	ft_minilibx_free(t_mlx *mlx, t_img *img, t_img *mmap);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 11:01:37 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/11 14:40:51 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/11 15:32:09 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 #include "positions.h"
 #include "draw.h"
 #include "parsing/pchars.h"
-#include "string.h"
 #include "utils/strings.h"
-#include "stdbool.h"
 #include "utils/strings2.h"
+#include "utils/colors.h"
 
 /**
  * @brief Print player on minimap
@@ -27,7 +26,7 @@
  * @param map 
  * @param pos 
  */
-void	ft_print_player(t_img map, t_pos pos)
+void	ft_print_player(t_img *map, t_pos pos)
 {
 	pos.y = 105;
 	while (pos.y < 115)
@@ -35,7 +34,7 @@ void	ft_print_player(t_img map, t_pos pos)
 		pos.x = 105;
 		while (pos.x < 115)
 		{
-			*ft_pixel(&map, pos.y, pos.x) = 0xff0000;
+			*ft_pixel(map, pos.x, pos.y) = 0xffffff;
 			pos.x++;
 		}
 		pos.y++;
@@ -49,7 +48,7 @@ void	ft_print_player(t_img map, t_pos pos)
  * @param pos 
  * @param color 
  */
-void	ft_print_case(t_img map, t_pos pos, int color)
+void	ft_print_case(t_img *map, t_pos pos, int color)
 {
 	int	j;
 	int	k;
@@ -61,7 +60,7 @@ void	ft_print_case(t_img map, t_pos pos, int color)
 		pos.y = j - 20;
 		while (pos.y < j)
 		{
-			*ft_pixel(&map, pos.x, pos.y) = color;
+			*ft_pixel(map, pos.x, pos.y) = color;
 			pos.y++;
 		}
 		pos.x++;
@@ -100,7 +99,7 @@ bool	ft_check_map(t_global *g, int i, int j)
  * @param pos 
  * @param play 
  */
-void	ft_print_map(t_global *g, t_img map, t_pos pos, t_pos play)
+void	ft_print_map(t_global *g, t_img *map, t_pos pos, t_pos play)
 {
 	int	i;
 	int	j;
@@ -113,11 +112,11 @@ void	ft_print_map(t_global *g, t_img map, t_pos pos, t_pos play)
 		while (j < 6)
 		{
 			if (!ft_check_map(g, i, j))
-				ft_print_case(map, pos, 0x000000);
-			else if (g->map.body[play.x + i][play.y + j] == '0')
+				ft_print_case(map, pos, ft_rgbtohex(g->map.header.cell));
+			else if (ft_iswall(g->map.body[play.x + i][play.y + j]))
 				ft_print_case(map, pos, 0xffffff);
-			else if (g->map.body[play.x + i][play.y + j] == '1')
-				ft_print_case(map, pos, 0xababab);
+			else
+				ft_print_case(map, pos, ft_rgbtohex(g->map.header.floor));
 			pos.y += 20;
 			j++;
 		}
@@ -131,9 +130,8 @@ void	ft_print_map(t_global *g, t_img map, t_pos pos, t_pos play)
  * 
  * @param g 
  */
-void	ft_minimap(t_global *g)
+void	ft_loop_minimap(t_global *g)
 {
-	t_img	map;
 	t_pos	pos;
 	t_pos	play;
 
@@ -141,9 +139,6 @@ void	ft_minimap(t_global *g)
 	pos.x = 0;
 	play.x = (int)g->player.pos.x;
 	play.y = (int)g->player.pos.y;
-	map.ptr = mlx_new_image(g->mlx.ptr, 220, 220);
-	map.data = mlx_get_data_addr(map.ptr, &map.bpp, &map.line, &map.end);
-	ft_print_map(g, map, pos, play);
-	ft_print_player(map, pos);
-	mlx_put_image_to_window(g->mlx.ptr, g->mlx.win, map.ptr, 20, 20);
+	ft_print_map(g, &g->mmap, pos, play);
+	ft_print_player(&g->mmap, pos);
 }
