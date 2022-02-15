@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pchars.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:59:37 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 15:16:08 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/15 11:26:42 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,14 @@ bool	ft_isplayer(char c);
  * @return false 
  */
 bool	ft_ismap(char c);
+
+/**
+ * @brief check if c is a body char also '\n
+ * 
+ * @param c 
+ * @return true 
+ * @return false 
+ */
+bool	ft_isbody(char c);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pheader.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 19:02:48 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/08 15:48:27 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/15 12:22:31 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,45 @@ bool	ft_header_parse(t_global *g, char **lines, t_header *header)
 		return (false);
 	g->map.body = g->map.lines + i;
 	return (true);
+}
+
+int	ft_header_size2(char *array, int i)
+{
+	while (array[i] != '\n')
+		i++;
+	return (i);
+}
+
+/**
+ * @brief Return i at start of body
+ * 
+ * @param array 
+ * @return int 
+ */
+int	ft_header_size(char *array)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (array[i])
+	{
+		if (array[i] == 'N' && array[i + 1] == 'O')
+			count++;
+		if (array[i] == 'S' && array[i + 1] == 'O')
+			count++;
+		if (array[i] == 'W' && array[i + 1] == 'E')
+			count++;
+		if (array[i] == 'E' && array[i + 1] == 'A')
+			count++;
+		if (array[i] == 'C')
+			count++;
+		if (array[i] == 'F')
+			count++;
+		if (count == 6)
+			return (ft_header_size2(array, i));
+		i++;
+	}
+	return (-1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/11 15:21:33 by hgicquel         ###   ########.fr       */
+/*   Updated: 2022/02/15 12:21:51 by vpiamias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include "utils/vector3.h"
 #include "parsing/pheader.h"
 #include "parsing/pbody.h"
+#include "parsing/pchars.h"
 #include "global.h"
 #include "textures.h"
 #include "hooks.h"
@@ -33,11 +34,43 @@ static int	ft_error(t_global *g, char *s)
 	return (1);
 }
 
+static bool	ft_is_finish(char *array, int i)
+{
+	while (array[i] == '\n')
+		i++;
+	if (array[i] == '\0')
+		return (true);
+	return (false);
+}
+
+static bool	ft_check_line(char *array)
+{
+	int	i;
+
+	i = ft_header_size(array);
+	if (i < 0)
+		return (false);
+	while (ft_isnline(array[i]))
+		i++;
+	while (array[i])
+	{
+		if (!(ft_is_finish(array, i)))
+		{
+			if (array[i] == '\n' && array[i + 1] == '\n')
+				return (false);
+		}
+		i++;
+	}
+	return (true);
+}
+
 static bool	ft_map_read(t_global *g, char *path)
 {
 	char		*array;
 
 	if (!ft_read(path, &array))
+		return (false);
+	if (!(ft_check_line(array)))
 		return (false);
 	g->map.lines = ft_split(array, ft_isnline);
 	ft_free(array);
