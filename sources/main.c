@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:17:56 by vpiamias          #+#    #+#             */
-/*   Updated: 2022/02/15 12:21:51 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:18:54 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static int	ft_error(t_global *g, char *s)
 
 static bool	ft_is_finish(char *array, int i)
 {
-	while (array[i] == '\n')
+	while (ft_isnline(array[i]))
 		i++;
-	if (array[i] == '\0')
+	if (!array[i])
 		return (true);
 	return (false);
 }
@@ -55,10 +55,8 @@ static bool	ft_check_line(char *array)
 	while (array[i])
 	{
 		if (!(ft_is_finish(array, i)))
-		{
-			if (array[i] == '\n' && array[i + 1] == '\n')
+			if (ft_isnline(array[i]) && ft_isnline(array[i + 1]))
 				return (false);
-		}
 		i++;
 	}
 	return (true);

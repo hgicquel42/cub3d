@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pchars.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpiamias <vpiamias@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hgicquel <hgicquel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:39:16 by hgicquel          #+#    #+#             */
-/*   Updated: 2022/02/15 11:26:16 by vpiamias         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:13:40 by hgicquel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pchars.h"
+
+#include "utils/chars.h"
 
 /**
  * @brief check if c is a floor
@@ -73,5 +75,5 @@ bool	ft_ismap(char c)
  */
 bool	ft_isbody(char c)
 {
-	return (ft_iswall(c) || ft_isfloor(c) || ft_isplayer(c) || c == '\n');
+	return (ft_ismap(c) || ft_isnline(c));
 }
